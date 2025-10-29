@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ace & Putt - Tenis y Golf</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🎾 Ace & Putt</div>
+            <ul class="nav-menu">
+                <li><a href="#features">Características</a></li>
+                <li><a href="#how-it-works">Cómo Funciona</a></li>
+                <li><a href="#stats">Estadísticas</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <button class="btn-primary nav-btn" onclick="scrollToSignup()">Empezar Ahora</button>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="sports-animations">
+            <div class="tennis-ball">🎾</div>
+            <div class="tennis-ball ball-2">🎾</div>
+            <div class="golf-ball">⛳</div>
+            <div class="tennis-racket">🎾</div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Tu Plataforma Completa de <span class="highlight">Tenis y Golf</span></h1>
+            <p class="hero-subtitle">Resultados en tiempo real, estadísticas detalladas y apuestas virtuales. Sigue a tus jugadores favoritos y demuestra quién es el mejor predictor.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary btn-large" onclick="scrollToSignup()">Registrarse Gratis</button>
+                <button class="btn-secondary btn-large" onclick="scrollToFeatures()">Explorar Características</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Características Principales</h2>
+            <p class="section-subtitle">Todo lo que necesitas para estar al día con el mundo del tenis y golf</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Resultados en Tiempo Real</h3>
+                    <p>Marcadores live de partidos de tenis y torneos de golf. Nunca te pierdas una actualización.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Estadísticas Detalladas</h3>
+                    <p>Porcentajes de saque, winners, errores, driving accuracy, putting y mucho más.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Rankings Actualizados</h3>
+                    <p>ATP, WTA, PGA Tour y World Golf Rankings siempre actualizados en tiempo real.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Calendario Interactivo</h3>
+                    <p>Todos los torneos con fechas, ubicaciones y premios en un solo lugar.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Sistema de Seguimiento</h3>
+                    <p>Sigue a tus jugadores favoritos con notificaciones personalizadas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Sistema de Apuestas</h3>
+                    <p>Pronostica ganadores y compite por puntos virtuales con tus amigos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Cómo Funciona</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Regístrate</h3>
+                    <p>Crea tu cuenta gratuita en segundos y recibe puntos iniciales</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Explora Partidos</h3>
+                    <p>Navega por los partidos y torneos disponibles en tiempo real</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Haz tu Apuesta</h3>
+                    <p>Pronostica el ganador antes de que comience el partido o torneo</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Gana Puntos</h3>
+                    <p>Si aciertas, gana puntos y sube en el ranking de usuarios</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats-section">
+        <div class="container">
+            <h2 class="section-title">Estadísticas en Vivo</h2>
+            <div class="stats-grid">
+                <div class="stats-card">
+                    <h3>🎾 Tenis</h3>
+                    <div class="live-matches">
+                        <div class="live-match">
+                            <span class="live-indicator"></span>
+                            <span>Partidos en Vivo</span>
+                            <span class="match-score">ATP/WTA</span>
+                        </div>
+                        <div class="live-match">
+                            <span class="live-indicator"></span>
+                            <span>Scores en Tiempo Real</span>
+                            <span class="match-score">Live</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-card">
+                    <h3>⛳ Golf</h3>
+                    <div class="leaderboard">
+                        <div class="leaderboard-item">
+                            <span class="position">⛳</span>
+                            <span class="name">Torneos PGA Tour</span>
+                            <span class="score">Activo</span>
+                        </div>
+                        <div class="leaderboard-item">
+                            <span class="position">🏆</span>
+                            <span class="name">World Golf Rankings</span>
+                            <span class="score">Actualizado</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-card">
+                    <h3>🏆 Rankings</h3>
+                    <div class="leaderboard">
+                        <div class="leaderboard-item">
+                            <span class="position">📈</span>
+                            <span class="name">Rankings de Usuarios</span>
+                            <span class="score">Clasificaciones</span>
+                        </div>
+                        <div class="leaderboard-item">
+                            <span class="position">🏅</span>
+                            <span class="name">Top Predictores</span>
+                            <span class="score">Sistema Puntos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>¿Listo para Empezar?</h2>
+            <p>Únete a la comunidad de aficionados al tenis y golf más apasionados</p>
+            <button class="btn-primary btn-large" onclick="scrollToSignup()">Registrarse Ahora</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🎾 Ace & Putt</h3>
+                    <p>Tu plataforma completa para seguir el mundo del tenis y golf.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="#features">Características</a></li>
+                        <li><a href="#how-it-works">Cómo Funciona</a></li>
+                        <li><a href="#stats">Estadísticas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li>Email: info@aceandputt.com</li>
+                        <li>Teléfono: +34 123 456 789</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociales</h4>
+                    <div class="social-links">
+                        <a href="#">📱</a>
+                        <a href="#">🐦</a>
+                        <a href="#">📷</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ace & Putt. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
