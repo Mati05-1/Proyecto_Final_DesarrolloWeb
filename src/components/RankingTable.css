@@ -1,0 +1,133 @@
+.ranking-table {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.ranking-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: var(--light-bg);
+}
+
+th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--light-bg);
+}
+
+tr:hover {
+    background: var(--light-bg);
+}
+
+tr.top-three {
+    background: #fef3c7;
+}
+
+tr.top-three:hover {
+    background: #fde68a;
+}
+
+.rank-cell {
+    text-align: center;
+}
+
+.rank-badge {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--light-bg);
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.rank-badge.gold {
+    background: #fbbf24;
+    color: var(--white);
+}
+
+.rank-badge.silver {
+    background: #94a3b8;
+    color: var(--white);
+}
+
+.rank-badge.bronze {
+    background: #d97706;
+    color: var(--white);
+}
+
+.player-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.player-flag {
+    font-size: 1.5rem;
+}
+
+.player-name {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.country-cell {
+    font-size: 1.2rem;
+}
+
+.points-cell {
+    text-align: right;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .ranking-table {
+        padding: 1rem;
+    }
+
+    th, td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .player-flag {
+        font-size: 1.2rem;
+    }
+
+    .rank-badge {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}
+

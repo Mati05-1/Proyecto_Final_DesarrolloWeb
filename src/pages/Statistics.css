@@ -1,0 +1,105 @@
+.statistics {
+    min-height: 100vh;
+    padding: 2rem 0;
+    background: var(--light-bg);
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tab {
+    padding: 1rem 2rem;
+    border: none;
+    background: var(--white);
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: var(--shadow);
+}
+
+.tab:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.tab.active {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.statistics-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.rankings-section {
+    width: 100%;
+}
+
+.player-stats-section {
+    width: 100%;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.player-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.login-prompt {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    margin-top: 2rem;
+}
+
+.login-prompt h2 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.login-prompt p {
+    color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .player-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

@@ -1,0 +1,110 @@
+.live-results {
+    min-height: 100vh;
+    padding: 2rem 0;
+    background: var(--light-bg);
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.tab {
+    padding: 1rem 2rem;
+    border: none;
+    background: var(--white);
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: var(--shadow);
+}
+
+.tab:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.tab.active {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.matches-section {
+    margin-bottom: 3rem;
+}
+
+.section-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.matches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.tournaments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-light);
+    font-size: 1.2rem;
+}
+
+.login-prompt {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    margin-top: 2rem;
+}
+
+.login-prompt h2 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.login-prompt p {
+    color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .matches-grid,
+    .tournaments-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

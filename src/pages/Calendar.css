@@ -1,0 +1,121 @@
+.calendar-page {
+  min-height: 100vh;
+  padding: 2rem 0;
+  background: var(--light-bg);
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.page-subtitle {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+}
+
+.calendar-info {
+  text-align: center;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  margin-top: 2rem;
+}
+
+.calendar-info p {
+  color: var(--text-dark);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.selected-date-events {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.selected-date-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.empty-events {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--text-light);
+  font-size: 1.1rem;
+}
+
+.events-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.events-section {
+  margin-bottom: 2rem;
+}
+
+.events-section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--light-bg);
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.login-prompt {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  margin-top: 2rem;
+}
+
+.login-prompt h2 {
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.login-prompt p {
+  color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .page-subtitle {
+    font-size: 1rem;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .selected-date-title {
+    font-size: 1.4rem;
+  }
+}
+
