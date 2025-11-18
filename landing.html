@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ace & Putt - Tu plataforma completa para seguir tenis y golf en tiempo real, con estadísticas detalladas y sistema de apuestas virtuales">
+    <title>Ace & Putt - Plataforma de Tenis y Golf</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #3b82f6;
+            --accent-color: #10b981;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        @keyframes swing {
+            0%, 100% { transform: rotate(-15deg); }
+            50% { transform: rotate(15deg); }
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .highlight {
+            color: #fbbf24;
+            text-shadow: 0 2px 10px rgba(251, 191, 36, 0.5);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+        
+        /* Section Separator */
+        .section-separator {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+            margin: 60px 0;
+        }
+        
+        /* Section with distinct backgrounds */
+        .section-rankings {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 120px 0;
+            margin: 0;
+            border-top: 3px solid #fbbf24;
+            border-bottom: 3px solid #fbbf24;
+        }
+        
+        .section-resultados {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            padding: 120px 0;
+            margin: 0;
+            border-top: 3px solid #ef4444;
+            border-bottom: 3px solid #ef4444;
+        }
+        
+        .section-torneos {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            padding: 120px 0;
+            margin: 0;
+            border-top: 3px solid #10b981;
+            border-bottom: 3px solid #10b981;
+        }
+        
+        .section-apostar {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            padding: 120px 0;
+            margin: 0;
+            border-top: 3px solid #3b82f6;
+            border-bottom: 3px solid #3b82f6;
+        }
+        
+        /* Ensure navbar is always on top */
+        .navbar.fixed-top {
+            position: fixed !important;
+            top: 0 !important;
+            z-index: 1030 !important;
+            width: 100%;
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: #1e293b;
+            color: white;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Custom Button Styles */
+        .btn-custom-primary {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .btn-custom-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-custom-outline {
+            border: 2px solid white;
+            color: white;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .btn-custom-outline:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        /* Card Hover Effect */
+        .card-hover {
+            transition: all 0.3s;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .navbar {
+            background: #1e293b !important;
+            border-bottom: 1px solid #334155;
+        }
+        
+        body.dark-mode .navbar-brand,
+        body.dark-mode .nav-link {
+            color: #e2e8f0 !important;
+        }
+        
+        body.dark-mode .features {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .card {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-color: #334155;
+        }
+        
+        body.dark-mode .card-text,
+        body.dark-mode .text-muted {
+            color: #94a3b8 !important;
+        }
+        
+        body.dark-mode .cta-section {
+            background: #0f172a;
+        }
+        
+        body.dark-mode .footer {
+            background: #0f172a !important;
+        }
+        
+        body.dark-mode .modal-content {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .form-control {
+            background: #0f172a;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .form-control:focus {
+            background: #0f172a;
+            border-color: var(--primary-color);
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .list-group-item {
+            background: #1e293b;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .dark-mode-toggle:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        body.dark-mode .dark-mode-toggle {
+            border-color: #fbbf24;
+            color: #fbbf24;
+        }
+        
+        body.dark-mode .dark-mode-toggle:hover {
+            background: #fbbf24;
+            color: #0f172a;
+        }
+        
+        /* Dynamic Greeting Styles */
+        .dynamic-greeting {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        body.dark-mode .dynamic-greeting {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .dark-mode-toggle {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Component (Bootstrap) - Solo visible cuando está logueado -->
+    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light bg-white shadow-lg fixed-top" style="display: none; z-index: 1030; position: fixed !important; top: 0 !important; width: 100%;">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="#">
+                <i class="bi bi-trophy-fill text-primary"></i> Ace & Putt
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#rankings">Rankings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resultados">Resultados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#torneos">Torneos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#apostar">Apostar</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <button class="dark-mode-toggle me-3" id="darkModeToggle" aria-label="Toggle dark mode">
+                        <i class="bi bi-moon-fill" id="darkModeIcon"></i>
+                        <span id="darkModeText">Oscuro</span>
+                    </button>
+                    <button class="btn btn-outline-primary me-2" id="loginButton" onclick="handleLogout()">
+                        <i class="bi bi-person-circle"></i> <span id="userNameNav"></span>
+                    </button>
+                    <button class="btn btn-success" id="appButton" onclick="window.location.href='/index.html'">
+                        <i class="bi bi-rocket-takeoff"></i> Ir a la App
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Solo visible cuando NO está logueado -->
+    <section id="loginHero" class="hero" style="min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden;">
+        <!-- Animated Background Elements -->
+        <div class="sports-animations" style="position: absolute; width: 100%; height: 100%; z-index: 1;">
+            <div class="tennis-ball" style="position: absolute; top: 10%; left: 10%; font-size: 4rem; animation: float 4s ease-in-out infinite;">🎾</div>
+            <div class="tennis-ball ball-2" style="position: absolute; top: 60%; right: 15%; font-size: 5rem; animation: float 5s ease-in-out infinite 1s;">🎾</div>
+            <div class="golf-ball" style="position: absolute; bottom: 20%; left: 20%; font-size: 4rem; animation: float 6s ease-in-out infinite 0.5s;">⛳</div>
+            <div class="tennis-racket" style="position: absolute; top: 30%; right: 25%; font-size: 6rem; animation: swing 3s ease-in-out infinite; transform-origin: center bottom;">🎾</div>
+        </div>
+        
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center hero-content">
+                    <!-- Logo/Icon Animation -->
+                    <div class="mb-4" style="animation: float 3s ease-in-out infinite;">
+                        <i class="bi bi-trophy-fill" style="font-size: 6rem; color: #fbbf24; text-shadow: 0 0 30px rgba(251, 191, 36, 0.5);"></i>
+                    </div>
+                    
+                    <h1 class="hero-title mb-4" style="font-size: 4.5rem; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                        Ace & Putt
+                    </h1>
+                    
+                    <div class="mb-4" style="display: inline-block; padding: 0.5rem 2rem; background: rgba(255,255,255,0.15); border-radius: 30px; backdrop-filter: blur(10px);">
+                        <p style="font-size: 1.1rem; margin: 0; font-weight: 600;">
+                            🎾 Tenis • ⛳ Golf • 📊 Estadísticas • 💰 Apuestas
+                        </p>
+                    </div>
+                    
+                    <p class="hero-subtitle mb-5" style="font-size: 1.6rem; line-height: 1.8; max-width: 800px; margin: 0 auto 3rem;">
+                        Tu plataforma completa para seguir <span style="color: #fbbf24; font-weight: 700;">tenis y golf</span> en tiempo real, 
+                        con estadísticas detalladas y sistema de apuestas virtuales.
+                    </p>
+                    
+                    <!-- Feature Pills -->
+                    <div class="d-flex gap-3 justify-content-center flex-wrap mb-5">
+                        <span class="badge" style="background: rgba(255,255,255,0.2); color: white; padding: 0.75rem 1.5rem; font-size: 1rem; border-radius: 25px; backdrop-filter: blur(10px);">
+                            ⚡ Resultados en Vivo
+                        </span>
+                        <span class="badge" style="background: rgba(255,255,255,0.2); color: white; padding: 0.75rem 1.5rem; font-size: 1rem; border-radius: 25px; backdrop-filter: blur(10px);">
+                            🏆 Rankings Actualizados
+                        </span>
+                        <span class="badge" style="background: rgba(255,255,255,0.2); color: white; padding: 0.75rem 1.5rem; font-size: 1rem; border-radius: 25px; backdrop-filter: blur(10px);">
+                            💰 Apuestas Virtuales
+                        </span>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="d-flex gap-4 justify-content-center flex-wrap">
+                        <button class="btn btn-custom-primary btn-lg" data-bs-toggle="modal" data-bs-target="#registerModal" style="padding: 1rem 2.5rem; font-size: 1.2rem; box-shadow: 0 8px 25px rgba(0,0,0,0.3); transform: translateY(0); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.3)'">
+                            <i class="bi bi-person-plus-fill"></i> Crear Cuenta Gratis
+                        </button>
+                        <button class="btn btn-custom-outline btn-lg" data-bs-toggle="modal" data-bs-target="#loginModal" style="padding: 1rem 2.5rem; font-size: 1.2rem; box-shadow: 0 8px 25px rgba(255,255,255,0.2); transform: translateY(0); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 35px rgba(255,255,255,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(255,255,255,0.2)'">
+                            <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+                        </button>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="mt-5 pt-4" style="border-top: 1px solid rgba(255,255,255,0.2);">
+                        <div class="row g-4 text-center">
+                            <div class="col-md-4">
+                                <div style="font-size: 2.5rem; font-weight: 700; color: #fbbf24;">10K+</div>
+                                <div style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Usuarios Activos</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div style="font-size: 2.5rem; font-weight: 700; color: #fbbf24;">150+</div>
+                                <div style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Partidos en Vivo</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div style="font-size: 2.5rem; font-weight: 700; color: #fbbf24;">24/7</div>
+                                <div style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Actualizaciones</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2; animation: bounce 2s infinite;">
+            <i class="bi bi-chevron-down" style="font-size: 2rem; color: rgba(255,255,255,0.7);"></i>
+        </div>
+    </section>
+
+    <!-- Main Content - Solo visible cuando está logueado -->
+    <div id="mainContent" style="display: none; padding-top: 80px;">
+        <!-- Hero Section para usuarios logueados -->
+        <section id="inicio" class="hero" style="min-height: auto; padding: 80px 0;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 hero-content">
+                        <div class="dynamic-greeting" id="dynamicGreeting">
+                            ¡Bienvenido!
+                        </div>
+                        <h1 class="hero-title">
+                            ¡Bienvenido, <span id="userNameDisplay"></span>! 🎾⛳
+                        </h1>
+                        <p class="hero-subtitle">
+                            Explora rankings, resultados en tiempo real, torneos y apuesta en tus partidos favoritos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div style="height: 20px; background: transparent;"></div>
+
+    <!-- Rankings Section -->
+    <section id="rankings" class="section-rankings">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold mb-3" style="color: #92400e;">
+                    <i class="bi bi-trophy-fill"></i> Rankings Actuales
+                </h2>
+                <p class="lead" style="color: #78350f; font-weight: 500;">Consulta los rankings ATP, WTA y PGA actualizados</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">🎾 ATP Rankings</h5>
+                        </div>
+                        <div class="card-body" id="atpRankingsPreview">
+                            <div class="text-center">
+                                <div class="spinner-border spinner-border-sm" role="status"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-danger text-white">
+                            <h5 class="mb-0">🎾 WTA Rankings</h5>
+                        </div>
+                        <div class="card-body" id="wtaRankingsPreview">
+                            <div class="text-center">
+                                <div class="spinner-border spinner-border-sm" role="status"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">⛳ PGA Rankings</h5>
+                        </div>
+                        <div class="card-body" id="pgaRankingsPreview">
+                            <div class="text-center">
+                                <div class="spinner-border spinner-border-sm" role="status"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div style="height: 20px; background: transparent;"></div>
+
+    <!-- Resultados Section -->
+    <section id="resultados" class="section-resultados">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold mb-3" style="color: #991b1b;">
+                    <i class="bi bi-lightning-charge-fill"></i> Resultados en Vivo
+                </h2>
+                <p class="lead" style="color: #7f1d1d; font-weight: 500;">Sigue los partidos y torneos en tiempo real</p>
+            </div>
+            <div id="liveMatchesContainer" class="row g-4">
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div style="height: 20px; background: transparent;"></div>
+
+    <!-- Torneos Section -->
+    <section id="torneos" class="section-torneos">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold mb-3" style="color: #065f46;">
+                    <i class="bi bi-flag-fill"></i> Torneos de Golf
+                </h2>
+                <p class="lead" style="color: #064e3b; font-weight: 500;">Torneos PGA en curso y programados</p>
+            </div>
+            <div id="golfTournamentsContainer" class="row g-4">
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div style="height: 20px; background: transparent;"></div>
+
+    <!-- Apostar Section -->
+    <section id="apostar" class="section-apostar">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold mb-3" style="color: #1e40af;">
+                    <i class="bi bi-cash-coin"></i> Próximos Partidos para Apostar
+                </h2>
+                <p class="lead" style="color: #1e3a8a; font-weight: 500;">Apostar en partidos programados antes de que comiencen</p>
+            </div>
+            <div id="upcomingMatchesContainer" class="row g-4">
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </div> <!-- Cierre de mainContent -->
+
+    <!-- Footer - Solo visible cuando está logueado -->
+    <footer id="mainFooter" class="bg-dark text-white py-5" style="display: none;">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="bi bi-trophy-fill text-primary"></i> Ace & Putt
+                    </h5>
+                    <p class="text-muted">
+                        Tu plataforma completa para seguir el mundo del tenis y golf. 
+                        Resultados en tiempo real, estadísticas y apuestas virtuales.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#inicio" class="text-muted text-decoration-none">Inicio</a></li>
+                        <li><a href="#rankings" class="text-muted text-decoration-none">Rankings</a></li>
+                        <li><a href="#resultados" class="text-muted text-decoration-none">Resultados</a></li>
+                        <li><a href="#torneos" class="text-muted text-decoration-none">Torneos</a></li>
+                        <li><a href="#apostar" class="text-muted text-decoration-none">Apostar</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">Contacto</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="bi bi-envelope"></i> info@aceandputt.com</li>
+                        <li><i class="bi bi-telephone"></i> +34 123 456 789</li>
+                        <li><i class="bi bi-geo-alt"></i> Madrid, España</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="text-center text-muted">
+                <p>&copy; 2024 Ace & Putt. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal (Bootstrap Modal Component) -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">
+                        <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="loginError" class="alert alert-danger d-none" role="alert"></div>
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email o Nombre de Usuario</label>
+                            <input type="text" class="form-control" id="loginEmail" placeholder="tu@email.com o tu nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Tu contraseña" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Recordarme</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p class="text-muted small mb-0">¿No tienes cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Regístrate aquí</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal (Bootstrap Modal Component) -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">
+                        <i class="bi bi-person-plus"></i> Crear Cuenta
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="registerError" class="alert alert-danger d-none" role="alert"></div>
+                    <div id="registerSuccess" class="alert alert-success d-none" role="alert"></div>
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="registerName" class="form-label">Nombre de Usuario</label>
+                            <input type="text" class="form-control" id="registerName" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" placeholder="tu@email.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="registerPassword" placeholder="Mínimo 6 caracteres" minlength="6" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="acceptTerms" required>
+                            <label class="form-check-label" for="acceptTerms">
+                                Acepto los <a href="#">términos y condiciones</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo Modal (Bootstrap Modal Component) -->
+    <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="demoModalLabel">
+                        <i class="bi bi-play-circle"></i> Demo Interactivo
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Vista Previa de la Plataforma</h5>
+                            <p class="card-text">
+                                Descubre todas las funcionalidades de Ace & Putt:
+                            </p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <i class="bi bi-check-circle-fill text-success"></i> 
+                                    Resultados en tiempo real de partidos y torneos
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="bi bi-check-circle-fill text-success"></i> 
+                                    Estadísticas detalladas de jugadores
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="bi bi-check-circle-fill text-success"></i> 
+                                    Sistema de apuestas virtuales
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="bi bi-check-circle-fill text-success"></i> 
+                                    Calendario interactivo de eventos
+                                </li>
+                            </ul>
+                            <div class="alert alert-info mt-3" role="alert">
+                                <i class="bi bi-info-circle"></i> 
+                                Regístrate ahora para acceder a la demo completa
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">
+                        Registrarse para Demo Completa
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal (Bootstrap Modal Component) -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">
+                        <i class="bi bi-envelope"></i> Contactar Ventas
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="contactName" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="contactName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="contactEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactCompany" class="form-label">Empresa</label>
+                            <input type="text" class="form-control" id="contactCompany">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="contactMessage" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Smooth Scroll and Interactive Features -->
+    <script>
+        // ============================================
+        // 1. SMOOTH SCROLL FUNCTIONALITY
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ============================================
+        // 2. DARK MODE FUNCTIONALITY
+        // ============================================
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeIcon = document.getElementById('darkModeIcon');
+        const darkModeText = document.getElementById('darkModeText');
+        const body = document.body;
+
+        // Función para obtener el estado del modo oscuro desde localStorage
+        function getDarkModePreference() {
+            const savedPreference = localStorage.getItem('darkMode');
+            if (savedPreference !== null) {
+                return savedPreference === 'true';
+            }
+            // Si no hay preferencia guardada, usar la preferencia del sistema
+            return window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+
+        // Función para guardar la preferencia del modo oscuro
+        function saveDarkModePreference(isDark) {
+            localStorage.setItem('darkMode', isDark.toString());
+        }
+
+        // Función para aplicar el modo oscuro
+        function applyDarkMode(isDark) {
+            if (isDark) {
+                body.classList.add('dark-mode');
+                darkModeIcon.className = 'bi bi-sun-fill';
+                darkModeText.textContent = 'Claro';
+            } else {
+                body.classList.remove('dark-mode');
+                darkModeIcon.className = 'bi bi-moon-fill';
+                darkModeText.textContent = 'Oscuro';
+            }
+            saveDarkModePreference(isDark);
+        }
+
+        // Función para alternar el modo oscuro
+        function toggleDarkMode() {
+            const isCurrentlyDark = body.classList.contains('dark-mode');
+            applyDarkMode(!isCurrentlyDark);
+        }
+
+        // Inicializar el modo oscuro al cargar la página
+        function initializeDarkMode() {
+            const prefersDark = getDarkModePreference();
+            applyDarkMode(prefersDark);
+        }
+
+        // Event listener para el botón de modo oscuro
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+
+        // Escuchar cambios en la preferencia del sistema
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            // Solo aplicar si no hay preferencia guardada
+            if (localStorage.getItem('darkMode') === null) {
+                applyDarkMode(e.matches);
+            }
+        });
+
+        // ============================================
+        // 3. DYNAMIC GREETING FUNCTIONALITY
+        // ============================================
+        const greetingElement = document.getElementById('dynamicGreeting');
+
+        // Función para obtener el saludo según la hora del día
+        function getGreetingByTime() {
+            const currentHour = new Date().getHours();
+            let greeting = '';
+            let emoji = '';
+
+            if (currentHour >= 5 && currentHour < 12) {
+                greeting = '¡Buenos días!';
+                emoji = '☀️';
+            } else if (currentHour >= 12 && currentHour < 18) {
+                greeting = '¡Buenas tardes!';
+                emoji = '🌤️';
+            } else if (currentHour >= 18 && currentHour < 22) {
+                greeting = '¡Buenas noches!';
+                emoji = '🌙';
+            } else {
+                greeting = '¡Buenas noches!';
+                emoji = '🌃';
+            }
+
+            return `${emoji} ${greeting}`;
+        }
+
+        // Función para actualizar el saludo
+        function updateGreeting() {
+            const greeting = getGreetingByTime();
+            greetingElement.textContent = greeting;
+        }
+
+        // Función para actualizar el saludo periódicamente (cada hora)
+        function startGreetingUpdate() {
+            updateGreeting();
+            // Actualizar cada hora (3600000 ms)
+            setInterval(updateGreeting, 3600000);
+        }
+
+        // ============================================
+        // INICIALIZACIÓN AL CARGAR LA PÁGINA
+        // ============================================
+        // Actualizar el saludo inmediatamente al cargar
+        updateGreeting();
+
+        // ============================================
+        // 4. LOGIN AND REGISTRATION FUNCTIONALITY
+        // ============================================
+        
+        // Función para verificar si el usuario está logueado
+        function isUserLoggedIn() {
+            return localStorage.getItem('acePutUser') !== null
+        }
+
+        // Función para obtener el usuario actual
+        function getCurrentUser() {
+            const userStr = localStorage.getItem('acePutUser')
+            return userStr ? JSON.parse(userStr) : null
+        }
+
+        // Función para actualizar la UI según el estado de login
+        function updateUIForLogin() {
+            const user = getCurrentUser()
+            const loginHero = document.getElementById('loginHero')
+            const mainContent = document.getElementById('mainContent')
+            const mainNavbar = document.getElementById('mainNavbar')
+            const mainFooter = document.getElementById('mainFooter')
+            const userNameNav = document.getElementById('userNameDisplay')
+            const userNameNavbar = document.getElementById('userNameNav')
+            
+            if (user) {
+                // Usuario logueado - Mostrar navbar, contenido completo y footer
+                if (loginHero) loginHero.style.display = 'none'
+                if (mainContent) mainContent.style.display = 'block'
+                if (mainNavbar) mainNavbar.style.display = 'flex'
+                if (mainFooter) mainFooter.style.display = 'block'
+                if (userNameNav) userNameNav.textContent = user.username
+                if (userNameNavbar) userNameNavbar.textContent = user.username
+            } else {
+                // Usuario no logueado - Mostrar solo hero de login
+                if (loginHero) loginHero.style.display = 'flex'
+                if (mainContent) mainContent.style.display = 'none'
+                if (mainNavbar) mainNavbar.style.display = 'none'
+                if (mainFooter) mainFooter.style.display = 'none'
+            }
+        }
+
+        // Función para mostrar contenido exclusivo de usuarios
+        function showUserContent() {
+            const user = getCurrentUser()
+            
+            if (user) {
+                // Cargar datos dinámicos cuando el usuario está logueado
+                loadUserDashboardData()
+            }
+        }
+
+        // ============================================
+        // 5. LOAD DYNAMIC DATA FOR LOGGED IN USERS
+        // ============================================
+        
+        // URL base de la API
+        const API_BASE_URL = 'http://localhost:5000/api'
+        
+        // Función para hacer peticiones a la API
+        async function fetchAPI(endpoint) {
+            try {
+                const response = await fetch(`${API_BASE_URL}${endpoint}`)
+                if (!response.ok) throw new Error('API error')
+                return await response.json()
+            } catch (error) {
+                console.error('Error fetching from API:', error)
+                // Fallback a datos mock si la API no está disponible
+                return getMockData(endpoint)
+            }
+        }
+        
+        // Datos mock como fallback (si la API no está disponible)
+        function getMockData(endpoint) {
+            if (endpoint.includes('/matches')) {
+                return { success: true, data: mockTennisMatches, count: mockTennisMatches.length }
+            }
+            if (endpoint.includes('/tournaments')) {
+                return { success: true, data: mockGolfTournaments, count: mockGolfTournaments.length }
+            }
+            if (endpoint.includes('/rankings')) {
+                return { success: true, data: mockRankings }
+            }
+            return { success: false, data: [] }
+        }
+        
+        // Datos mock para la landing page (fallback si API no está disponible)
+        const mockTennisMatches = [
+            {
+                id: 1,
+                tournament: 'ATP Masters 1000',
+                player1: { name: 'Carlos Alcaraz', country: '🇪🇸', rank: 2 },
+                player2: { name: 'Novak Djokovic', country: '🇷🇸', rank: 1 },
+                score: { sets: [{ p1: 6, p2: 4 }, { p1: 3, p2: 6 }] },
+                status: 'live',
+                time: '2h 15m'
+            },
+            {
+                id: 2,
+                tournament: 'WTA Finals',
+                player1: { name: 'Aryna Sabalenka', country: '🇧🇾', rank: 1 },
+                player2: { name: 'Iga Świątek', country: '🇵🇱', rank: 2 },
+                score: { sets: [{ p1: 4, p2: 6 }, { p1: 6, p2: 3 }] },
+                status: 'live',
+                time: '1h 45m'
+            },
+            {
+                id: 5,
+                tournament: 'ATP Masters 1000',
+                player1: { name: 'Rafael Nadal', country: '🇪🇸', rank: 5 },
+                player2: { name: 'Stefanos Tsitsipas', country: '🇬🇷', rank: 6 },
+                status: 'scheduled',
+                startTime: 'En 2 horas'
+            }
+        ]
+
+        const mockGolfTournaments = [
+            {
+                id: 1,
+                name: 'PGA Tour Championship',
+                location: 'Atlanta, GA',
+                status: 'live',
+                round: 3,
+                totalRounds: 4,
+                leaderboard: [
+                    { position: 1, player: 'Scottie Scheffler', country: '🇺🇸', score: -18 },
+                    { position: 2, player: 'Rory McIlroy', country: '🇮🇪', score: -16 }
+                ]
+            },
+            {
+                id: 2,
+                name: 'Masters Tournament',
+                location: 'Augusta, GA',
+                status: 'live',
+                round: 2,
+                totalRounds: 4,
+                leaderboard: [
+                    { position: 1, player: 'Tiger Woods', country: '🇺🇸', score: -8 }
+                ]
+            }
+        ]
+
+        const mockRankings = {
+            atp: [
+                { rank: 1, player: 'Novak Djokovic', country: '🇷🇸', points: 9795 },
+                { rank: 2, player: 'Carlos Alcaraz', country: '🇪🇸', points: 8855 },
+                { rank: 3, player: 'Daniil Medvedev', country: '🇷🇺', points: 7600 }
+            ],
+            wta: [
+                { rank: 1, player: 'Aryna Sabalenka', country: '🇧🇾', points: 8935 },
+                { rank: 2, player: 'Iga Świątek', country: '🇵🇱', points: 8655 },
+                { rank: 3, player: 'Coco Gauff', country: '🇺🇸', points: 6595 }
+            ],
+            pga: [
+                { rank: 1, player: 'Scottie Scheffler', country: '🇺🇸', points: 350.5 },
+                { rank: 2, player: 'Rory McIlroy', country: '🇮🇪', points: 320.2 },
+                { rank: 3, player: 'Jon Rahm', country: '🇪🇸', points: 298.8 }
+            ]
+        }
+
+        // Función para formatear números
+        function formatNumber(num) {
+            return new Intl.NumberFormat('es-ES').format(num)
+        }
+
+        // Función para cargar datos del dashboard
+        function loadUserDashboardData() {
+            // Cargar partidos en vivo
+            loadLiveMatches()
+            
+            // Cargar rankings
+            loadRankings()
+            
+            // Cargar próximos partidos
+            loadUpcomingMatches()
+            
+            // Cargar torneos de golf
+            loadGolfTournaments()
+            
+            // Recargar datos cada 10 segundos para ver actualizaciones
+            setInterval(() => {
+                loadLiveMatches()
+                loadRankings()
+                loadUpcomingMatches()
+                loadGolfTournaments()
+            }, 10000)
+        }
+
+        // Cargar partidos en vivo
+        async function loadLiveMatches() {
+            const container = document.getElementById('liveMatchesContainer')
+            if (!container) return
+
+            try {
+                // Intentar obtener datos de la API
+                const response = await fetchAPI('/matches?status=live')
+                const liveMatches = response.data || []
+                
+                if (liveMatches.length === 0) {
+                    container.innerHTML = '<div class="col-12"><div class="alert alert-info">No hay partidos en vivo en este momento</div></div>'
+                    return
+                }
+
+                container.innerHTML = liveMatches.map(match => `
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge bg-danger">
+                                        <span class="spinner-grow spinner-grow-sm" role="status"></span> EN VIVO
+                                    </span>
+                                    <small class="text-muted">${match.tournament}</small>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="me-2">${match.player1.country}</span>
+                                        <strong>${match.player1.name}</strong>
+                                        <span class="badge bg-secondary ms-2">#${match.player1.rank}</span>
+                                    </div>
+                                    <div class="text-center my-2">
+                                        <span class="badge bg-light text-dark">VS</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="me-2">${match.player2.country}</span>
+                                        <strong>${match.player2.name}</strong>
+                                        <span class="badge bg-secondary ms-2">#${match.player2.rank}</span>
+                                    </div>
+                                </div>
+                                ${match.score && match.score.sets && match.score.sets.length > 0 ? `
+                                    <div class="text-center mb-2">
+                                        ${match.score.sets.map(set => `<span class="badge bg-primary me-1">${set.p1}-${set.p2}</span>`).join('')}
+                                    </div>
+                                ` : ''}
+                                <div class="text-center">
+                                    <small class="text-muted">⏱️ ${match.time || 'En curso'}</small>
+                                </div>
+                                <button onclick="window.location.href='/index.html#/live-results'" class="btn btn-sm btn-primary w-100 mt-2">
+                                    Ver Detalles
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')
+            } catch (error) {
+                console.error('Error loading live matches:', error)
+                container.innerHTML = '<div class="col-12"><div class="alert alert-warning">Error al cargar partidos. Intenta más tarde.</div></div>'
+            }
+        }
+
+        // Cargar rankings
+        async function loadRankings() {
+            try {
+                // Intentar obtener datos de la API
+                const response = await fetchAPI('/rankings')
+                const rankings = response.data || mockRankings
+                
+                // ATP Rankings
+                const atpContainer = document.getElementById('atpRankingsPreview')
+                if (atpContainer) {
+                    const atpData = rankings.atp || []
+                    atpContainer.innerHTML = atpData.map(player => `
+                        <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                            <div>
+                                <span class="badge ${player.rank === 1 ? 'bg-warning' : player.rank === 2 ? 'bg-secondary' : player.rank === 3 ? 'bg-danger' : 'bg-light text-dark'} me-2">#${player.rank}</span>
+                                <span class="me-2">${player.country}</span>
+                                <strong>${player.player}</strong>
+                            </div>
+                            <span class="text-primary fw-bold">${formatNumber(player.points)}</span>
+                        </div>
+                    `).join('') + `
+                        <button onclick="window.location.href='/index.html#/statistics'" class="btn btn-sm btn-outline-primary w-100 mt-2">
+                            Ver Todos
+                        </button>
+                    `
+                }
+
+                // WTA Rankings
+                const wtaContainer = document.getElementById('wtaRankingsPreview')
+                if (wtaContainer) {
+                    const wtaData = rankings.wta || []
+                    wtaContainer.innerHTML = wtaData.map(player => `
+                        <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                            <div>
+                                <span class="badge ${player.rank === 1 ? 'bg-warning' : player.rank === 2 ? 'bg-secondary' : player.rank === 3 ? 'bg-danger' : 'bg-light text-dark'} me-2">#${player.rank}</span>
+                                <span class="me-2">${player.country}</span>
+                                <strong>${player.player}</strong>
+                            </div>
+                            <span class="text-danger fw-bold">${formatNumber(player.points)}</span>
+                        </div>
+                    `).join('') + `
+                        <button onclick="window.location.href='/index.html#/statistics'" class="btn btn-sm btn-outline-danger w-100 mt-2">
+                            Ver Todos
+                        </button>
+                    `
+                }
+
+                // PGA Rankings
+                const pgaContainer = document.getElementById('pgaRankingsPreview')
+                if (pgaContainer) {
+                    const pgaData = rankings.pga || []
+                    pgaContainer.innerHTML = pgaData.map(player => `
+                        <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                            <div>
+                                <span class="badge ${player.rank === 1 ? 'bg-warning' : player.rank === 2 ? 'bg-secondary' : player.rank === 3 ? 'bg-danger' : 'bg-light text-dark'} me-2">#${player.rank}</span>
+                                <span class="me-2">${player.country}</span>
+                                <strong>${player.player}</strong>
+                            </div>
+                            <span class="text-success fw-bold">${player.points}</span>
+                        </div>
+                    `).join('') + `
+                        <button onclick="window.location.href='/index.html#/statistics'" class="btn btn-sm btn-outline-success w-100 mt-2">
+                            Ver Todos
+                        </button>
+                    `
+                }
+            } catch (error) {
+                console.error('Error loading rankings:', error)
+            }
+        }
+
+        // Cargar próximos partidos
+        async function loadUpcomingMatches() {
+            const container = document.getElementById('upcomingMatchesContainer')
+            if (!container) return
+
+            try {
+                // Intentar obtener datos de la API
+                const response = await fetchAPI('/matches?status=scheduled')
+                const upcomingMatches = response.data || []
+                
+                if (upcomingMatches.length === 0) {
+                    container.innerHTML = '<div class="col-12"><div class="alert alert-info">No hay partidos programados próximamente</div></div>'
+                    return
+                }
+
+                container.innerHTML = upcomingMatches.map(match => {
+                    // Calcular tiempo hasta el inicio si hay startTime
+                    let timeDisplay = 'Próximamente'
+                    if (match.startTime) {
+                        const startTime = new Date(match.startTime)
+                        const now = new Date()
+                        const diff = startTime - now
+                        if (diff > 0) {
+                            const hours = Math.floor(diff / (1000 * 60 * 60))
+                            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+                            timeDisplay = `En ${hours}h ${minutes}m`
+                        }
+                    }
+                    
+                    return `
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <span class="badge bg-info">📅 Programado</span>
+                                        <small class="text-muted">${match.tournament}</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <span class="me-2">${match.player1.country}</span>
+                                            <strong>${match.player1.name}</strong>
+                                            <span class="badge bg-secondary ms-2">#${match.player1.rank}</span>
+                                        </div>
+                                        <div class="text-center my-2">
+                                            <span class="badge bg-light text-dark">VS</span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="me-2">${match.player2.country}</span>
+                                            <strong>${match.player2.name}</strong>
+                                            <span class="badge bg-secondary ms-2">#${match.player2.rank}</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-center mb-2">
+                                        <small class="text-muted">${timeDisplay}</small>
+                                    </div>
+                                    <button onclick="window.location.href='/index.html#/betting'" class="btn btn-sm btn-success w-100 mt-2">
+                                        <i class="bi bi-cash-coin"></i> Apostar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                }).join('')
+            } catch (error) {
+                console.error('Error loading upcoming matches:', error)
+                container.innerHTML = '<div class="col-12"><div class="alert alert-warning">Error al cargar partidos. Intenta más tarde.</div></div>'
+            }
+        }
+
+        // Cargar torneos de golf
+        async function loadGolfTournaments() {
+            const container = document.getElementById('golfTournamentsContainer')
+            if (!container) return
+
+            try {
+                // Intentar obtener datos de la API
+                const response = await fetchAPI('/tournaments')
+                const tournaments = response.data || []
+                
+                container.innerHTML = tournaments.map(tournament => `
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge ${tournament.status === 'live' ? 'bg-danger' : 'bg-info'}">
+                                    ${tournament.status === 'live' ? '<span class="spinner-grow spinner-grow-sm"></span> EN VIVO' : '📅 Programado'}
+                                </span>
+                                <small class="text-muted">Ronda ${tournament.round}/${tournament.totalRounds}</small>
+                            </div>
+                            <h5 class="fw-bold mb-2">${tournament.name}</h5>
+                            <p class="text-muted mb-3">
+                                <i class="bi bi-geo-alt"></i> ${tournament.location}
+                            </p>
+                            ${tournament.leaderboard && tournament.leaderboard.length > 0 ? `
+                                <div class="mb-3">
+                                    <strong class="small">Top Posiciones:</strong>
+                                    ${tournament.leaderboard.slice(0, 3).map(player => `
+                                        <div class="d-flex justify-content-between align-items-center mt-1">
+                                            <span>
+                                                <span class="badge ${player.position === 1 ? 'bg-warning' : 'bg-secondary'} me-2">#${player.position}</span>
+                                                ${player.country} ${player.player}
+                                            </span>
+                                            <span class="text-success fw-bold">${player.score > 0 ? '+' : ''}${player.score}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                            <button onclick="window.location.href='/index.html#/live-results'" class="btn btn-sm btn-success w-100">
+                                Ver Detalles
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('')
+            } catch (error) {
+                console.error('Error loading golf tournaments:', error)
+                container.innerHTML = '<div class="col-12"><div class="alert alert-warning">Error al cargar torneos. Intenta más tarde.</div></div>'
+            }
+        }
+
+        // Función para manejar el login
+        function handleLogin(emailOrUsername, password) {
+            // Simular validación (en producción esto sería con el backend)
+            const users = JSON.parse(localStorage.getItem('acePutUsers') || '[]')
+            const user = users.find(u => 
+                (u.email === emailOrUsername || u.username === emailOrUsername) && 
+                u.password === password
+            )
+
+            if (user) {
+                // Guardar sesión
+                const sessionUser = {
+                    id: user.id,
+                    username: user.username,
+                    email: user.email,
+                    loginTime: new Date().toISOString()
+                }
+                localStorage.setItem('acePutUser', JSON.stringify(sessionUser))
+                
+                // Cerrar modal
+                const loginModalElement = document.getElementById('loginModal')
+                if (loginModalElement) {
+                    const loginModal = bootstrap.Modal.getInstance(loginModalElement)
+                    if (loginModal) {
+                        loginModal.hide()
+                    } else {
+                        // Si Bootstrap no está cargado, ocultar manualmente
+                        loginModalElement.classList.remove('show')
+                        document.body.classList.remove('modal-open')
+                        const backdrop = document.querySelector('.modal-backdrop')
+                        if (backdrop) backdrop.remove()
+                    }
+                }
+                
+                // Actualizar UI
+                updateUIForLogin()
+                showUserContent()
+                
+                // Mostrar mensaje de éxito
+                showSuccessMessage('¡Bienvenido de nuevo, ' + user.username + '!')
+                
+                return true
+            } else {
+                showErrorMessage('Credenciales incorrectas. Intenta de nuevo o regístrate.')
+                return false
+            }
+        }
+
+        // Función para manejar el registro
+        function handleRegister(username, email, password) {
+            // Verificar si el usuario ya existe
+            const users = JSON.parse(localStorage.getItem('acePutUsers') || '[]')
+            const existingUser = users.find(u => u.email === email || u.username === username)
+            
+            if (existingUser) {
+                showErrorMessage('El usuario o email ya está registrado.')
+                return false
+            }
+
+            // Crear nuevo usuario
+            const newUser = {
+                id: Date.now(),
+                username: username,
+                email: email,
+                password: password, // En producción esto debería estar hasheado
+                createdAt: new Date().toISOString(),
+                points: 1000 // Puntos iniciales
+            }
+
+            // Guardar usuario
+            users.push(newUser)
+            localStorage.setItem('acePutUsers', JSON.stringify(users))
+
+            // Iniciar sesión automáticamente
+            const sessionUser = {
+                id: newUser.id,
+                username: newUser.username,
+                email: newUser.email,
+                loginTime: new Date().toISOString()
+            }
+            localStorage.setItem('acePutUser', JSON.stringify(sessionUser))
+            localStorage.setItem('acePutPoints', '1000')
+
+            // Cerrar modal
+            const registerModalElement = document.getElementById('registerModal')
+            if (registerModalElement) {
+                const registerModal = bootstrap.Modal.getInstance(registerModalElement)
+                if (registerModal) {
+                    registerModal.hide()
+                } else {
+                    // Si Bootstrap no está cargado, ocultar manualmente
+                    registerModalElement.classList.remove('show')
+                    document.body.classList.remove('modal-open')
+                    const backdrop = document.querySelector('.modal-backdrop')
+                    if (backdrop) backdrop.remove()
+                }
+            }
+
+            // Actualizar UI
+            updateUIForLogin()
+            showUserContent()
+
+            // Mostrar mensaje de éxito
+            showSuccessMessage('¡Cuenta creada exitosamente! Bienvenido, ' + username)
+            
+            // Ocultar CTA section y mostrar contenido de usuario
+            const ctaSection = document.getElementById('ctaSection')
+            if (ctaSection) {
+                ctaSection.style.display = 'none'
+            }
+            
+            return true
+        }
+
+        // Función para manejar logout
+        function handleLogout() {
+            if (confirm('¿Deseas cerrar sesión?')) {
+                localStorage.removeItem('acePutUser')
+                updateUIForLogin()
+                location.reload()
+            }
+        }
+
+        // Función para mostrar mensaje de error
+        function showErrorMessage(message) {
+            const errorDiv = document.getElementById('loginError') || document.getElementById('registerError')
+            if (errorDiv) {
+                errorDiv.textContent = message
+                errorDiv.classList.remove('d-none')
+                setTimeout(() => {
+                    errorDiv.classList.add('d-none')
+                }, 5000)
+            }
+        }
+
+        // Función para mostrar mensaje de éxito
+        function showSuccessMessage(message) {
+            // Crear alert temporal
+            const alertDiv = document.createElement('div')
+            alertDiv.className = 'alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3'
+            alertDiv.style.zIndex = '9999'
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `
+            document.body.appendChild(alertDiv)
+            
+            setTimeout(() => {
+                alertDiv.remove()
+            }, 3000)
+        }
+
+        // ============================================
+        // INICIALIZACIÓN COMPLETA AL CARGAR LA PÁGINA
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar modo oscuro
+            initializeDarkMode();
+            
+            // Inicializar saludo dinámico
+            startGreetingUpdate();
+            
+            // Formulario de login
+            const loginForm = document.getElementById('loginForm')
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault()
+                    const email = document.getElementById('loginEmail').value.trim()
+                    const password = document.getElementById('loginPassword').value
+                    
+                    if (email && password) {
+                        handleLogin(email, password)
+                    } else {
+                        showErrorMessage('Por favor completa todos los campos')
+                    }
+                })
+            }
+
+            // Formulario de registro
+            const registerForm = document.getElementById('registerForm')
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(e) {
+                    e.preventDefault()
+                    const username = document.getElementById('registerName').value.trim()
+                    const email = document.getElementById('registerEmail').value.trim()
+                    const password = document.getElementById('registerPassword').value
+                    
+                    if (username && email && password) {
+                        if (password.length < 6) {
+                            showErrorMessage('La contraseña debe tener al menos 6 caracteres')
+                            return
+                        }
+                        handleRegister(username, email, password)
+                    } else {
+                        showErrorMessage('Por favor completa todos los campos')
+                    }
+                })
+            }
+
+            // Actualizar UI al cargar (verificar si ya hay sesión)
+            setTimeout(() => {
+                updateUIForLogin()
+                showUserContent()
+            }, 100)
+        })
+    </script>
+</body>
+</html>
+
