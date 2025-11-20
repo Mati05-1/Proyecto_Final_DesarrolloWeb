@@ -4,19 +4,12 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/landing.html",
+      "destination": "/landing.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "routes": [
-    {
-      "src": "/landing.html",
-      "dest": "/landing.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
   ]
 }
-
