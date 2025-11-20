@@ -1,110 +1,102 @@
-# Ace & Putt - Plataforma de Tenis y Golf
+# Ace Tennis - Plataforma de Tenis
 
-Aplicación web completa para seguir resultados en tiempo real, estadísticas detalladas y sistema de apuestas virtuales para tenis y golf.
+Aplicación web completa para seguir resultados en tiempo real, estadísticas detalladas y sistema de apuestas virtuales para tenis.
 
-## 🚀 Características
+## Descripción General
 
-- **Resultados en Tiempo Real**: Visualiza partidos de tenis y torneos de golf en vivo
-- **Estadísticas Detalladas**: Rankings ATP, WTA y PGA con estadísticas completas de jugadores
-- **Sistema de Apuestas**: Apuesta puntos virtuales en partidos y torneos
-- **Interfaz Moderna**: Diseño responsive y atractivo con React
+Plataforma full-stack que permite a los usuarios:
+- Ver rankings ATP y WTA en tiempo real
+- Seguir partidos en vivo
+- Realizar apuestas virtuales con sistema de puntos
+- Competir en un leaderboard global
 
-## 🛠️ Tecnologías
+## Tecnologías Usadas
 
-- **React 18** - Framework de UI
-- **Vite** - Build tool y dev server
-- **React Router** - Navegación
-- **Context API** - Manejo de estado global
-- **CSS3** - Estilos modernos y responsive
+**Frontend:**
+- HTML5, CSS3, Bootstrap 5.3.2
+- JavaScript (Vanilla)
+- React 18 + Vite
+- React Router DOM
 
-## 📦 Instalación
+**Backend:**
+- Node.js + Express
+- MongoDB + Mongoose
+- JWT para autenticación
+- RapidAPI para datos de tenis
 
-1. Instala las dependencias:
+## Pasos de Instalación
+
+1. **Instalar dependencias del frontend:**
 ```bash
 npm install
 ```
 
-2. Inicia el servidor de desarrollo:
+2. **Instalar dependencias del backend:**
 ```bash
+cd server
+npm install
+```
+
+3. **Configurar MongoDB:**
+```bash
+# Opción 1: MongoDB Local (macOS)
+brew install mongodb-community
+brew services start mongodb-community
+
+# Opción 2: MongoDB Atlas (gratis)
+# Crear cuenta en https://www.mongodb.com/cloud/atlas
+# Agregar MONGODB_URI en server/.env
+```
+
+4. **Configurar API Key (opcional):**
+```bash
+# Crear archivo server/.env
+RAPIDAPI_KEY=tu_api_key_aqui
+MONGODB_URI=mongodb://localhost:27017/ace-putt
+JWT_SECRET=tu_secret_key
+```
+
+5. **Iniciar servidor backend:**
+```bash
+cd server
+npm start
+# Servidor en http://localhost:5001
+```
+
+6. **Iniciar frontend:**
+```bash
+# Para React app
 npm run dev
+# App en http://localhost:3000
+
+# Para landing page
+# Abrir landing.html en navegador o usar servidor HTTP
+# Ejemplo: python3 -m http.server 3001
 ```
 
-3. Abre tu navegador en `http://localhost:3000`
+## Endpoints de la API
 
-## 🏗️ Estructura del Proyecto
+**Base URL:** `http://localhost:5001/api`
 
-```
-src/
-├── components/          # Componentes reutilizables
-│   ├── Navbar.jsx
-│   ├── TennisMatchCard.jsx
-│   ├── GolfTournamentCard.jsx
-│   ├── BettingCard.jsx
-│   ├── MyBets.jsx
-│   ├── RankingTable.jsx
-│   └── PlayerStats.jsx
-├── pages/              # Páginas principales
-│   ├── Home.jsx
-│   ├── LiveResults.jsx
-│   ├── Statistics.jsx
-│   └── Betting.jsx
-├── context/            # Context API
-│   └── AppContext.jsx
-├── services/           # Servicios y datos mock
-│   └── mockData.js
-├── App.jsx             # Componente principal
-├── main.jsx            # Punto de entrada
-└── index.css           # Estilos globales
-```
+### Autenticación (`/api/auth`)
+- `POST /api/auth/register` - Registrar nuevo usuario
+- `POST /api/auth/login` - Iniciar sesión
+- `GET /api/auth/me` - Obtener usuario actual (requiere token)
+- `GET /api/auth/leaderboard` - Obtener ranking de usuarios
 
-## 🎯 Funcionalidades Principales
+### Partidos (`/api/matches`)
+- `GET /api/matches` - Obtener todos los partidos
+- `GET /api/matches?status=live` - Filtrar por estado
+- `GET /api/matches/:id` - Obtener partido por ID
 
-### Resultados en Tiempo Real
-- Visualización de partidos de tenis en vivo
-- Torneos de golf con leaderboards actualizados
-- Actualización automática de scores cada 5 segundos
-- Estadísticas detalladas por partido/torneo
+### Rankings (`/api/rankings`)
+- `GET /api/rankings` - Obtener todos los rankings (ATP, WTA)
+- `GET /api/rankings/atp` - Obtener ranking ATP
+- `GET /api/rankings/wta` - Obtener ranking WTA
 
-### Estadísticas Detalladas
-- Rankings ATP, WTA y PGA
-- Estadísticas individuales de jugadores
-- Métricas de rendimiento (aces, winners, driving accuracy, etc.)
-
-### Sistema de Apuestas
-- Apuesta en partidos de tenis y torneos de golf
-- Sistema de puntos virtuales
-- Historial de apuestas
-- Seguimiento de ganancias y pérdidas
-
-## 🎮 Uso
-
-1. **Iniciar Sesión**: Ingresa un nombre de usuario en la página principal
-2. **Ver Resultados**: Navega a "Resultados en Vivo" para ver partidos y torneos
-3. **Consultar Estadísticas**: Ve a "Estadísticas" para rankings y datos de jugadores
-4. **Apostar**: Dirígete a "Apuestas" para realizar apuestas en eventos en vivo
-
-### Nota sobre Apuestas
-
-- **Solo puedes apostar ANTES de que empiece un partido/torneo**
-- Una vez que el evento comienza, las apuestas se deshabilitan automáticamente
-- Los partidos programados muestran el tiempo restante hasta el inicio
-
-## 📝 Notas
-
-- La aplicación usa datos simulados (mock data) para demostración
-- Los puntos y apuestas se guardan en localStorage
-- Las actualizaciones en tiempo real se refrescan cada 30 segundos
-- Todos los datos mostrados son simulados para fines educativos
-
-## 🚧 Futuras Mejoras
-
-- Sistema de usuarios más robusto con autenticación
-- Chat en tiempo real
-- Notificaciones push
-- Sistema de amigos y rankings sociales
-- Historial de apuestas más detallado
-- Integración con APIs reales para datos en tiempo real
-
-## 📄 Licencia
-
-Este proyecto es de uso educativo.
+### Apuestas (`/api/bets`)
+- `GET /api/bets` - Obtener todas las apuestas
+- `GET /api/bets?userId=id` - Filtrar por usuario
+- `POST /api/bets` - Crear nueva apuesta (requiere token)
+- `PATCH /api/bets/:id` - Actualizar apuesta (requiere token)
+- `DELETE /api/bets/:id` - Eliminar apuesta (requiere token)
