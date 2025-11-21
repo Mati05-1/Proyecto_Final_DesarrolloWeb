@@ -7,16 +7,5 @@
       "source": "/",
       "destination": "/landing.html"
     }
-  ],
-  "headers": [
-    {
-      "source": "/index.html",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex"
-        }
-      ]
-    }
   ]
 }
