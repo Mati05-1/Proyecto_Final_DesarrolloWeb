@@ -35,8 +35,8 @@ const Statistics = () => {
       <div className="statistics">
         <div className="container">
           <div className="login-prompt">
-            <h2>Inicia sesión para ver estadísticas</h2>
-            <p>Necesitas estar registrado para acceder a esta sección</p>
+            <h2>Inicia sesin para ver estadisticas</h2>
+            <p>Necesitas estar registrado para acceder a esta seccin</p>
           </div>
         </div>
       </div>
@@ -46,26 +46,26 @@ const Statistics = () => {
   return (
     <div className="statistics">
       <div className="container">
-        <h1 className="page-title">Estadísticas Detalladas</h1>
+        <h1 className="page-title">Estadisticas Detalladas</h1>
 
         <div className="tabs">
           <button
             className={`tab ${activeTab === 'atp' ? 'active' : ''}`}
             onClick={() => setActiveTab('atp')}
           >
-            🎾 ATP Rankings
+             ATP Rankings
           </button>
           <button
             className={`tab ${activeTab === 'wta' ? 'active' : ''}`}
             onClick={() => setActiveTab('wta')}
           >
-            🎾 WTA Rankings
+             WTA Rankings
           </button>
           <button
             className={`tab ${activeTab === 'pga' ? 'active' : ''}`}
             onClick={() => setActiveTab('pga')}
           >
-            ⛳ PGA Rankings
+             PGA Rankings
           </button>
         </div>
 
@@ -73,7 +73,7 @@ const Statistics = () => {
           {loading ? (
             <div className="loading">
               <div className="spinner"></div>
-              <p>Cargando estadísticas...</p>
+              <p>Cargando estadisticas...</p>
             </div>
           ) : (
             <>
@@ -82,7 +82,7 @@ const Statistics = () => {
               </div>
 
               <div className="player-stats-section">
-                <h2 className="section-title">Estadísticas de Jugadores Destacados</h2>
+                <h2 className="section-title">Estadisticas de Jugadores Destacados</h2>
                 <div style={{ 
                   background: '#fef3c7', 
                   padding: '1rem', 
@@ -92,7 +92,7 @@ const Statistics = () => {
                   fontSize: '0.9rem',
                   color: '#92400e'
                 }}>
-                  <strong>ℹ️ Nota:</strong> Las estadísticas de jugadores son datos simulados.
+                  <strong> Nota:</strong> Las estadisticas de jugadores son datos simulados.
                 </div>
                 <div className="player-stats-grid">
                   {rankings.slice(0, 3).map((player, index) => (

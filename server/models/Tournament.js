@@ -7,7 +7,7 @@ const leaderboardPlayerSchema = new mongoose.Schema({
   position: {
     type: Number,
     required: true,
-    min: [1, 'La posición debe ser mayor a 0']
+    min: [1, 'La posicin debe ser mayor a 0']
   },
   player: {
     type: String,
@@ -16,7 +16,7 @@ const leaderboardPlayerSchema = new mongoose.Schema({
   },
   country: {
     type: String,
-    default: '🌍'
+    default: ''
   },
   score: {
     type: Number,
@@ -36,7 +36,7 @@ const tournamentSchema = new mongoose.Schema({
   },
   location: {
     type: String,
-    required: [true, 'La ubicación es requerida'],
+    required: [true, 'La ubicacin es requerida'],
     trim: true
   },
   status: {
@@ -70,15 +70,15 @@ const tournamentSchema = new mongoose.Schema({
     default: null
   }
 }, {
-  timestamps: true // Crea automáticamente createdAt y updatedAt
+  timestamps: true // Crea automticamente createdAt y updatedAt
 })
 
-// Índices
+// ndices
 tournamentSchema.index({ status: 1 })
 tournamentSchema.index({ startTime: 1 })
-tournamentSchema.index({ name: 'text', location: 'text' }) // Búsqueda de texto
+tournamentSchema.index({ name: 'text', location: 'text' }) // Bsqueda de texto
 
-// Validación: la ronda actual no puede ser mayor al total de rondas
+// Validacin: la ronda actual no puede ser mayor al total de rondas
 tournamentSchema.pre('save', function(next) {
   if (this.round > this.totalRounds) {
     return next(new Error('La ronda actual no puede ser mayor al total de rondas'))

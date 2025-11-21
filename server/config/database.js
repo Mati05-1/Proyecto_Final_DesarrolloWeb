@@ -1,5 +1,5 @@
 /**
- * Configuración de conexión a MongoDB
+ * Configuracion de conexion a MongoDB
  */
 import mongoose from 'mongoose'
 
@@ -16,7 +16,7 @@ export async function connectDB() {
     })
     
     console.log(`✅ MongoDB conectado: ${conn.connection.host}`)
-    console.log(`   Base de datos: ${conn.connection.name}`)
+    console.log(`   📊 Base de datos: ${conn.connection.name}`)
     
     return conn
   } catch (error) {
@@ -25,7 +25,7 @@ export async function connectDB() {
     console.error('   1. Instalar MongoDB localmente: brew install mongodb-community')
     console.error('   2. Usar MongoDB Atlas (gratis): https://www.mongodb.com/cloud/atlas')
     console.error('   3. Configurar MONGODB_URI en .env')
-    console.error('\n⚠️  El servidor seguirá funcionando con datos en memoria\n')
+    console.error('\n⚠️  El servidor seguira funcionando con datos en memoria\n')
     return null
   }
 }
@@ -36,9 +36,9 @@ export async function connectDB() {
 export async function disconnectDB() {
   try {
     await mongoose.disconnect()
-    console.log('MongoDB desconectado')
+    console.log('🔌 MongoDB desconectado')
   } catch (error) {
-    console.error('Error desconectando MongoDB:', error)
+    console.error('❌ Error desconectando MongoDB:', error)
   }
 }
 

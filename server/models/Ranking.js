@@ -16,7 +16,7 @@ const rankingPlayerSchema = new mongoose.Schema({
   },
   country: {
     type: String,
-    default: '🌍'
+    default: ''
   },
   points: {
     type: Number,
@@ -29,8 +29,8 @@ const rankingSchema = new mongoose.Schema({
   type: {
     type: String,
     enum: {
-      values: ['atp', 'wta', 'pga'],
-      message: 'El tipo debe ser: atp, wta o pga'
+      values: ['atp', 'wta'],
+      message: 'El tipo debe ser: atp o wta'
     },
     required: [true, 'El tipo de ranking es requerido']
   },
@@ -46,7 +46,7 @@ const rankingSchema = new mongoose.Schema({
   timestamps: true
 })
 
-// Índice único en type (solo un ranking por tipo)
+// ndice nico en type (solo un ranking por tipo)
 rankingSchema.index({ type: 1 }, { unique: true })
 
 export const Ranking = mongoose.model('Ranking', rankingSchema)

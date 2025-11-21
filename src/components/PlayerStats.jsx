@@ -86,7 +86,7 @@ const PlayerStats = ({ player, type, position }) => {
               <span className="stat-value">{stats.top10}</span>
             </div>
             <div className="stat-item">
-              <span className="stat-label">Precisión Driving</span>
+              <span className="stat-label">Precisin Driving</span>
               <span className="stat-value">{stats.drivingAccuracy}%</span>
             </div>
             <div className="stat-item">
@@ -94,7 +94,7 @@ const PlayerStats = ({ player, type, position }) => {
               <span className="stat-value">{stats.puttingAverage}</span>
             </div>
             <div className="stat-item">
-              <span className="stat-label">Greens en Regulación</span>
+              <span className="stat-label">Greens en Regulacin</span>
               <span className="stat-value">{stats.greensInRegulation}%</span>
             </div>
           </>

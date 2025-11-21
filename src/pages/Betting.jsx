@@ -9,7 +9,6 @@ const Betting = () => {
   const { user, points, placeBet, subtractPoints, addPoints, bets, updateBetStatus } = useApp()
   const [activeTab, setActiveTab] = useState('available')
   const [tennisMatches, setTennisMatches] = useState([])
-  const [golfTournaments, setGolfTournaments] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -17,18 +16,13 @@ const Betting = () => {
       setLoading(true)
       try {
         const tennisData = await matchService.getTennisMatches()
-        const golfData = await matchService.getGolfTournaments()
         
         // Only show matches that can be bet on (upcoming/scheduled)
         const availableTennis = (tennisData.upcoming || []).filter(match => 
           matchService.canBetOnMatch(match)
         )
-        const availableGolf = (golfData.upcoming || []).filter(tournament => 
-          matchService.canBetOnMatch(tournament)
-        )
         
         setTennisMatches(availableTennis)
-        setGolfTournaments(availableGolf)
       } catch (error) {
         console.error('Error loading betting data:', error)
       } finally {
@@ -52,11 +46,68 @@ const Betting = () => {
             if (bet.type === 'tennis') {
               const match = await matchService.getTennisMatchDetails(bet.matchId)
               if (match && match.status === 'finished') {
-                const won = match.winner === bet.selection
-                updateBetStatus(bet.id, won ? 'won' : 'lost')
-                if (won) {
-                  addPoints(bet.type === 'tennis' ? bet.amount * 2 : bet.amount * 3)
+                // bet.selection es 1 o 2 (player1 o player2)
+                // match.winner puede ser 1, 2, o el nombre del jugador
+                let winnerId = match.winner
+                if (typeof match.winner === 'string') {
+                  // Si winner es un string (nombre), determinar el ID
+                  winnerId = match.winner === match.player1?.name ? 1 : 2
+                } else if (!match.winner) {
+                  // Si no hay winner definido, determinar por sets
+                  if (match.score && match.score.sets) {
+                    const setsWonP1 = match.score.sets.filter(s => s.p1 > s.p2).length
+                    const setsWonP2 = match.score.sets.filter(s => s.p2 > s.p1).length
+                    winnerId = setsWonP1 > setsWonP2 ? 1 : 2
+                  }
                 }
+                
+                const won = winnerId === bet.selection
+                
+                // Actualizar estado de la apuesta
+                updateBetStatus(bet.id, won ? 'won' : 'lost')
+                
+                if (won) {
+                  // Si gana: recupera su apuesta + ganancia igual
+                  // Ejemplo: apuesta 100  gana 200 (recupera 100 + gana 100)
+                  // Ejemplo: apuesta 50  gana 100 (recupera 50 + gana 50)
+                  addPoints(bet.amount * 2) // 100 apuesta  200 total (100 recupera + 100 gana)
+                  
+                  // Actualizar puntos en el backend tambien
+                  try {
+                    const token = localStorage.getItem('token')
+                    if (token) {
+                      // Actualizar apuesta en backend para que actualice puntos en MongoDB
+                      await fetch(`http://localhost:5001/api/bets/${bet.id}`, {
+                        method: 'PATCH',
+                        headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({ status: 'won' })
+                      })
+                    }
+                  } catch (error) {
+                    console.error('Error actualizando apuesta en backend:', error)
+                  }
+                } else {
+                  // Si pierde, actualizar en backend tambien
+                  try {
+                    const token = localStorage.getItem('token')
+                    if (token) {
+                      await fetch(`http://localhost:5001/api/bets/${bet.id}`, {
+                        method: 'PATCH',
+                        headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({ status: 'lost' })
+                      })
+                    }
+                  } catch (error) {
+                    console.error('Error actualizando apuesta en backend:', error)
+                  }
+                }
+                // Si pierde, no se hace nada con los puntos (ya se descontaron al apostar)
               }
             }
           } catch (error) {
@@ -85,7 +136,7 @@ const Betting = () => {
       <div className="betting">
         <div className="container">
           <div className="login-prompt">
-            <h2>Inicia sesión para apostar</h2>
+            <h2>Inicia sesin para apostar</h2>
             <p>Necesitas estar registrado para acceder al sistema de apuestas</p>
           </div>
         </div>
@@ -104,7 +155,7 @@ const Betting = () => {
           <h1 className="page-title">Sistema de Apuestas</h1>
           <div className="points-display">
             <span className="points-label">Tus puntos:</span>
-            <span className="points-value">💰 {points.toLocaleString()} pts</span>
+            <span className="points-value"> {points.toLocaleString()} pts</span>
           </div>
         </div>
 
@@ -113,13 +164,13 @@ const Betting = () => {
             className={`tab ${activeTab === 'available' ? 'active' : ''}`}
             onClick={() => setActiveTab('available')}
           >
-            🎯 Apuestas Disponibles
+             Apuestas Disponibles
           </button>
           <button
             className={`tab ${activeTab === 'my-bets' ? 'active' : ''}`}
             onClick={() => setActiveTab('my-bets')}
           >
-            📋 Mis Apuestas ({bets.length})
+             Mis Apuestas ({bets.length})
           </button>
         </div>
 
@@ -127,7 +178,7 @@ const Betting = () => {
           <div className="betting-content">
             <div className="tennis-bets-section">
               <h2 className="section-header">
-                🎾 Apuestas de Tenis
+                 Apuestas de Tenis
               </h2>
               {loading ? (
                 <div className="empty-state">
@@ -156,36 +207,6 @@ const Betting = () => {
               )}
             </div>
 
-            <div className="golf-bets-section">
-              <h2 className="section-header">
-                ⛳ Apuestas de Golf
-              </h2>
-              {loading ? (
-                <div className="empty-state">
-                  <div className="loading">
-                    <div className="spinner"></div>
-                    <p>Cargando torneos...</p>
-                  </div>
-                </div>
-              ) : golfTournaments.length > 0 ? (
-                <div className="bets-grid">
-                  {golfTournaments.map(tournament => (
-                    <BettingCard
-                      key={tournament.id}
-                      tournament={tournament}
-                      type="golf"
-                      onPlaceBet={handlePlaceBet}
-                      userPoints={points}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <div className="empty-state">
-                  <p>No hay torneos disponibles para apostar en este momento</p>
-                  <p className="empty-subtitle">Solo puedes apostar antes de que empiece el torneo</p>
-                </div>
-              )}
-            </div>
           </div>
         )}
 

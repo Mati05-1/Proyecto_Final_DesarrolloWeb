@@ -17,12 +17,12 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="container">
         <Link to="/" className="logo">
-          🎾 Ace & Putt
+           Ace & Putt
         </Link>
         <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <li><Link to="/" onClick={() => setIsMenuOpen(false)}>Inicio</Link></li>
           <li><Link to="/live-results" onClick={() => setIsMenuOpen(false)}>Resultados en Vivo</Link></li>
-          <li><Link to="/statistics" onClick={() => setIsMenuOpen(false)}>Estadísticas</Link></li>
+          <li><Link to="/statistics" onClick={() => setIsMenuOpen(false)}>Estadisticas</Link></li>
           <li><Link to="/betting" onClick={() => setIsMenuOpen(false)}>Apuestas</Link></li>
           <li><Link to="/calendar" onClick={() => setIsMenuOpen(false)}>Calendario</Link></li>
           {localStorage.getItem('token') && (
@@ -34,7 +34,7 @@ const Navbar = () => {
             <>
               <div className="user-info">
                 <span className="user-name">{typeof user === 'string' ? user : user?.username || 'Usuario'}</span>
-                <span className="user-points">💰 {points.toLocaleString()} pts</span>
+                <span className="user-points"> {points.toLocaleString()} pts</span>
               </div>
               <button className="btn-secondary nav-btn" onClick={handleLogout}>
                 Salir

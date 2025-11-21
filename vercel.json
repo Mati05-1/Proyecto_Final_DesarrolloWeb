@@ -2,14 +2,21 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "cleanUrls": false,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/",
-      "dest": "/landing.html"
-    },
+      "source": "/",
+      "destination": "/landing.html"
+    }
+  ],
+  "headers": [
     {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
     }
   ]
 }

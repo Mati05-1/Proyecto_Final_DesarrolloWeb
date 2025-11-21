@@ -1,6 +1,6 @@
 /**
- * Rutas de administración
- * Requieren autenticación y rol de administrador
+ * Rutas de administracin
+ * Requieren autenticacion y rol de administrador
  */
 import express from 'express'
 import { authenticateToken, requireAdmin } from '../middleware/auth.js'
@@ -11,13 +11,13 @@ import { Ranking } from '../models/Ranking.js'
 
 const router = express.Router()
 
-// Todas las rutas requieren autenticación y ser admin
+// Todas las rutas requieren autenticacion y ser admin
 router.use(authenticateToken)
 router.use(requireAdmin)
 
 /**
  * GET /api/admin/dashboard
- * Estadísticas del dashboard de administración
+ * Estadisticas del dashboard de administracin
  */
 router.get('/dashboard', async (req, res) => {
   try {
@@ -51,7 +51,7 @@ router.get('/dashboard', async (req, res) => {
       stats.rankings.total = await Ranking.countDocuments()
     } catch (error) {
       console.log('MongoDB no disponible, usando datos mock...')
-      // Si MongoDB no está disponible, usar datos mock
+      // Si MongoDB no est disponible, usar datos mock
       stats = {
         matches: { total: 5, live: 2, finished: 2, scheduled: 1 },
         tournaments: { total: 3, live: 2, scheduled: 1 },
@@ -67,7 +67,7 @@ router.get('/dashboard', async (req, res) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: 'Error al obtener estadísticas',
+      error: 'Error al obtener estadisticas',
       message: error.message
     })
   }

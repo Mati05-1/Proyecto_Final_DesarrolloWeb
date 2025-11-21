@@ -8,6 +8,7 @@ import { Match } from '../models/Match.js'
 import { Tournament } from '../models/Tournament.js'
 import { Bet } from '../models/Bet.js'
 import { Ranking } from '../models/Ranking.js'
+import { User } from '../models/User.js'
 import { tennisMatches, golfTournaments, bets, rankings } from '../data/mockData.js'
 
 dotenv.config()
@@ -18,14 +19,15 @@ async function seedDatabase() {
   try {
     // Conectar a MongoDB
     await mongoose.connect(MONGODB_URI)
-    console.log('✅ Conectado a MongoDB')
+    console.log(' Conectado a MongoDB')
     
     // Limpiar colecciones existentes
     await Match.deleteMany({})
     await Tournament.deleteMany({})
     await Bet.deleteMany({})
     await Ranking.deleteMany({})
-    console.log('🗑️  Colecciones limpiadas')
+    await User.deleteMany({})
+    console.log('  Colecciones limpiadas')
     
     // Insertar partidos de tenis
     const matches = await Match.insertMany(
@@ -42,7 +44,7 @@ async function seedDatabase() {
         originalId: match.id || index + 1
       }))
     )
-    console.log(`✅ ${matches.length} partidos de tenis insertados`)
+    console.log(` ${matches.length} partidos de tenis insertados`)
     
     // Insertar torneos de golf
     const tournaments = await Tournament.insertMany(
@@ -58,7 +60,7 @@ async function seedDatabase() {
         originalId: tournament.id || index + 1
       }))
     )
-    console.log(`✅ ${tournaments.length} torneos de golf insertados`)
+    console.log(` ${tournaments.length} torneos de golf insertados`)
     
     // Insertar apuestas (necesitan ObjectIds de matches/tournaments)
     const betsToInsert = []
@@ -72,9 +74,9 @@ async function seedDatabase() {
         status: bet.status
       }
       
-      // Si es apuesta de tenis, buscar el match por ID numérico y usar su ObjectId
+      // Si es apuesta de tenis, buscar el match por ID numerico y usar su ObjectId
       if (bet.type === 'tennis' && bet.matchId) {
-        // Buscar match por originalId o por índice
+        // Buscar match por originalId o por indice
         const match = matches.find(m => m.originalId === bet.matchId) || matches[bet.matchId - 1]
         if (match && match._id) {
           betData.matchId = match._id
@@ -84,9 +86,9 @@ async function seedDatabase() {
         }
       }
       
-      // Si es apuesta de golf, buscar el tournament por ID numérico y usar su ObjectId
+      // Si es apuesta de golf, buscar el tournament por ID numerico y usar su ObjectId
       if (bet.type === 'golf' && bet.tournamentId) {
-        // Buscar tournament por originalId o por índice
+        // Buscar tournament por originalId o por indice
         const tournament = tournaments.find(t => t.originalId === bet.tournamentId) || tournaments[bet.tournamentId - 1]
         if (tournament && tournament._id) {
           betData.tournamentId = tournament._id
@@ -100,7 +102,7 @@ async function seedDatabase() {
     }
     
     const betsData = await Bet.insertMany(betsToInsert)
-    console.log(`✅ ${betsData.length} apuestas insertadas`)
+    console.log(` ${betsData.length} apuestas insertadas`)
     
     // Insertar rankings
     const rankingsData = [
@@ -110,12 +112,36 @@ async function seedDatabase() {
     ]
     
     const rankingsInserted = await Ranking.insertMany(rankingsData)
-    console.log(`✅ ${rankingsInserted.length} rankings insertados`)
+    console.log(` ${rankingsInserted.length} rankings insertados`)
     
-    console.log('\n🎉 Base de datos poblada exitosamente!')
+    // Insertar usuarios iniciales
+    const usersData = [
+      {
+        username: 'admin',
+        email: 'admin@aceputt.com',
+        password: 'admin123', // Se hashear automticamente
+        role: 'admin',
+        points: 1000
+      },
+      {
+        username: 'demo',
+        email: 'demo@aceputt.com',
+        password: 'demo123', // Se hashear automticamente
+        role: 'user',
+        points: 1000
+      }
+    ]
+    
+    const usersInserted = await User.insertMany(usersData)
+    console.log(` ${usersInserted.length} usuarios insertados`)
+    console.log('    Usuarios de prueba:')
+    console.log('      - admin@aceputt.com / admin123 (admin)')
+    console.log('      - demo@aceputt.com / demo123 (usuario)')
+    
+    console.log('\n Base de datos poblada exitosamente!')
     process.exit(0)
   } catch (error) {
-    console.error('❌ Error poblando la base de datos:', error)
+    console.error(' Error poblando la base de datos:', error)
     process.exit(1)
   }
 }

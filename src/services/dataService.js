@@ -1,12 +1,12 @@
 /**
- * Servicio para manejar datos de la aplicación
+ * Servicio para manejar datos de la aplicacin
  * Conectado con la API REST del backend
  */
-const API_BASE_URL = 'http://localhost:5000/api'
+const API_BASE_URL = 'http://localhost:5001/api'
 
 class DataService {
   /**
-   * Hacer petición HTTP a la API
+   * Hacer peticin HTTP a la API
    * @private
    */
   async fetchAPI(endpoint, options = {}) {
@@ -19,7 +19,7 @@ class DataService {
         ...options.headers
       }
       
-      // Agregar token de autenticación si existe
+      // Agregar token de autenticacin si existe
       if (token) {
         headers['Authorization'] = `Bearer ${token}`
       }
@@ -36,7 +36,7 @@ class DataService {
       return await response.json()
     } catch (error) {
       console.error(`Error fetching ${endpoint}:`, error)
-      // Fallback a datos mock si la API no está disponible
+      // Fallback a datos mock si la API no est disponible
       return this.getMockData(endpoint)
     }
   }
@@ -93,7 +93,7 @@ class DataService {
   }
 
   /**
-   * Obtener un partido específico por ID
+   * Obtener un partido especifico por ID
    * @param {number} id - ID del partido
    * @returns {Promise<Object>} - Partido encontrado
    */
@@ -102,7 +102,7 @@ class DataService {
   }
 
   /**
-   * Obtener un torneo específico por ID
+   * Obtener un torneo especifico por ID
    * @param {number} id - ID del torneo
    * @returns {Promise<Object>} - Torneo encontrado
    */
@@ -136,14 +136,14 @@ class DataService {
   }
 
   /**
-   * Obtener estadísticas de un jugador
+   * Obtener estadisticas de un jugador
    * @param {string} playerName - Nombre del jugador
    * @param {string} type - Tipo de deporte ('tennis' o 'golf')
-   * @returns {Promise<Object>} - Estadísticas del jugador
+   * @returns {Promise<Object>} - Estadisticas del jugador
    */
   async getPlayerStats(playerName, type = 'tennis') {
     await this.delay(400)
-    // Simular estadísticas
+    // Simular estadisticas
     return {
       success: true,
       data: {
@@ -204,7 +204,7 @@ class DataService {
   }
 }
 
-// Exportar instancia única (Singleton)
+// Exportar instancia nica (Singleton)
 export const dataService = new DataService()
 export default dataService
 

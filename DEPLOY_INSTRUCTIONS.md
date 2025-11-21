@@ -8,13 +8,25 @@ Esta guía te ayudará a desplegar tu proyecto completo:
 
 ## 📋 PASO 1: Preparar el Backend para Render
 
-### 1.1 Verificar que tienes MongoDB Atlas
+### 1.1 MongoDB: Local vs Atlas
 
-Si no tienes MongoDB Atlas configurado:
+**Para desarrollo local:**
+- ✅ Ya tienes MongoDB local funcionando
+- ✅ Puedes seguir usándolo: `mongodb://localhost:27017/ace-tennis`
+- ✅ No necesitas MongoDB Atlas para desarrollo
+
+**Para producción (Render):**
+- ⚠️ **SÍ necesitas MongoDB Atlas** porque:
+  - Render no puede acceder a tu MongoDB local
+  - Tu computadora puede estar apagada
+  - Render necesita una base de datos en la nube
+
+**Si NO tienes MongoDB Atlas configurado:**
 1. Ve a https://www.mongodb.com/cloud/atlas
-2. Crea una cuenta gratuita
-3. Crea un cluster gratuito
+2. Crea una cuenta gratuita (es gratis)
+3. Crea un cluster gratuito (M0 - Free Tier)
 4. Obtén tu connection string (ejemplo: `mongodb+srv://usuario:password@cluster.mongodb.net/ace-tennis?retryWrites=true&w=majority`)
+5. Ver guía completa en `MONGODB_ATLAS_SETUP.md`
 
 ### 1.2 Variables de Entorno Necesarias
 

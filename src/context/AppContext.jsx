@@ -52,9 +52,27 @@ export const AppProvider = ({ children }) => {
     }
   }, [])
 
-  // Save points to localStorage
+  // Save points to localStorage and sync with backend
   useEffect(() => {
     localStorage.setItem('acePutPoints', points.toString())
+    
+    // Sincronizar puntos con el backend si hay token
+    const syncPointsWithBackend = async () => {
+      const token = localStorage.getItem('token')
+      const userStr = localStorage.getItem('user')
+      
+      if (token && userStr) {
+        try {
+          const user = JSON.parse(userStr)
+          // Actualizar puntos en el backend (si hay endpoint para eso)
+          // Por ahora solo guardamos en localStorage
+        } catch (error) {
+          // Ignorar errores de sincronizacin
+        }
+      }
+    }
+    
+    syncPointsWithBackend()
   }, [points])
 
   // Save bets to localStorage
@@ -64,7 +82,7 @@ export const AppProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch('http://localhost:5001/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -75,14 +93,14 @@ export const AppProvider = ({ children }) => {
       const data = await response.json()
 
       if (!response.ok) {
-        // Fallback: login simple sin contraseña (para compatibilidad)
+        // Fallback: login simple sin contrasena (para compatibilidad)
         if (!password) {
           const newUser = { username: email, id: Date.now() }
           setUser(newUser)
           localStorage.setItem('acePutUser', JSON.stringify(newUser))
           return { success: true, user: newUser }
         }
-        throw new Error(data.error || 'Error al iniciar sesión')
+        throw new Error(data.error || 'Error al iniciar sesin')
       }
 
       // Guardar token y datos del usuario
@@ -102,7 +120,7 @@ export const AppProvider = ({ children }) => {
 
   const register = async (username, email, password) => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/register', {
+      const response = await fetch('http://localhost:5001/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

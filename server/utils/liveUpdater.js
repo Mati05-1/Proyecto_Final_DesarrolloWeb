@@ -7,7 +7,7 @@ import { tennisMatches, golfTournaments } from '../data/mockData.js'
 let updateInterval = null
 
 /**
- * Simular actualización de scores en partidos en vivo
+ * Simular actualizacin de scores en partidos en vivo
  */
 function updateLiveMatches() {
   tennisMatches.forEach(match => {
@@ -54,13 +54,13 @@ function updateLiveMatches() {
 }
 
 /**
- * Simular actualización de leaderboard en torneos de golf
+ * Simular actualizacin de leaderboard en torneos de golf
  */
 function updateGolfTournaments() {
   golfTournaments.forEach(tournament => {
     if (tournament.status === 'live' && tournament.leaderboard) {
       tournament.leaderboard.forEach(player => {
-        // Simular cambios pequeños en el score
+        // Simular cambios pequenos en el score
         if (Math.random() > 0.7) {
           player.score += Math.random() > 0.5 ? -1 : 0
           player.today = Math.floor(Math.random() * 5) - 2
@@ -87,8 +87,8 @@ function checkScheduledMatches() {
       const startTime = new Date(match.startTime)
       const diff = startTime - now
       
-      // Si ya pasó la hora de inicio, poner en vivo
-      if (diff <= 0 && diff > -3600000) { // Dentro de la última hora
+      // Si ya pas la hora de inicio, poner en vivo
+      if (diff <= 0 && diff > -3600000) { // Dentro de la ltima hora
         match.status = 'live'
         match.score = { sets: [{ p1: 0, p2: 0 }] }
         match.time = '0h 0m'
@@ -101,14 +101,14 @@ function checkScheduledMatches() {
       const startTime = new Date(tournament.startTime)
       const diff = startTime - now
       
-      if (diff <= 0 && diff > -86400000) { // Dentro de las últimas 24 horas
+      if (diff <= 0 && diff > -86400000) { // Dentro de las ltimas 24 horas
         tournament.status = 'live'
         if (!tournament.leaderboard || tournament.leaderboard.length === 0) {
           // Crear leaderboard inicial simulado
           tournament.leaderboard = [
-            { position: 1, player: 'Player 1', country: '🇺🇸', score: -5, today: -2 },
-            { position: 2, player: 'Player 2', country: '🇪🇸', score: -4, today: -1 },
-            { position: 3, player: 'Player 3', country: '🇮🇪', score: -3, today: -1 }
+            { position: 1, player: 'Player 1', country: '', score: -5, today: -2 },
+            { position: 2, player: 'Player 2', country: '', score: -4, today: -1 },
+            { position: 3, player: 'Player 3', country: '', score: -3, today: -1 }
           ]
         }
       }
@@ -125,13 +125,13 @@ export function startLiveUpdates(interval = 10000) {
     stopLiveUpdates()
   }
   
-  console.log('🔄 Iniciando simulador de actualizaciones en tiempo real...')
+  console.log(' Iniciando simulador de actualizaciones en tiempo real...')
   
   updateInterval = setInterval(() => {
     updateLiveMatches()
     updateGolfTournaments()
     checkScheduledMatches()
-    console.log('✅ Datos actualizados:', new Date().toLocaleTimeString())
+    console.log(' Datos actualizados:', new Date().toLocaleTimeString())
   }, interval)
 }
 
@@ -142,7 +142,7 @@ export function stopLiveUpdates() {
   if (updateInterval) {
     clearInterval(updateInterval)
     updateInterval = null
-    console.log('⏹️ Simulador de actualizaciones detenido')
+    console.log(' Simulador de actualizaciones detenido')
   }
 }
 

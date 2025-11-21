@@ -28,7 +28,7 @@ const BettingCard = ({ match, tournament, type, onPlaceBet, userPoints }) => {
           const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
           setTimeUntilStart(`${hours}h ${minutes}m`)
         } else {
-          setTimeUntilStart('Ya comenzó')
+          setTimeUntilStart('Ya comenz')
           setCanBet(false)
         }
       }
@@ -46,12 +46,12 @@ const BettingCard = ({ match, tournament, type, onPlaceBet, userPoints }) => {
     }
 
     if (!selectedOption) {
-      setError('Selecciona una opción para apostar')
+      setError('Selecciona una opcin para apostar')
       return
     }
 
     if (betAmount < 10) {
-      setError('La apuesta mínima es 10 puntos')
+      setError('La apuesta minima es 10 puntos')
       return
     }
 
@@ -70,7 +70,7 @@ const BettingCard = ({ match, tournament, type, onPlaceBet, userPoints }) => {
         : tournament.name,
       selectionName: type === 'tennis'
         ? (selectedOption === 1 ? match.player1.name : match.player2.name)
-        : (tournament.leaderboard.find(p => p.position === selectedOption)?.player || `Posición #${selectedOption}`),
+        : (tournament.leaderboard.find(p => p.position === selectedOption)?.player || `Posicin #${selectedOption}`),
       startTime: match?.startTime || tournament?.startTime
     }
 
@@ -79,7 +79,7 @@ const BettingCard = ({ match, tournament, type, onPlaceBet, userPoints }) => {
       setSelectedOption(null)
       setBetAmount(50)
       setError('')
-      alert('¡Apuesta realizada con éxito!')
+      alert('Apuesta realizada con exito!')
     } else {
       setError('No tienes suficientes puntos')
     }
@@ -97,10 +97,10 @@ const BettingCard = ({ match, tournament, type, onPlaceBet, userPoints }) => {
           </span>
         ) : match.startTime ? (
           <span className="scheduled-badge">
-            📅 {timeUntilStart || 'Próximamente'}
+             {timeUntilStart || 'Prximamente'}
           </span>
         ) : (
-          <span className="scheduled-badge">📅 Próximamente</span>
+          <span className="scheduled-badge"> Prximamente</span>
         )}
       </div>
 
@@ -130,7 +130,7 @@ const BettingCard = ({ match, tournament, type, onPlaceBet, userPoints }) => {
 
         {!canBet && (
           <div className="bet-disabled-message">
-            ⚠️ No puedes apostar en este partido. Ya ha comenzado o no está disponible.
+             No puedes apostar en este partido. Ya ha comenzado o no est disponible.
           </div>
         )}
 
@@ -168,7 +168,8 @@ const BettingCard = ({ match, tournament, type, onPlaceBet, userPoints }) => {
             {error && <div className="error-message">{error}</div>}
 
             <div className="bet-summary">
-              <p>Ganancia potencial: <strong>{betAmount * 2} pts</strong></p>
+              <p>Si ganas: <strong>+{betAmount} pts</strong> (recuperas {betAmount} + ganas {betAmount})</p>
+              <p>Si pierdes: <strong>-{betAmount} pts</strong></p>
             </div>
 
             <div className="bet-actions">
@@ -206,15 +207,15 @@ const BettingCard = ({ match, tournament, type, onPlaceBet, userPoints }) => {
           </span>
         ) : tournament.startTime ? (
           <span className="scheduled-badge">
-            📅 {timeUntilStart || 'Próximamente'}
+             {timeUntilStart || 'Prximamente'}
           </span>
         ) : (
-          <span className="scheduled-badge">📅 Próximamente</span>
+          <span className="scheduled-badge"> Prximamente</span>
         )}
       </div>
 
       <div className="golf-options">
-        <p className="bet-instruction">Selecciona la posición final del ganador:</p>
+        <p className="bet-instruction">Selecciona la posicin final del ganador:</p>
         <div className="position-options">
           {tournament.leaderboard.slice(0, 5).map((player, index) => (
             <div
@@ -234,7 +235,7 @@ const BettingCard = ({ match, tournament, type, onPlaceBet, userPoints }) => {
 
       {!canBet && (
         <div className="bet-disabled-message">
-          ⚠️ No puedes apostar en este torneo. Ya ha comenzado o no está disponible.
+           No puedes apostar en este torneo. Ya ha comenzado o no est disponible.
         </div>
       )}
 

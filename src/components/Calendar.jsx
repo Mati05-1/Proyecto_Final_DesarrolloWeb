@@ -57,17 +57,17 @@ const Calendar = ({ events = [], onDateClick }) => {
     return classes.join(' ')
   }
 
-  const weekDays = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
+  const weekDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sb']
 
   return (
     <div className="calendar-container">
       <div className="calendar-header">
         <button className="calendar-nav-btn" onClick={prevMonth}>
-          ←
+          
         </button>
         <h2 className="calendar-month-title">{monthName}</h2>
         <button className="calendar-nav-btn" onClick={nextMonth}>
-          →
+          
         </button>
       </div>
       
@@ -97,7 +97,7 @@ const Calendar = ({ events = [], onDateClick }) => {
                 <div className="calendar-day-events">
                   {dayEvents.slice(0, 3).map((event, idx) => (
                     <span key={idx} className={`calendar-event-dot ${event.type || 'default'}`}>
-                      {event.type === 'tennis' ? '🎾' : event.type === 'golf' ? '⛳' : '•'}
+                      {event.type === 'tennis' ? '' : event.type === 'golf' ? '' : ''}
                     </span>
                   ))}
                   {dayEvents.length > 3 && (

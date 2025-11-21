@@ -1,12 +1,12 @@
 /**
- * Funciones de transformación de datos (Pipes)
+ * Funciones de transformacin de datos (Pipes)
  * Equivalente a los pipes de Angular, pero implementado como funciones JavaScript
  */
 
 /**
- * Pipe integrado: Formatear números con separadores de miles
- * @param {number} value - Valor numérico a formatear
- * @returns {string} - Número formateado con separadores
+ * Pipe integrado: Formatear nmeros con separadores de miles
+ * @param {number} value - Valor numerico a formatear
+ * @returns {string} - Nmero formateado con separadores
  */
 export const formatNumber = (value) => {
   if (value === null || value === undefined) return '0'
@@ -38,11 +38,11 @@ export const formatDate = (date, format = 'short') => {
 /**
  * Pipe integrado: Formatear moneda
  * @param {number} value - Valor a formatear
- * @param {string} currency - Código de moneda (EUR, USD, etc.)
+ * @param {string} currency - Cdigo de moneda (EUR, USD, etc.)
  * @returns {string} - Valor formateado como moneda
  */
 export const formatCurrency = (value, currency = 'EUR') => {
-  if (value === null || value === undefined) return '0,00 €'
+  if (value === null || value === undefined) return '0,00 '
   return new Intl.NumberFormat('es-ES', {
     style: 'currency',
     currency: currency
@@ -72,16 +72,16 @@ export const timeAgo = (date) => {
   }
   if (diffInSeconds < 604800) {
     const days = Math.floor(diffInSeconds / 86400)
-    return `Hace ${days} ${days === 1 ? 'día' : 'días'}`
+    return `Hace ${days} ${days === 1 ? 'dia' : 'dias'}`
   }
   
   return formatDate(dateObj, 'short')
 }
 
 /**
- * Pipe personalizado: Formatear puntuación de golf
- * @param {number} score - Puntuación del golfista
- * @returns {string} - Puntuación formateada con signo + o -
+ * Pipe personalizado: Formatear puntuacin de golf
+ * @param {number} score - Puntuacin del golfista
+ * @returns {string} - Puntuacin formateada con signo + o -
  */
 export const formatGolfScore = (score) => {
   if (score === null || score === undefined) return 'E'
@@ -92,7 +92,7 @@ export const formatGolfScore = (score) => {
 /**
  * Pipe personalizado: Formatear porcentaje
  * @param {number} value - Valor a formatear (0-100)
- * @param {number} decimals - Número de decimales
+ * @param {number} decimals - Nmero de decimales
  * @returns {string} - Porcentaje formateado
  */
 export const formatPercentage = (value, decimals = 1) => {
@@ -103,7 +103,7 @@ export const formatPercentage = (value, decimals = 1) => {
 /**
  * Pipe personalizado: Abreviar nombres largos
  * @param {string} text - Texto a abreviar
- * @param {number} maxLength - Longitud máxima
+ * @param {number} maxLength - Longitud mxima
  * @returns {string} - Texto abreviado con "..."
  */
 export const truncate = (text, maxLength = 50) => {
@@ -115,7 +115,7 @@ export const truncate = (text, maxLength = 50) => {
 /**
  * Pipe personalizado: Capitalizar primera letra
  * @param {string} text - Texto a capitalizar
- * @returns {string} - Texto con primera letra en mayúscula
+ * @returns {string} - Texto con primera letra en mayscula
  */
 export const capitalize = (text) => {
   if (!text) return ''
@@ -133,8 +133,8 @@ export const formatMatchTime = (timeString) => {
 }
 
 /**
- * Pipe personalizado: Formatear ranking con posición
- * @param {number} rank - Posición en el ranking
+ * Pipe personalizado: Formatear ranking con posicin
+ * @param {number} rank - Posicin en el ranking
  * @returns {string} - Ranking formateado
  */
 export const formatRanking = (rank) => {

@@ -29,18 +29,18 @@ const betSchema = new mongoose.Schema({
   },
   selection: {
     type: Number,
-    required: [true, 'La selección es requerida'],
-    min: [1, 'La selección debe ser mayor a 0']
+    required: [true, 'La seleccin es requerida'],
+    min: [1, 'La seleccin debe ser mayor a 0']
   },
   selectionName: {
     type: String,
-    required: [true, 'El nombre de la selección es requerido'],
+    required: [true, 'El nombre de la seleccin es requerido'],
     trim: true
   },
   amount: {
     type: Number,
     required: [true, 'El monto es requerido'],
-    min: [10, 'El monto mínimo es 10 puntos']
+    min: [10, 'El monto minimo es 10 puntos']
   },
   status: {
     type: String,
@@ -51,16 +51,16 @@ const betSchema = new mongoose.Schema({
     default: 'pending'
   }
 }, {
-  timestamps: true // Crea automáticamente createdAt y updatedAt
+  timestamps: true // Crea automticamente createdAt y updatedAt
 })
 
-// Índices
+// ndices
 betSchema.index({ userId: 1 })
 betSchema.index({ status: 1 })
 betSchema.index({ type: 1 })
 betSchema.index({ createdAt: -1 })
 
-// Validación: debe tener matchId o tournamentId según el tipo
+// Validacin: debe tener matchId o tournamentId segn el tipo
 betSchema.pre('save', function(next) {
   if (this.type === 'tennis' && !this.matchId) {
     return next(new Error('Las apuestas de tenis requieren matchId'))

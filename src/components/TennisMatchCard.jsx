@@ -64,7 +64,7 @@ const TennisMatchCard = ({ match }) => {
             className="stats-toggle"
             onClick={() => setShowStats(!showStats)}
           >
-            {showStats ? 'Ocultar' : 'Ver'} Estadísticas
+            {showStats ? 'Ocultar' : 'Ver'} Estadisticas
           </button>
 
           {showStats && (

@@ -109,7 +109,7 @@ const MyBets = ({ pendingBets, wonBets, lostBets }) => {
 
       {pendingBets.length === 0 && wonBets.length === 0 && lostBets.length === 0 && (
         <div className="empty-bets">
-          <p>No tienes apuestas todavía</p>
+          <p>No tienes apuestas todavia</p>
           <p className="empty-subtitle">Ve a "Apuestas Disponibles" para comenzar a apostar</p>
         </div>
       )}

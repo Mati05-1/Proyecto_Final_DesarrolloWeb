@@ -74,13 +74,13 @@ const Admin = () => {
   return (
     <div className="admin-page">
       <div className="admin-header">
-        <h1>🔐 Panel de Administración</h1>
-        <p>Gestión y estadísticas de la plataforma</p>
+        <h1> Panel de Administracin</h1>
+        <p>Gestin y estadisticas de la plataforma</p>
       </div>
 
       <div className="admin-stats">
         <div className="stat-card">
-          <h3>🎾 Partidos de Tenis</h3>
+          <h3> Partidos de Tenis</h3>
           <div className="stat-details">
             <div className="stat-item">
               <span className="stat-label">Total:</span>
@@ -102,7 +102,7 @@ const Admin = () => {
         </div>
 
         <div className="stat-card">
-          <h3>⛳ Torneos de Golf</h3>
+          <h3> Torneos de Golf</h3>
           <div className="stat-details">
             <div className="stat-item">
               <span className="stat-label">Total:</span>
@@ -120,7 +120,7 @@ const Admin = () => {
         </div>
 
         <div className="stat-card">
-          <h3>💰 Apuestas</h3>
+          <h3> Apuestas</h3>
           <div className="stat-details">
             <div className="stat-item">
               <span className="stat-label">Total:</span>
@@ -142,7 +142,7 @@ const Admin = () => {
         </div>
 
         <div className="stat-card">
-          <h3>🏆 Rankings</h3>
+          <h3> Rankings</h3>
           <div className="stat-details">
             <div className="stat-item">
               <span className="stat-label">Total:</span>
@@ -157,13 +157,13 @@ const Admin = () => {
       </div>
 
       <div className="admin-actions">
-        <h2>Acciones de Administración</h2>
+        <h2>Acciones de Administracin</h2>
         <div className="actions-grid">
           <button className="action-btn" onClick={() => navigate('/live-results')}>
             Ver Resultados en Vivo
           </button>
           <button className="action-btn" onClick={() => navigate('/statistics')}>
-            Ver Estadísticas
+            Ver Estadisticas
           </button>
           <button className="action-btn" onClick={() => navigate('/betting')}>
             Ver Apuestas

@@ -23,9 +23,9 @@ const RankingTable = ({ rankings, type }) => {
         <table>
           <thead>
             <tr>
-              <th>Posición</th>
+              <th>Posicin</th>
               <th>Jugador</th>
-              <th>País</th>
+              <th>Pais</th>
               <th>Puntos</th>
             </tr>
           </thead>

@@ -11,7 +11,7 @@ const playerSchema = new mongoose.Schema({
   },
   country: {
     type: String,
-    default: '🌍'
+    default: ''
   },
   rank: {
     type: Number,
@@ -76,21 +76,21 @@ const matchSchema = new mongoose.Schema({
     default: null
   }
 }, {
-  timestamps: true // Crea automáticamente createdAt y updatedAt
+  timestamps: true // Crea automticamente createdAt y updatedAt
 })
 
-// Índices para búsquedas más rápidas
+// ndices para bsquedas ms rpidas
 matchSchema.index({ status: 1 })
 matchSchema.index({ 'player1.name': 1, 'player2.name': 1 })
 matchSchema.index({ startTime: 1 })
 
-// Validación personalizada: no puede haber ganador si el partido no está terminado
+// Validacin personalizada: no puede haber ganador si el partido no est terminado
 matchSchema.pre('save', function(next) {
   if (this.winner && this.status !== 'finished') {
     this.status = 'finished'
   }
   if (this.status === 'finished' && !this.winner) {
-    // Si está terminado pero no hay ganador, establecer uno basado en los sets
+    // Si est terminado pero no hay ganador, establecer uno basado en los sets
     if (this.score && this.score.sets) {
       const setsWonP1 = this.score.sets.filter(s => s.p1 > s.p2).length
       const setsWonP2 = this.score.sets.filter(s => s.p2 > s.p1).length

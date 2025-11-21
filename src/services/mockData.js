@@ -3,8 +3,8 @@ export const mockTennisMatches = [
   {
     id: 1,
     tournament: 'ATP Masters 1000',
-    player1: { name: 'Carlos Alcaraz', country: '🇪🇸', rank: 2 },
-    player2: { name: 'Novak Djokovic', country: '🇷🇸', rank: 1 },
+    player1: { name: 'Carlos Alcaraz', country: '', rank: 2 },
+    player2: { name: 'Novak Djokovic', country: '', rank: 1 },
     score: { sets: [{ p1: 6, p2: 4 }, { p1: 3, p2: 6 }, { p1: 4, p2: 3 }] },
     status: 'live',
     time: '2h 15m',
@@ -21,8 +21,8 @@ export const mockTennisMatches = [
   {
     id: 2,
     tournament: 'WTA Finals',
-    player1: { name: 'Aryna Sabalenka', country: '🇧🇾', rank: 1 },
-    player2: { name: 'Iga Świątek', country: '🇵🇱', rank: 2 },
+    player1: { name: 'Aryna Sabalenka', country: '', rank: 1 },
+    player2: { name: 'Iga witek', country: '', rank: 2 },
     score: { sets: [{ p1: 4, p2: 6 }, { p1: 6, p2: 3 }] },
     status: 'live',
     time: '1h 45m',
@@ -39,8 +39,8 @@ export const mockTennisMatches = [
   {
     id: 3,
     tournament: 'ATP 500',
-    player1: { name: 'Jannik Sinner', country: '🇮🇹', rank: 4 },
-    player2: { name: 'Daniil Medvedev', country: '🇷🇺', rank: 3 },
+    player1: { name: 'Jannik Sinner', country: '', rank: 4 },
+    player2: { name: 'Daniil Medvedev', country: '', rank: 3 },
     score: { sets: [{ p1: 6, p2: 3 }, { p1: 6, p2: 4 }] },
     status: 'finished',
     winner: 1,
@@ -50,19 +50,19 @@ export const mockTennisMatches = [
   {
     id: 4,
     tournament: 'WTA 1000',
-    player1: { name: 'Coco Gauff', country: '🇺🇸', rank: 3 },
-    player2: { name: 'Elena Rybakina', country: '🇰🇿', rank: 5 },
+    player1: { name: 'Coco Gauff', country: '', rank: 3 },
+    player2: { name: 'Elena Rybakina', country: '', rank: 5 },
     score: { sets: [{ p1: 6, p2: 4 }, { p1: 4, p2: 6 }, { p1: 6, p2: 2 }] },
     status: 'finished',
     winner: 1,
     time: '2h 10m',
-    startTime: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() // Hace 2 días
+    startTime: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() // Hace 2 dias
   },
   {
     id: 5,
     tournament: 'ATP Masters 1000',
-    player1: { name: 'Rafael Nadal', country: '🇪🇸', rank: 5 },
-    player2: { name: 'Stefanos Tsitsipas', country: '🇬🇷', rank: 6 },
+    player1: { name: 'Rafael Nadal', country: '', rank: 5 },
+    player2: { name: 'Stefanos Tsitsipas', country: '', rank: 6 },
     score: { sets: [] },
     status: 'scheduled',
     startTime: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString(), // 2 horas desde ahora
@@ -71,8 +71,8 @@ export const mockTennisMatches = [
   {
     id: 6,
     tournament: 'WTA Finals',
-    player1: { name: 'Jessica Pegula', country: '🇺🇸', rank: 4 },
-    player2: { name: 'Maria Sakkari', country: '🇬🇷', rank: 7 },
+    player1: { name: 'Jessica Pegula', country: '', rank: 4 },
+    player2: { name: 'Maria Sakkari', country: '', rank: 7 },
     score: { sets: [] },
     status: 'scheduled',
     startTime: new Date(Date.now() + 4 * 60 * 60 * 1000).toISOString(), // 4 horas desde ahora
@@ -81,38 +81,38 @@ export const mockTennisMatches = [
   {
     id: 7,
     tournament: 'ATP 250',
-    player1: { name: 'Casper Ruud', country: '🇳🇴', rank: 8 },
-    player2: { name: 'Taylor Fritz', country: '🇺🇸', rank: 9 },
+    player1: { name: 'Casper Ruud', country: '', rank: 8 },
+    player2: { name: 'Taylor Fritz', country: '', rank: 9 },
     score: { sets: [] },
     status: 'scheduled',
-    startTime: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(), // Mañana
+    startTime: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(), // Manana
     time: null
   },
   {
     id: 8,
     tournament: 'WTA 500',
-    player1: { name: 'Ons Jabeur', country: '🇹🇳', rank: 6 },
-    player2: { name: 'Petra Kvitová', country: '🇨🇿', rank: 8 },
+    player1: { name: 'Ons Jabeur', country: '', rank: 6 },
+    player2: { name: 'Petra Kvitov', country: '', rank: 8 },
     score: { sets: [] },
     status: 'scheduled',
-    startTime: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString(), // En 2 días
+    startTime: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString(), // En 2 dias
     time: null
   },
   {
     id: 9,
     tournament: 'ATP Masters 1000',
-    player1: { name: 'Holger Rune', country: '🇩🇰', rank: 7 },
-    player2: { name: 'Andrey Rublev', country: '🇷🇺', rank: 10 },
+    player1: { name: 'Holger Rune', country: '', rank: 7 },
+    player2: { name: 'Andrey Rublev', country: '', rank: 10 },
     score: { sets: [] },
     status: 'scheduled',
-    startTime: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(), // En 5 días
+    startTime: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(), // En 5 dias
     time: null
   },
   {
     id: 10,
     tournament: 'WTA 1000',
-    player1: { name: 'Caroline Garcia', country: '🇫🇷', rank: 9 },
-    player2: { name: 'Beatriz Haddad Maia', country: '🇧🇷', rank: 11 },
+    player1: { name: 'Caroline Garcia', country: '', rank: 9 },
+    player2: { name: 'Beatriz Haddad Maia', country: '', rank: 11 },
     score: { sets: [] },
     status: 'scheduled',
     startTime: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(), // En una semana
@@ -121,18 +121,18 @@ export const mockTennisMatches = [
   {
     id: 11,
     tournament: 'ATP 500',
-    player1: { name: 'Tommy Paul', country: '🇺🇸', rank: 12 },
-    player2: { name: 'Lorenzo Musetti', country: '🇮🇹', rank: 13 },
+    player1: { name: 'Tommy Paul', country: '', rank: 12 },
+    player2: { name: 'Lorenzo Musetti', country: '', rank: 13 },
     score: { sets: [] },
     status: 'scheduled',
-    startTime: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString(), // En 10 días
+    startTime: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString(), // En 10 dias
     time: null
   },
   {
     id: 12,
     tournament: 'WTA 250',
-    player1: { name: 'Donna Vekić', country: '🇭🇷', rank: 14 },
-    player2: { name: 'Anastasia Potapova', country: '🇷🇺', rank: 15 },
+    player1: { name: 'Donna Veki', country: '', rank: 14 },
+    player2: { name: 'Anastasia Potapova', country: '', rank: 15 },
     score: { sets: [] },
     status: 'scheduled',
     startTime: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(), // En 2 semanas
@@ -149,12 +149,12 @@ export const mockGolfTournaments = [
     status: 'live',
     round: 3,
     totalRounds: 4,
-    startTime: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), // Hace 2 días (torneo en curso)
+    startTime: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), // Hace 2 dias (torneo en curso)
     leaderboard: [
-      { position: 1, player: 'Scottie Scheffler', country: '🇺🇸', score: -18, today: -5 },
-      { position: 2, player: 'Rory McIlroy', country: '🇮🇪', score: -16, today: -4 },
-      { position: 3, player: 'Jon Rahm', country: '🇪🇸', score: -14, today: -3 },
-      { position: 4, player: 'Viktor Hovland', country: '🇳🇴', score: -12, today: -2 }
+      { position: 1, player: 'Scottie Scheffler', country: '', score: -18, today: -5 },
+      { position: 2, player: 'Rory McIlroy', country: '', score: -16, today: -4 },
+      { position: 3, player: 'Jon Rahm', country: '', score: -14, today: -3 },
+      { position: 4, player: 'Viktor Hovland', country: '', score: -12, today: -2 }
     ],
     statistics: {
       drivingAccuracy: 72.5,
@@ -172,9 +172,9 @@ export const mockGolfTournaments = [
     totalRounds: 4,
     startTime: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), // Ayer (torneo en curso)
     leaderboard: [
-      { position: 1, player: 'Tiger Woods', country: '🇺🇸', score: -8, today: -3 },
-      { position: 2, player: 'Brooks Koepka', country: '🇺🇸', score: -7, today: -2 },
-      { position: 3, player: 'Collin Morikawa', country: '🇺🇸', score: -6, today: -1 }
+      { position: 1, player: 'Tiger Woods', country: '', score: -8, today: -3 },
+      { position: 2, player: 'Brooks Koepka', country: '', score: -7, today: -2 },
+      { position: 3, player: 'Collin Morikawa', country: '', score: -6, today: -1 }
     ],
     statistics: {
       drivingAccuracy: 75.2,
@@ -201,7 +201,7 @@ export const mockGolfTournaments = [
     status: 'scheduled',
     round: 1,
     totalRounds: 4,
-    startTime: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(), // En 3 días
+    startTime: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(), // En 3 dias
     leaderboard: [],
     statistics: null
   },
@@ -212,7 +212,7 @@ export const mockGolfTournaments = [
     status: 'scheduled',
     round: 1,
     totalRounds: 4,
-    startTime: new Date(Date.now() + 8 * 24 * 60 * 60 * 1000).toISOString(), // En 8 días
+    startTime: new Date(Date.now() + 8 * 24 * 60 * 60 * 1000).toISOString(), // En 8 dias
     leaderboard: [],
     statistics: null
   },
@@ -223,7 +223,7 @@ export const mockGolfTournaments = [
     status: 'scheduled',
     round: 1,
     totalRounds: 4,
-    startTime: new Date(Date.now() + 12 * 24 * 60 * 60 * 1000).toISOString(), // En 12 días
+    startTime: new Date(Date.now() + 12 * 24 * 60 * 60 * 1000).toISOString(), // En 12 dias
     leaderboard: [],
     statistics: null
   },
@@ -234,7 +234,7 @@ export const mockGolfTournaments = [
     status: 'scheduled',
     round: 1,
     totalRounds: 4,
-    startTime: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString(), // En 15 días
+    startTime: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString(), // En 15 dias
     leaderboard: [],
     statistics: null
   }
@@ -243,22 +243,22 @@ export const mockGolfTournaments = [
 // Mock rankings
 export const mockRankings = {
   atp: [
-    { rank: 1, player: 'Novak Djokovic', country: '🇷🇸', points: 9795 },
-    { rank: 2, player: 'Carlos Alcaraz', country: '🇪🇸', points: 8855 },
-    { rank: 3, player: 'Daniil Medvedev', country: '🇷🇺', points: 7600 },
-    { rank: 4, player: 'Jannik Sinner', country: '🇮🇹', points: 6490 }
+    { rank: 1, player: 'Novak Djokovic', country: '', points: 9795 },
+    { rank: 2, player: 'Carlos Alcaraz', country: '', points: 8855 },
+    { rank: 3, player: 'Daniil Medvedev', country: '', points: 7600 },
+    { rank: 4, player: 'Jannik Sinner', country: '', points: 6490 }
   ],
   wta: [
-    { rank: 1, player: 'Aryna Sabalenka', country: '🇧🇾', points: 8935 },
-    { rank: 2, player: 'Iga Świątek', country: '🇵🇱', points: 8655 },
-    { rank: 3, player: 'Coco Gauff', country: '🇺🇸', points: 6595 },
-    { rank: 4, player: 'Elena Rybakina', country: '🇰🇿', points: 5865 }
+    { rank: 1, player: 'Aryna Sabalenka', country: '', points: 8935 },
+    { rank: 2, player: 'Iga witek', country: '', points: 8655 },
+    { rank: 3, player: 'Coco Gauff', country: '', points: 6595 },
+    { rank: 4, player: 'Elena Rybakina', country: '', points: 5865 }
   ],
   pga: [
-    { rank: 1, player: 'Scottie Scheffler', country: '🇺🇸', points: 350.5 },
-    { rank: 2, player: 'Rory McIlroy', country: '🇮🇪', points: 320.2 },
-    { rank: 3, player: 'Jon Rahm', country: '🇪🇸', points: 298.8 },
-    { rank: 4, player: 'Viktor Hovland', country: '🇳🇴', points: 285.3 }
+    { rank: 1, player: 'Scottie Scheffler', country: '', points: 350.5 },
+    { rank: 2, player: 'Rory McIlroy', country: '', points: 320.2 },
+    { rank: 3, player: 'Jon Rahm', country: '', points: 298.8 },
+    { rank: 4, player: 'Viktor Hovland', country: '', points: 285.3 }
   ]
 }
 

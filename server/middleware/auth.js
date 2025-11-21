@@ -1,9 +1,9 @@
 /**
- * Middleware de autenticación JWT
+ * Middleware de autenticacion JWT
  */
 import jwt from 'jsonwebtoken'
 
-// Clave secreta para JWT (en producción debería estar en .env)
+// Clave secreta para JWT (en produccin deberia estar en .env)
 const JWT_SECRET = process.env.JWT_SECRET || 'ace-putt-secret-key-change-in-production'
 
 /**
@@ -18,7 +18,7 @@ export const authenticateToken = (req, res, next) => {
     return res.status(401).json({
       success: false,
       error: 'Token de acceso requerido',
-      message: 'Debes iniciar sesión para acceder a este recurso'
+      message: 'Debes iniciar sesin para acceder a este recurso'
     })
   }
 
@@ -26,7 +26,7 @@ export const authenticateToken = (req, res, next) => {
     // Verificar y decodificar el token
     const decoded = jwt.verify(token, JWT_SECRET)
     
-    // Agregar información del usuario al request
+    // Agregar informacion del usuario al request
     req.user = decoded
     
     next()
@@ -35,14 +35,14 @@ export const authenticateToken = (req, res, next) => {
       return res.status(401).json({
         success: false,
         error: 'Token expirado',
-        message: 'Tu sesión ha expirado. Por favor, inicia sesión nuevamente'
+        message: 'Tu sesin ha expirado. Por favor, inicia sesin nuevamente'
       })
     }
     
     return res.status(403).json({
       success: false,
-      error: 'Token inválido',
-      message: 'El token proporcionado no es válido'
+      error: 'Token invlido',
+      message: 'El token proporcionado no es vlido'
     })
   }
 }
@@ -59,7 +59,7 @@ export const optionalAuth = (req, res, next) => {
       const decoded = jwt.verify(token, JWT_SECRET)
       req.user = decoded
     } catch (error) {
-      // Si el token es inválido, simplemente continuar sin usuario
+      // Si el token es invlido, simplemente continuar sin usuario
       req.user = null
     }
   }
@@ -74,7 +74,7 @@ export const requireAdmin = (req, res, next) => {
   if (!req.user) {
     return res.status(401).json({
       success: false,
-      error: 'Autenticación requerida'
+      error: 'Autenticacion requerida'
     })
   }
 

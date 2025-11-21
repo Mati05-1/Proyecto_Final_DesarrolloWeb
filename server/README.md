@@ -2,18 +2,18 @@
 
 Backend desarrollado con **Node.js**, **Express** y **MongoDB + Mongoose** para la plataforma de Tenis y Golf.
 
-## 🗄️ Base de Datos
+##  Base de Datos
 
-Este backend está integrado con **MongoDB** usando **Mongoose**:
-- ✅ Modelos con validaciones
-- ✅ Fallback automático a datos en memoria si MongoDB no está disponible
-- ✅ Soporte para MongoDB local o MongoDB Atlas
+Este backend est� integrado con **MongoDB** usando **Mongoose**:
+-  Modelos con validaciones
+-  Fallback autom�tico a datos en memoria si MongoDB no est� disponible
+-  Soporte para MongoDB local o MongoDB Atlas
 
-Ver `CONFIGURAR_MONGODB.md` para más detalles sobre la configuración.
+Ver `CONFIGURAR_MONGODB.md` para m�s detalles sobre la configuraci�n.
 
-## 🚀 Inicio Rápido
+##  Inicio R�pido
 
-### Instalación
+### Instalaci�n
 
 ```bash
 cd server
@@ -22,7 +22,7 @@ npm install
 
 ### Configurar MongoDB
 
-**Opción 1: MongoDB Local**
+**Opci�n 1: MongoDB Local**
 ```bash
 # macOS
 brew install mongodb-community
@@ -31,7 +31,7 @@ brew install mongodb-community
 brew services start mongodb-community
 ```
 
-**Opción 2: MongoDB Atlas (Gratis)**
+**Opci�n 2: MongoDB Atlas (Gratis)**
 1. Ve a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 2. Crea una cuenta gratuita
 3. Crea un cluster
@@ -41,8 +41,8 @@ brew services start mongodb-community
 MONGODB_URI=mongodb+srv://usuario:password@cluster.mongodb.net/ace-putt
 ```
 
-**Opción 3: Sin MongoDB**
-El servidor funcionará con datos en memoria (mock) si MongoDB no está disponible.
+**Opci�n 3: Sin MongoDB**
+El servidor funcionar� con datos en memoria (mock) si MongoDB no est� disponible.
 
 ### Ejecutar Servidor
 
@@ -50,13 +50,13 @@ El servidor funcionará con datos en memoria (mock) si MongoDB no está disponib
 # Modo desarrollo (con watch)
 npm run dev
 
-# Modo producción
+# Modo producci�n
 npm start
 ```
 
-El servidor se ejecutará en: **http://localhost:5000**
+El servidor se ejecutar� en: **http://localhost:5000**
 
-## 📚 Documentación de Endpoints
+##  Documentaci�n de Endpoints
 
 ### Base URL
 ```
@@ -65,7 +65,7 @@ http://localhost:5000/api
 
 ---
 
-## 🎾 Partidos de Tenis (`/api/matches`)
+##  Partidos de Tenis (`/api/matches`)
 
 ### GET `/api/matches`
 Obtener todos los partidos de tenis.
@@ -92,12 +92,12 @@ GET /api/matches?player=Alcaraz
       "tournament": "ATP Masters 1000",
       "player1": {
         "name": "Carlos Alcaraz",
-        "country": "🇪🇸",
+        "country": "",
         "rank": 2
       },
       "player2": {
         "name": "Novak Djokovic",
-        "country": "🇷🇸",
+        "country": "",
         "rank": 1
       },
       "score": {
@@ -137,12 +137,12 @@ Crear un nuevo partido.
   "tournament": "ATP 500",
   "player1": {
     "name": "Rafael Nadal",
-    "country": "🇪🇸",
+    "country": "",
     "rank": 5
   },
   "player2": {
     "name": "Stefanos Tsitsipas",
-    "country": "🇬🇷",
+    "country": "",
     "rank": 6
   },
   "startTime": "2024-11-20T14:00:00.000Z"
@@ -163,7 +163,7 @@ Actualizar un partido existente.
 
 **Body (JSON) - Campos permitidos:**
 - `status`: Estado del partido
-- `score`: Puntuación actual
+- `score`: Puntuaci�n actual
 - `time`: Tiempo transcurrido
 - `winner`: Ganador (1 o 2)
 
@@ -192,7 +192,7 @@ Eliminar un partido.
 
 ---
 
-## ⛳ Torneos de Golf (`/api/tournaments`)
+##  Torneos de Golf (`/api/tournaments`)
 
 ### GET `/api/tournaments`
 Obtener todos los torneos de golf.
@@ -223,7 +223,7 @@ GET /api/tournaments?status=live
         {
           "position": 1,
           "player": "Scottie Scheffler",
-          "country": "🇺🇸",
+          "country": "",
           "score": -18,
           "today": -5
         }
@@ -259,14 +259,14 @@ Actualizar un torneo.
 - `round`: Ronda actual
 - `leaderboard`: Tabla de posiciones
 - `name`: Nombre del torneo
-- `location`: Ubicación
+- `location`: Ubicaci�n
 
 ### DELETE `/api/tournaments/:id`
 Eliminar un torneo.
 
 ---
 
-## 💰 Apuestas (`/api/bets`)
+##  Apuestas (`/api/bets`)
 
 ### GET `/api/bets`
 Obtener todas las apuestas.
@@ -344,14 +344,14 @@ Actualizar una apuesta.
 
 **Campos permitidos:**
 - `status`: Estado de la apuesta
-- `amount`: Monto (solo si está pendiente)
+- `amount`: Monto (solo si est� pendiente)
 
 ### DELETE `/api/bets/:id`
-Eliminar una apuesta (solo si está pendiente).
+Eliminar una apuesta (solo si est� pendiente).
 
 ---
 
-## 🏆 Rankings (`/api/rankings`)
+##  Rankings (`/api/rankings`)
 
 ### GET `/api/rankings`
 Obtener todos los rankings (ATP, WTA, PGA).
@@ -371,7 +371,7 @@ Obtener todos los rankings (ATP, WTA, PGA).
 ### GET `/api/rankings/:type`
 Obtener ranking por tipo.
 
-**Tipos válidos:** `atp`, `wta`, `pga`
+**Tipos v�lidos:** `atp`, `wta`, `pga`
 
 **Ejemplo:**
 ```bash
@@ -390,7 +390,7 @@ GET /api/rankings/pga
     {
       "rank": 1,
       "player": "Novak Djokovic",
-      "country": "🇷🇸",
+      "country": "",
       "points": 9795
     }
   ]
@@ -399,7 +399,7 @@ GET /api/rankings/pga
 
 ---
 
-## 🔐 Autenticación (`/api/auth`)
+##  Autenticaci�n (`/api/auth`)
 
 ### POST `/api/auth/register`
 Registrar un nuevo usuario.
@@ -432,7 +432,7 @@ Registrar un nuevo usuario.
 ```
 
 ### POST `/api/auth/login`
-Iniciar sesión.
+Iniciar sesi�n.
 
 **Body (JSON):**
 ```json
@@ -446,7 +446,7 @@ Iniciar sesión.
 ```json
 {
   "success": true,
-  "message": "Inicio de sesión exitoso",
+  "message": "Inicio de sesi�n exitoso",
   "data": {
     "user": { ... },
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -455,7 +455,7 @@ Iniciar sesión.
 ```
 
 ### GET `/api/auth/me`
-Obtener información del usuario actual (requiere token).
+Obtener informaci�n del usuario actual (requiere token).
 
 **Headers:**
 ```
@@ -486,9 +486,9 @@ Authorization: Bearer <admin_token>
 
 ---
 
-## 🔐 Panel de Administración (`/api/admin`)
+##  Panel de Administraci�n (`/api/admin`)
 
-Todas las rutas requieren autenticación y rol de administrador.
+Todas las rutas requieren autenticaci�n y rol de administrador.
 
 ### GET `/api/admin/dashboard`
 Obtener estadísticas del dashboard.
@@ -539,10 +539,10 @@ Eliminar un torneo (solo admin).
 
 ---
 
-## 🔧 Endpoints Adicionales
+##  Endpoints Adicionales
 
 ### GET `/`
-Información general de la API.
+Informaci�n general de la API.
 
 **Respuesta:**
 ```json
@@ -572,7 +572,7 @@ Estado de salud del servidor.
 
 ---
 
-## 📊 Estructura de Datos
+##  Estructura de Datos
 
 ### Partido de Tenis
 ```typescript
@@ -629,27 +629,27 @@ Estado de salud del servidor.
 
 ---
 
-## 🛠️ Códigos de Estado HTTP
+##  C�digos de Estado HTTP
 
-- `200` - OK (Operación exitosa)
+- `200` - OK (Operaci�n exitosa)
 - `201` - Created (Recurso creado)
-- `400` - Bad Request (Datos inválidos)
+- `400` - Bad Request (Datos inv�lidos)
 - `404` - Not Found (Recurso no encontrado)
 - `500` - Internal Server Error (Error del servidor)
 
 ---
 
-## 📝 Notas
+##  Notas
 
 - Todos los endpoints devuelven respuestas en formato JSON
-- **MongoDB integrado**: Los datos se guardan en MongoDB si está disponible
-- **Fallback automático**: Si MongoDB no está disponible, usa datos en memoria
+- **MongoDB integrado**: Los datos se guardan en MongoDB si est� disponible
+- **Fallback autom�tico**: Si MongoDB no est� disponible, usa datos en memoria
 - El servidor incluye CORS habilitado para permitir peticiones del frontend
 - **Validaciones**: Todos los modelos tienen validaciones de campos requeridos y formatos
 
 ---
 
-## 🔗 Integración con Frontend
+##  Integraci�n con Frontend
 
 Para conectar el frontend React con esta API, actualiza las URLs en los servicios:
 
@@ -664,7 +664,7 @@ const data = await response.json()
 
 ---
 
-## 📄 Licencia
+##  Licencia
 
 Este proyecto es de uso educativo.
 

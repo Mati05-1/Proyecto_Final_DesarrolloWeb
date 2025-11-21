@@ -9,25 +9,28 @@ import { fetchTennisMatchesFromAPI } from '../services/externalAPIs.js'
 
 const router = express.Router()
 
-// Función para obtener datos (MongoDB, API externa o mock)
+// Funcion para obtener datos (API externa primero para datos en tiempo real, luego MongoDB, luego mock)
 async function getMatchesData() {
-  // 1. Intentar obtener de MongoDB primero
-  try {
-    const dbMatches = await Match.find({})
-    if (dbMatches && dbMatches.length > 0) {
-      return dbMatches
-    }
-  } catch (error) {
-    console.log('MongoDB no disponible, usando otras fuentes...')
-  }
-  
-  // 2. Intentar obtener de API externa
+  // 1. PRIORIDAD: Intentar obtener de API externa primero (datos en tiempo real)
   const externalData = await fetchTennisMatchesFromAPI()
   if (externalData && externalData.length > 0) {
+    console.log(`✅ Usando ${externalData.length} partidos de API externa (tiempo real)`)
     return externalData
   }
   
-  // 3. Si no hay MongoDB ni API externa, usar mock
+  // 2. Si API externa no est disponible, intentar MongoDB
+  try {
+    const dbMatches = await Match.find({})
+    if (dbMatches && dbMatches.length > 0) {
+      console.log(`🗄️  Usando ${dbMatches.length} partidos de MongoDB`)
+      return dbMatches
+    }
+  } catch (error) {
+    console.log('⚠️  MongoDB no disponible, usando datos mock...')
+  }
+  
+  // 3. Fallback: usar datos mock
+  console.log('  ⚠️  Usando datos mock (simulados)')
   return tennisMatches
 }
 
@@ -65,11 +68,11 @@ router.get('/:id', async (req, res) => {
     // Intentar buscar en MongoDB primero
     let match = null
     try {
-      // Verificar si es un ObjectId válido de MongoDB
+      // Verificar si es un ObjectId vlido de MongoDB
       if (req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
         match = await Match.findById(req.params.id)
       } else {
-        // Si no es ObjectId, buscar por ID numérico (compatibilidad con mock)
+        // Si no es ObjectId, buscar por ID numerico (compatibilidad con mock)
         const id = parseInt(req.params.id)
         const allMatches = await getMatchesData()
         match = allMatches.find(m => m.id === id || m._id?.toString() === req.params.id)
@@ -106,7 +109,7 @@ router.post('/', async (req, res) => {
   try {
     const { tournament, player1, player2, startTime } = req.body
     
-    // Validación básica (Mongoose también validará)
+    // Validacin bsica (Mongoose tambien validar)
     if (!tournament || !player1 || !player2) {
       return res.status(400).json({
         success: false,
