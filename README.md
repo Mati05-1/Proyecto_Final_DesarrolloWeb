@@ -1,102 +1,71 @@
-# Ace Tennis - Plataforma de Tenis
+# Ace Tennis
 
-Aplicación web completa para seguir resultados en tiempo real, estadísticas detalladas y sistema de apuestas virtuales para tenis.
+## Descripción general
 
-## Descripción General
+Ace Tennis es una plataforma web completa para seguir tenis en tiempo real, con estadísticas detalladas, rankings actualizados y un sistema de apuestas virtuales. Los usuarios pueden registrarse, ver rankings ATP y WTA, apostar en partidos y competir en un leaderboard global.
 
-Plataforma full-stack que permite a los usuarios:
-- Ver rankings ATP y WTA en tiempo real
-- Seguir partidos en vivo
-- Realizar apuestas virtuales con sistema de puntos
-- Competir en un leaderboard global
+## Tecnologías usadas
 
-## Tecnologías Usadas
+- **Frontend**: HTML5, CSS3, Bootstrap 5.3.2, JavaScript (ES6+)
+- **Backend**: Node.js, Express.js
+- **Base de Datos**: MongoDB (MongoDB Atlas)
+- **Autenticación**: JWT (JSON Web Tokens)
+- **APIs Externas**: RapidAPI (Tennis API)
+- **Despliegue**: Vercel (Frontend), Render (Backend)
 
-**Frontend:**
-- HTML5, CSS3, Bootstrap 5.3.2
-- JavaScript (Vanilla)
-- React 18 + Vite
-- React Router DOM
+## Pasos de instalación
 
-**Backend:**
-- Node.js + Express
-- MongoDB + Mongoose
-- JWT para autenticación
-- RapidAPI para datos de tenis
-
-## Pasos de Instalación
-
-1. **Instalar dependencias del frontend:**
+1. Clonar el repositorio:
 ```bash
-npm install
+git clone https://github.com/Mati05-1/Proyecto_Final_DesarrolloWeb.git
+cd Proyecto_Final_DesarrolloWeb
 ```
 
-2. **Instalar dependencias del backend:**
+2. Instalar dependencias del backend:
 ```bash
 cd server
 npm install
 ```
 
-3. **Configurar MongoDB:**
-```bash
-# Opción 1: MongoDB Local (macOS)
-brew install mongodb-community
-brew services start mongodb-community
-
-# Opción 2: MongoDB Atlas (gratis)
-# Crear cuenta en https://www.mongodb.com/cloud/atlas
-# Agregar MONGODB_URI en server/.env
+3. Configurar variables de entorno:
+Crear archivo `.env` en la carpeta `server/` con:
+```
+MONGODB_URI=mongodb://localhost:27017/ace-tennis
+RAPIDAPI_KEY=tu-rapidapi-key
+JWT_SECRET=tu-secret-key
+NODE_ENV=development
 ```
 
-4. **Configurar API Key (opcional):**
+4. Iniciar el servidor backend:
 ```bash
-# Crear archivo server/.env
-RAPIDAPI_KEY=tu_api_key_aqui
-MONGODB_URI=mongodb://localhost:27017/ace-putt
-JWT_SECRET=tu_secret_key
-```
-
-5. **Iniciar servidor backend:**
-```bash
-cd server
 npm start
-# Servidor en http://localhost:5001
 ```
 
-6. **Iniciar frontend:**
-```bash
-# Para React app
-npm run dev
-# App en http://localhost:3000
-
-# Para landing page
-# Abrir landing.html en navegador o usar servidor HTTP
-# Ejemplo: python3 -m http.server 3001
-```
+5. Abrir el frontend:
+Abrir `landing.html` en un navegador o usar un servidor HTTP local.
 
 ## Endpoints de la API
 
-**Base URL:** `http://localhost:5001/api`
-
-### Autenticación (`/api/auth`)
+### Autenticación
 - `POST /api/auth/register` - Registrar nuevo usuario
 - `POST /api/auth/login` - Iniciar sesión
-- `GET /api/auth/me` - Obtener usuario actual (requiere token)
-- `GET /api/auth/leaderboard` - Obtener ranking de usuarios
+- `GET /api/auth/me` - Obtener usuario actual
+- `GET /api/auth/leaderboard` - Obtener leaderboard de usuarios
 
-### Partidos (`/api/matches`)
+### Partidos
 - `GET /api/matches` - Obtener todos los partidos
-- `GET /api/matches?status=live` - Filtrar por estado
-- `GET /api/matches/:id` - Obtener partido por ID
+- `GET /api/matches?status=live` - Obtener partidos en vivo
+- `GET /api/matches?status=scheduled` - Obtener partidos programados
 
-### Rankings (`/api/rankings`)
-- `GET /api/rankings` - Obtener todos los rankings (ATP, WTA)
+### Rankings
+- `GET /api/rankings` - Obtener todos los rankings
 - `GET /api/rankings/atp` - Obtener ranking ATP
 - `GET /api/rankings/wta` - Obtener ranking WTA
 
-### Apuestas (`/api/bets`)
-- `GET /api/bets` - Obtener todas las apuestas
-- `GET /api/bets?userId=id` - Filtrar por usuario
-- `POST /api/bets` - Crear nueva apuesta (requiere token)
-- `PATCH /api/bets/:id` - Actualizar apuesta (requiere token)
-- `DELETE /api/bets/:id` - Eliminar apuesta (requiere token)
+### Apuestas
+- `POST /api/bets` - Crear nueva apuesta
+- `GET /api/bets` - Obtener apuestas del usuario
+- `PATCH /api/bets/:id` - Actualizar estado de apuesta
+
+### Health Check
+- `GET /api/health` - Verificar estado del servidor
