@@ -1,15 +1,11 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite",
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "cleanUrls": false,
   "rewrites": [
     {
-      "source": "/landing.html",
+      "source": "/",
       "destination": "/landing.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
     }
   ]
 }
