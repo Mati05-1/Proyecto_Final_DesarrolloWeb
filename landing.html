@@ -1269,7 +1269,7 @@
         // URL base de la API (detecta automáticamente si está en desarrollo o producción)
         const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
             ? 'http://localhost:5001/api'
-            : (window.API_BASE_URL || 'https://tu-backend-url.railway.app/api') // Cambiar por la URL de tu backend desplegado
+            : 'https://ace-tennis-backend.onrender.com/api' // Backend desplegado en Render
         
         // Funcin para hacer peticiones a la API
         async function fetchAPI(endpoint) {
