@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ace & Putt - Tu plataforma completa para seguir tenis y golf en tiempo real, con estadísticas detalladas y sistema de apuestas virtuales">
-    <title>Ace & Putt - Plataforma de Tenis y Golf</title>
+    <meta name="description" content="Ace Tennis - Tu plataforma completa para seguir tenis en tiempo real, con estadísticas detalladas y sistema de apuestas virtuales">
+    <title>Ace Tennis - Plataforma de Tenis</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -363,11 +363,11 @@
     </style>
 </head>
 <body>
-    <!-- Navbar Component (Bootstrap) - Solo visible cuando está logueado -->
+    <!-- Navbar Component (Bootstrap) - Solo visible cuando est logueado -->
     <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light bg-white shadow-lg fixed-top" style="display: none; z-index: 1030; position: fixed !important; top: 0 !important; width: 100%;">
         <div class="container">
             <a class="navbar-brand fw-bold fs-3" href="#">
-                <i class="bi bi-trophy-fill text-primary"></i> Ace & Putt
+                <i class="bi bi-trophy-fill text-primary"></i> Ace Tennis
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -384,10 +384,13 @@
                         <a class="nav-link" href="#resultados">Resultados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#torneos">Torneos</a>
+                        <a class="nav-link" href="#apostar">Apostar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#apostar">Apostar</a>
+                        <a class="nav-link" href="#mis-apuestas">Mis Apuestas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#leaderboard">Leaderboard</a>
                     </li>
                 </ul>
                 <div class="d-flex align-items-center">
@@ -395,25 +398,21 @@
                         <i class="bi bi-moon-fill" id="darkModeIcon"></i>
                         <span id="darkModeText">Oscuro</span>
                     </button>
-                    <button class="btn btn-outline-primary me-2" id="loginButton" onclick="handleLogout()">
-                        <i class="bi bi-person-circle"></i> <span id="userNameNav"></span>
-                    </button>
-                    <button class="btn btn-success" id="appButton" onclick="window.location.href='/index.html'">
-                        <i class="bi bi-rocket-takeoff"></i> Ir a la App
+                    <button class="btn btn-outline-primary" id="profileButton" onclick="showProfileModal()">
+                        <i class="bi bi-person-circle"></i> Perfil
                     </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section - Solo visible cuando NO está logueado -->
+    <!-- Hero Section - Solo visible cuando NO est logueado -->
     <section id="loginHero" class="hero" style="min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden;">
         <!-- Animated Background Elements -->
         <div class="sports-animations" style="position: absolute; width: 100%; height: 100%; z-index: 1;">
-            <div class="tennis-ball" style="position: absolute; top: 10%; left: 10%; font-size: 4rem; animation: float 4s ease-in-out infinite;">🎾</div>
-            <div class="tennis-ball ball-2" style="position: absolute; top: 60%; right: 15%; font-size: 5rem; animation: float 5s ease-in-out infinite 1s;">🎾</div>
-            <div class="golf-ball" style="position: absolute; bottom: 20%; left: 20%; font-size: 4rem; animation: float 6s ease-in-out infinite 0.5s;">⛳</div>
-            <div class="tennis-racket" style="position: absolute; top: 30%; right: 25%; font-size: 6rem; animation: swing 3s ease-in-out infinite; transform-origin: center bottom;">🎾</div>
+            <div class="tennis-ball" style="position: absolute; top: 10%; left: 10%; font-size: 4rem; animation: float 4s ease-in-out infinite;"></div>
+            <div class="tennis-ball ball-2" style="position: absolute; top: 60%; right: 15%; font-size: 5rem; animation: float 5s ease-in-out infinite 1s;"></div>
+            <div class="tennis-racket" style="position: absolute; top: 30%; right: 25%; font-size: 6rem; animation: swing 3s ease-in-out infinite; transform-origin: center bottom;"></div>
         </div>
         
         <div class="container" style="position: relative; z-index: 2;">
@@ -425,30 +424,30 @@
                     </div>
                     
                     <h1 class="hero-title mb-4" style="font-size: 4.5rem; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-                        Ace & Putt
+                        Ace Tennis
                     </h1>
                     
                     <div class="mb-4" style="display: inline-block; padding: 0.5rem 2rem; background: rgba(255,255,255,0.15); border-radius: 30px; backdrop-filter: blur(10px);">
                         <p style="font-size: 1.1rem; margin: 0; font-weight: 600;">
-                            🎾 Tenis • ⛳ Golf • 📊 Estadísticas • 💰 Apuestas
+                             Tenis   Estadísticas   Apuestas
                         </p>
                     </div>
                     
                     <p class="hero-subtitle mb-5" style="font-size: 1.6rem; line-height: 1.8; max-width: 800px; margin: 0 auto 3rem;">
-                        Tu plataforma completa para seguir <span style="color: #fbbf24; font-weight: 700;">tenis y golf</span> en tiempo real, 
+                        Tu plataforma completa para seguir <span style="color: #fbbf24; font-weight: 700;">tenis</span> en tiempo real, 
                         con estadísticas detalladas y sistema de apuestas virtuales.
                     </p>
                     
                     <!-- Feature Pills -->
                     <div class="d-flex gap-3 justify-content-center flex-wrap mb-5">
                         <span class="badge" style="background: rgba(255,255,255,0.2); color: white; padding: 0.75rem 1.5rem; font-size: 1rem; border-radius: 25px; backdrop-filter: blur(10px);">
-                            ⚡ Resultados en Vivo
+                             Resultados en Vivo
                         </span>
                         <span class="badge" style="background: rgba(255,255,255,0.2); color: white; padding: 0.75rem 1.5rem; font-size: 1rem; border-radius: 25px; backdrop-filter: blur(10px);">
-                            🏆 Rankings Actualizados
+                             Rankings Actualizados
                         </span>
                         <span class="badge" style="background: rgba(255,255,255,0.2); color: white; padding: 0.75rem 1.5rem; font-size: 1rem; border-radius: 25px; backdrop-filter: blur(10px);">
-                            💰 Apuestas Virtuales
+                             Apuestas Virtuales
                         </span>
                     </div>
                     
@@ -458,7 +457,7 @@
                             <i class="bi bi-person-plus-fill"></i> Crear Cuenta Gratis
                         </button>
                         <button class="btn btn-custom-outline btn-lg" data-bs-toggle="modal" data-bs-target="#loginModal" style="padding: 1rem 2.5rem; font-size: 1.2rem; box-shadow: 0 8px 25px rgba(255,255,255,0.2); transform: translateY(0); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 35px rgba(255,255,255,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(255,255,255,0.2)'">
-                            <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+                            <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesin
                         </button>
                     </div>
                     
@@ -489,7 +488,7 @@
         </div>
     </section>
 
-    <!-- Main Content - Solo visible cuando está logueado -->
+    <!-- Main Content - Solo visible cuando est logueado -->
     <div id="mainContent" style="display: none; padding-top: 80px;">
         <!-- Hero Section para usuarios logueados -->
         <section id="inicio" class="hero" style="min-height: auto; padding: 80px 0;">
@@ -497,13 +496,13 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 hero-content">
                         <div class="dynamic-greeting" id="dynamicGreeting">
-                            ¡Bienvenido!
+                            Bienvenido!
                         </div>
                         <h1 class="hero-title">
-                            ¡Bienvenido, <span id="userNameDisplay"></span>! 🎾⛳
+                            Bienvenido, <span id="userNameDisplay"></span>! 
                         </h1>
                         <p class="hero-subtitle">
-                            Explora rankings, resultados en tiempo real, torneos y apuesta en tus partidos favoritos.
+                            Explora rankings, resultados en tiempo real y apuesta en tus partidos favoritos.
                         </p>
                     </div>
                 </div>
@@ -519,13 +518,13 @@
                 <h2 class="display-4 fw-bold mb-3" style="color: #92400e;">
                     <i class="bi bi-trophy-fill"></i> Rankings Actuales
                 </h2>
-                <p class="lead" style="color: #78350f; font-weight: 500;">Consulta los rankings ATP, WTA y PGA actualizados</p>
+                <p class="lead" style="color: #78350f; font-weight: 500;">Consulta los rankings ATP y WTA actualizados</p>
             </div>
             <div class="row g-4">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card border-0 shadow-sm">
                         <div class="card-header bg-primary text-white">
-                            <h5 class="mb-0">🎾 ATP Rankings</h5>
+                            <h5 class="mb-0"> ATP Rankings</h5>
                         </div>
                         <div class="card-body" id="atpRankingsPreview">
                             <div class="text-center">
@@ -534,24 +533,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card border-0 shadow-sm">
                         <div class="card-header bg-danger text-white">
-                            <h5 class="mb-0">🎾 WTA Rankings</h5>
+                            <h5 class="mb-0"> WTA Rankings</h5>
                         </div>
                         <div class="card-body" id="wtaRankingsPreview">
-                            <div class="text-center">
-                                <div class="spinner-border spinner-border-sm" role="status"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-header bg-success text-white">
-                            <h5 class="mb-0">⛳ PGA Rankings</h5>
-                        </div>
-                        <div class="card-body" id="pgaRankingsPreview">
                             <div class="text-center">
                                 <div class="spinner-border spinner-border-sm" role="status"></div>
                             </div>
@@ -585,33 +572,13 @@
     
     <div style="height: 20px; background: transparent;"></div>
 
-    <!-- Torneos Section -->
-    <section id="torneos" class="section-torneos">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-4 fw-bold mb-3" style="color: #065f46;">
-                    <i class="bi bi-flag-fill"></i> Torneos de Golf
-                </h2>
-                <p class="lead" style="color: #064e3b; font-weight: 500;">Torneos PGA en curso y programados</p>
-            </div>
-            <div id="golfTournamentsContainer" class="row g-4">
-                <div class="col-12 text-center">
-                    <div class="spinner-border text-success" role="status">
-                        <span class="visually-hidden">Cargando...</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <div style="height: 20px; background: transparent;"></div>
 
     <!-- Apostar Section -->
     <section id="apostar" class="section-apostar">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="display-4 fw-bold mb-3" style="color: #1e40af;">
-                    <i class="bi bi-cash-coin"></i> Próximos Partidos para Apostar
+                    <i class="bi bi-cash-coin"></i> Prximos Partidos para Apostar
                 </h2>
                 <p class="lead" style="color: #1e3a8a; font-weight: 500;">Apostar en partidos programados antes de que comiencen</p>
             </div>
@@ -624,19 +591,110 @@
             </div>
         </div>
     </section>
+    
+    <div style="height: 20px; background: transparent;"></div>
+
+    <!-- Mis Apuestas Section -->
+    <section id="mis-apuestas" class="section-mis-apuestas" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 120px 0; margin: 0; border-top: 3px solid #fbbf24; border-bottom: 3px solid #fbbf24;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold mb-3" style="color: #92400e;">
+                    <i class="bi bi-list-check"></i> Mis Apuestas
+                </h2>
+                <p class="lead" style="color: #78350f; font-weight: 500;">Historial de todas tus apuestas realizadas</p>
+            </div>
+            
+            <!-- Resumen de apuestas -->
+            <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="text-muted mb-2">Pendientes</h5>
+                            <h3 class="text-warning mb-0" id="betsPendingCount">0</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="text-muted mb-2">Ganadas</h5>
+                            <h3 class="text-success mb-0" id="betsWonCount">0</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="text-muted mb-2">Perdidas</h5>
+                            <h3 class="text-danger mb-0" id="betsLostCount">0</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lista de apuestas -->
+            <div id="myBetsContainer">
+                <div class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div style="height: 20px; background: transparent;"></div>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard" class="section-leaderboard" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 120px 0; margin: 0; border-top: 3px solid #3b82f6; border-bottom: 3px solid #3b82f6;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold mb-3" style="color: #1e40af;">
+                    <i class="bi bi-trophy-fill"></i> Leaderboard
+                </h2>
+                <p class="lead" style="color: #1e3a8a; font-weight: 500;">Ranking de usuarios por puntos</p>
+            </div>
+            
+            <div class="card border-0 shadow-lg">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th style="width: 80px;" class="text-center">#</th>
+                                    <th>Usuario</th>
+                                    <th class="text-end" style="width: 150px;">Puntos</th>
+                                    <th class="text-center" style="width: 100px;">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboardTableBody">
+                                <tr>
+                                    <td colspan="4" class="text-center py-4">
+                                        <div class="spinner-border text-primary" role="status">
+                                            <span class="visually-hidden">Cargando...</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     </div> <!-- Cierre de mainContent -->
 
-    <!-- Footer - Solo visible cuando está logueado -->
+    <!-- Footer - Solo visible cuando est logueado -->
     <footer id="mainFooter" class="bg-dark text-white py-5" style="display: none;">
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-4">
                     <h5 class="fw-bold mb-3">
-                        <i class="bi bi-trophy-fill text-primary"></i> Ace & Putt
+                        <i class="bi bi-trophy-fill text-primary"></i> Ace Tennis
                     </h5>
                     <p class="text-muted">
-                        Tu plataforma completa para seguir el mundo del tenis y golf. 
+                        Tu plataforma completa para seguir el mundo del tenis. 
                         Resultados en tiempo real, estadísticas y apuestas virtuales.
                     </p>
                 </div>
@@ -646,8 +704,9 @@
                         <li><a href="#inicio" class="text-muted text-decoration-none">Inicio</a></li>
                         <li><a href="#rankings" class="text-muted text-decoration-none">Rankings</a></li>
                         <li><a href="#resultados" class="text-muted text-decoration-none">Resultados</a></li>
-                        <li><a href="#torneos" class="text-muted text-decoration-none">Torneos</a></li>
                         <li><a href="#apostar" class="text-muted text-decoration-none">Apostar</a></li>
+                        <li><a href="#mis-apuestas" class="text-muted text-decoration-none">Mis Apuestas</a></li>
+                        <li><a href="#leaderboard" class="text-muted text-decoration-none">Leaderboard</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -661,10 +720,69 @@
             </div>
             <hr class="my-4 bg-secondary">
             <div class="text-center text-muted">
-                <p>&copy; 2024 Ace & Putt. Todos los derechos reservados.</p>
+                <p>&copy; 2024 Ace Tennis. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Profile Modal (Bootstrap Modal Component) -->
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel">
+                        <i class="bi bi-person-circle"></i> Perfil de Usuario
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <i class="bi bi-person-circle" style="font-size: 4rem; color: #3b82f6;"></i>
+                        <h4 class="mt-3" id="profileUserName">Usuario</h4>
+                        <p class="text-muted" id="profileUserEmail">email@ejemplo.com</p>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center p-3 bg-light rounded">
+                        <div>
+                            <h6 class="mb-0"> Puntos Disponibles</h6>
+                            <small class="text-muted">Usa tus puntos para apostar</small>
+                        </div>
+                        <div class="text-end">
+                            <h3 class="mb-0 text-primary" id="profileUserPoints">1000</h3>
+                            <small class="text-muted">pts</small>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-danger" onclick="handleLogout()">
+                            <i class="bi bi-box-arrow-right"></i> Cerrar Sesin
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Betting Modal (Bootstrap Modal Component) -->
+    <div class="modal fade" id="bettingModal" tabindex="-1" aria-labelledby="bettingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bettingModalLabel">
+                        <i class="bi bi-cash-coin"></i> Realizar Apuesta
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="bettingModalBody">
+                    <div class="text-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Cargando...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Login Modal (Bootstrap Modal Component) -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -672,7 +790,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="loginModalLabel">
-                        <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+                        <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesin
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -691,7 +809,7 @@
                             <input type="checkbox" class="form-check-input" id="rememberMe">
                             <label class="form-check-label" for="rememberMe">Recordarme</label>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+                        <button type="submit" class="btn btn-primary w-100">Iniciar Sesin</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -755,7 +873,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Vista Previa de la Plataforma</h5>
                             <p class="card-text">
-                                Descubre todas las funcionalidades de Ace & Putt:
+                                Descubre todas las funcionalidades de Ace Tennis:
                             </p>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
@@ -856,7 +974,7 @@
         const darkModeText = document.getElementById('darkModeText');
         const body = document.body;
 
-        // Función para obtener el estado del modo oscuro desde localStorage
+        // Funcin para obtener el estado del modo oscuro desde localStorage
         function getDarkModePreference() {
             const savedPreference = localStorage.getItem('darkMode');
             if (savedPreference !== null) {
@@ -866,12 +984,12 @@
             return window.matchMedia('(prefers-color-scheme: dark)').matches;
         }
 
-        // Función para guardar la preferencia del modo oscuro
+        // Funcin para guardar la preferencia del modo oscuro
         function saveDarkModePreference(isDark) {
             localStorage.setItem('darkMode', isDark.toString());
         }
 
-        // Función para aplicar el modo oscuro
+        // Funcin para aplicar el modo oscuro
         function applyDarkMode(isDark) {
             if (isDark) {
                 body.classList.add('dark-mode');
@@ -885,19 +1003,19 @@
             saveDarkModePreference(isDark);
         }
 
-        // Función para alternar el modo oscuro
+        // Funcin para alternar el modo oscuro
         function toggleDarkMode() {
             const isCurrentlyDark = body.classList.contains('dark-mode');
             applyDarkMode(!isCurrentlyDark);
         }
 
-        // Inicializar el modo oscuro al cargar la página
+        // Inicializar el modo oscuro al cargar la pgina
         function initializeDarkMode() {
             const prefersDark = getDarkModePreference();
             applyDarkMode(prefersDark);
         }
 
-        // Event listener para el botón de modo oscuro
+        // Event listener para el botn de modo oscuro
         darkModeToggle.addEventListener('click', toggleDarkMode);
 
         // Escuchar cambios en la preferencia del sistema
@@ -913,36 +1031,36 @@
         // ============================================
         const greetingElement = document.getElementById('dynamicGreeting');
 
-        // Función para obtener el saludo según la hora del día
+        // Funcin para obtener el saludo segn la hora del día
         function getGreetingByTime() {
             const currentHour = new Date().getHours();
             let greeting = '';
             let emoji = '';
 
             if (currentHour >= 5 && currentHour < 12) {
-                greeting = '¡Buenos días!';
-                emoji = '☀️';
+                greeting = 'Buenos días!';
+                emoji = '';
             } else if (currentHour >= 12 && currentHour < 18) {
-                greeting = '¡Buenas tardes!';
-                emoji = '🌤️';
+                greeting = 'Buenas tardes!';
+                emoji = '';
             } else if (currentHour >= 18 && currentHour < 22) {
-                greeting = '¡Buenas noches!';
-                emoji = '🌙';
+                greeting = 'Buenas noches!';
+                emoji = '';
             } else {
-                greeting = '¡Buenas noches!';
-                emoji = '🌃';
+                greeting = 'Buenas noches!';
+                emoji = '';
             }
 
             return `${emoji} ${greeting}`;
         }
 
-        // Función para actualizar el saludo
+        // Funcin para actualizar el saludo
         function updateGreeting() {
             const greeting = getGreetingByTime();
             greetingElement.textContent = greeting;
         }
 
-        // Función para actualizar el saludo periódicamente (cada hora)
+        // Funcin para actualizar el saludo peridicamente (cada hora)
         function startGreetingUpdate() {
             updateGreeting();
             // Actualizar cada hora (3600000 ms)
@@ -950,7 +1068,7 @@
         }
 
         // ============================================
-        // INICIALIZACIÓN AL CARGAR LA PÁGINA
+        // INICIALIZACIN AL CARGAR LA PÁGINA
         // ============================================
         // Actualizar el saludo inmediatamente al cargar
         updateGreeting();
@@ -959,18 +1077,50 @@
         // 4. LOGIN AND REGISTRATION FUNCTIONALITY
         // ============================================
         
-        // Función para verificar si el usuario está logueado
+        // Funcin para verificar si el usuario est logueado
         function isUserLoggedIn() {
-            return localStorage.getItem('acePutUser') !== null
+            const user = getCurrentUser()
+            return user !== null && user.username !== undefined
         }
 
-        // Función para obtener el usuario actual
+        // Funcin para obtener el usuario actual
         function getCurrentUser() {
-            const userStr = localStorage.getItem('acePutUser')
-            return userStr ? JSON.parse(userStr) : null
+            // Primero intentar obtener del objeto 'user' (formato completo)
+            const userStr = localStorage.getItem('user')
+            if (userStr) {
+                try {
+                    const user = JSON.parse(userStr)
+                    if (user && user.username) {
+                        return user
+                    }
+                } catch (e) {
+                    console.warn('Error parseando user de localStorage:', e)
+                }
+            }
+            
+            // Fallback: intentar obtener de 'acePutUser' (formato antiguo)
+            const acePutUserStr = localStorage.getItem('acePutUser')
+            if (acePutUserStr) {
+                try {
+                    const user = JSON.parse(acePutUserStr)
+                    if (user && user.username) {
+                        return user
+                    }
+                } catch (e) {
+                    // Si no es JSON, es solo el username (formato string)
+                    const username = acePutUserStr
+                    const points = parseInt(localStorage.getItem('acePutPoints') || '1000')
+                    return {
+                        username: username,
+                        points: points
+                    }
+                }
+            }
+            
+            return null
         }
 
-        // Función para actualizar la UI según el estado de login
+        // Funcin para actualizar la UI segn el estado de login
         function updateUIForLogin() {
             const user = getCurrentUser()
             const loginHero = document.getElementById('loginHero')
@@ -978,31 +1128,136 @@
             const mainNavbar = document.getElementById('mainNavbar')
             const mainFooter = document.getElementById('mainFooter')
             const userNameNav = document.getElementById('userNameDisplay')
-            const userNameNavbar = document.getElementById('userNameNav')
             
-            if (user) {
+            console.log(' updateUIForLogin() llamado')
+            console.log('   Usuario actual:', user)
+            console.log('   Elementos encontrados:')
+            console.log('     loginHero:', loginHero ? 'Sí' : 'No')
+            console.log('     mainContent:', mainContent ? 'Sí' : 'No')
+            console.log('     mainNavbar:', mainNavbar ? 'Sí' : 'No')
+            
+            if (user && user.username) {
+                console.log(' Usuario logueado, mostrando contenido principal')
                 // Usuario logueado - Mostrar navbar, contenido completo y footer
-                if (loginHero) loginHero.style.display = 'none'
-                if (mainContent) mainContent.style.display = 'block'
-                if (mainNavbar) mainNavbar.style.display = 'flex'
-                if (mainFooter) mainFooter.style.display = 'block'
-                if (userNameNav) userNameNav.textContent = user.username
-                if (userNameNavbar) userNameNavbar.textContent = user.username
+                if (loginHero) {
+                    loginHero.style.display = 'none'
+                    loginHero.classList.add('d-none')
+                    console.log('    loginHero ocultado')
+                }
+                if (mainContent) {
+                    mainContent.style.display = 'block'
+                    mainContent.classList.remove('d-none')
+                    console.log('    mainContent mostrado')
+                }
+                if (mainNavbar) {
+                    mainNavbar.style.display = 'flex'
+                    mainNavbar.classList.remove('d-none')
+                    console.log('    mainNavbar mostrado')
+                }
+                if (mainFooter) {
+                    mainFooter.style.display = 'block'
+                    console.log('    mainFooter mostrado')
+                }
+                if (userNameNav) {
+                    userNameNav.textContent = user.username
+                    console.log('    userNameNav actualizado:', user.username)
+                }
+                
+                // Actualizar perfil
+                updateProfileModal()
             } else {
+                console.log(' Usuario NO logueado, mostrando solo hero de login')
                 // Usuario no logueado - Mostrar solo hero de login
-                if (loginHero) loginHero.style.display = 'flex'
-                if (mainContent) mainContent.style.display = 'none'
-                if (mainNavbar) mainNavbar.style.display = 'none'
-                if (mainFooter) mainFooter.style.display = 'none'
+                if (loginHero) {
+                    loginHero.style.display = 'flex'
+                    console.log('    loginHero mostrado')
+                }
+                if (mainContent) {
+                    mainContent.style.display = 'none'
+                    console.log('    mainContent ocultado')
+                }
+                if (mainNavbar) {
+                    mainNavbar.style.display = 'none'
+                    console.log('    mainNavbar ocultado')
+                }
+                if (mainFooter) {
+                    mainFooter.style.display = 'none'
+                    console.log('    mainFooter ocultado')
+                }
             }
         }
 
-        // Función para mostrar contenido exclusivo de usuarios
+        // Funcin para mostrar el modal de perfil
+        function showProfileModal() {
+            updateProfileModal()
+            const profileModal = new bootstrap.Modal(document.getElementById('profileModal'))
+            profileModal.show()
+        }
+
+        // Funcin para actualizar el modal de perfil con datos actuales
+        async function updateProfileModal() {
+            const user = getCurrentUser()
+            const userStr = localStorage.getItem('user')
+            
+            if (user) {
+                const profileUserName = document.getElementById('profileUserName')
+                const profileUserEmail = document.getElementById('profileUserEmail')
+                const profileUserPoints = document.getElementById('profileUserPoints')
+                
+                if (profileUserName) {
+                    profileUserName.textContent = user.username || 'Usuario'
+                }
+                
+                if (profileUserEmail) {
+                    let email = user.email
+                    if (!email && userStr) {
+                        try {
+                            const userData = JSON.parse(userStr)
+                            email = userData.email || 'email@ejemplo.com'
+                        } catch {
+                            email = 'email@ejemplo.com'
+                        }
+                    }
+                    profileUserEmail.textContent = email || 'email@ejemplo.com'
+                }
+                
+                // SIEMPRE obtener puntos del backend (MongoDB es la fuente de verdad)
+                let points = parseInt(localStorage.getItem('acePutPoints') || user.points || '1000')
+                
+                const token = localStorage.getItem('token')
+                if (token) {
+                    try {
+                        const userResponse = await fetch(`${API_BASE_URL}/auth/me`, {
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            }
+                        })
+                        
+                        if (userResponse.ok) {
+                            const userData = await userResponse.json()
+                            if (userData.success && userData.data && userData.data.points !== undefined) {
+                                points = userData.data.points
+                                localStorage.setItem('acePutPoints', String(points))
+                                console.log(' Puntos actualizados desde MongoDB en updateProfileModal:', points)
+                            }
+                        }
+                    } catch (error) {
+                        console.log('  No se pudieron obtener puntos del backend, usando localStorage:', error.message)
+                    }
+                }
+                
+                if (profileUserPoints) {
+                    profileUserPoints.textContent = points.toLocaleString()
+                }
+            }
+        }
+
+        // Funcin para mostrar contenido exclusivo de usuarios
         function showUserContent() {
             const user = getCurrentUser()
             
             if (user) {
-                // Cargar datos dinámicos cuando el usuario está logueado
+                // Cargar datos dinmicos cuando el usuario est logueado
                 loadUserDashboardData()
             }
         }
@@ -1011,10 +1266,12 @@
         // 5. LOAD DYNAMIC DATA FOR LOGGED IN USERS
         // ============================================
         
-        // URL base de la API
-        const API_BASE_URL = 'http://localhost:5000/api'
+        // URL base de la API (detecta automáticamente si está en desarrollo o producción)
+        const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+            ? 'http://localhost:5001/api'
+            : (window.API_BASE_URL || 'https://tu-backend-url.railway.app/api') // Cambiar por la URL de tu backend desplegado
         
-        // Función para hacer peticiones a la API
+        // Funcin para hacer peticiones a la API
         async function fetchAPI(endpoint) {
             try {
                 const response = await fetch(`${API_BASE_URL}${endpoint}`)
@@ -1022,18 +1279,30 @@
                 return await response.json()
             } catch (error) {
                 console.error('Error fetching from API:', error)
-                // Fallback a datos mock si la API no está disponible
+                // Fallback a datos mock si la API no est disponible
                 return getMockData(endpoint)
             }
         }
         
-        // Datos mock como fallback (si la API no está disponible)
+        // Datos mock como fallback (si la API no est disponible)
         function getMockData(endpoint) {
             if (endpoint.includes('/matches')) {
+                // Si es un match específico
+                if (endpoint.includes('/matches/')) {
+                    const matchId = parseInt(endpoint.split('/matches/')[1])
+                    const match = mockTennisMatches.find(m => m.id === matchId)
+                    return { success: true, data: match || null }
+                }
+                // Si es lista de matches con filtro
+                if (endpoint.includes('status=scheduled')) {
+                    const scheduled = mockTennisMatches.filter(m => m.status === 'scheduled')
+                    return { success: true, data: scheduled, count: scheduled.length }
+                }
+                if (endpoint.includes('status=live')) {
+                    const live = mockTennisMatches.filter(m => m.status === 'live')
+                    return { success: true, data: live, count: live.length }
+                }
                 return { success: true, data: mockTennisMatches, count: mockTennisMatches.length }
-            }
-            if (endpoint.includes('/tournaments')) {
-                return { success: true, data: mockGolfTournaments, count: mockGolfTournaments.length }
             }
             if (endpoint.includes('/rankings')) {
                 return { success: true, data: mockRankings }
@@ -1041,13 +1310,13 @@
             return { success: false, data: [] }
         }
         
-        // Datos mock para la landing page (fallback si API no está disponible)
+        // Datos mock para la landing page (fallback si API no est disponible)
         const mockTennisMatches = [
             {
                 id: 1,
                 tournament: 'ATP Masters 1000',
-                player1: { name: 'Carlos Alcaraz', country: '🇪🇸', rank: 2 },
-                player2: { name: 'Novak Djokovic', country: '🇷🇸', rank: 1 },
+                player1: { name: 'Carlos Alcaraz', country: '', rank: 2 },
+                player2: { name: 'Novak Djokovic', country: '', rank: 1 },
                 score: { sets: [{ p1: 6, p2: 4 }, { p1: 3, p2: 6 }] },
                 status: 'live',
                 time: '2h 15m'
@@ -1055,8 +1324,8 @@
             {
                 id: 2,
                 tournament: 'WTA Finals',
-                player1: { name: 'Aryna Sabalenka', country: '🇧🇾', rank: 1 },
-                player2: { name: 'Iga Świątek', country: '🇵🇱', rank: 2 },
+                player1: { name: 'Aryna Sabalenka', country: '', rank: 1 },
+                player2: { name: 'Iga witek', country: '', rank: 2 },
                 score: { sets: [{ p1: 4, p2: 6 }, { p1: 6, p2: 3 }] },
                 status: 'live',
                 time: '1h 45m'
@@ -1064,63 +1333,208 @@
             {
                 id: 5,
                 tournament: 'ATP Masters 1000',
-                player1: { name: 'Rafael Nadal', country: '🇪🇸', rank: 5 },
-                player2: { name: 'Stefanos Tsitsipas', country: '🇬🇷', rank: 6 },
+                player1: { name: 'Rafael Nadal', country: '', rank: 5 },
+                player2: { name: 'Stefanos Tsitsipas', country: '', rank: 6 },
                 status: 'scheduled',
-                startTime: 'En 2 horas'
-            }
-        ]
-
-        const mockGolfTournaments = [
-            {
-                id: 1,
-                name: 'PGA Tour Championship',
-                location: 'Atlanta, GA',
-                status: 'live',
-                round: 3,
-                totalRounds: 4,
-                leaderboard: [
-                    { position: 1, player: 'Scottie Scheffler', country: '🇺🇸', score: -18 },
-                    { position: 2, player: 'Rory McIlroy', country: '🇮🇪', score: -16 }
-                ]
+                startTime: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString()
             },
             {
-                id: 2,
-                name: 'Masters Tournament',
-                location: 'Augusta, GA',
-                status: 'live',
-                round: 2,
-                totalRounds: 4,
-                leaderboard: [
-                    { position: 1, player: 'Tiger Woods', country: '🇺🇸', score: -8 }
-                ]
+                id: 6,
+                tournament: 'WTA Finals',
+                player1: { name: 'Jessica Pegula', country: '', rank: 4 },
+                player2: { name: 'Maria Sakkari', country: '', rank: 7 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 4 * 60 * 60 * 1000).toISOString()
+            },
+            {
+                id: 7,
+                tournament: 'ATP 500',
+                player1: { name: 'Jannik Sinner', country: '', rank: 4 },
+                player2: { name: 'Daniil Medvedev', country: '', rank: 3 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 30 * 60 * 1000).toISOString() // En 30 minutos
+            },
+            {
+                id: 8,
+                tournament: 'WTA 1000',
+                player1: { name: 'Coco Gauff', country: '', rank: 3 },
+                player2: { name: 'Elena Rybakina', country: '', rank: 5 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 45 * 60 * 1000).toISOString() // En 45 minutos
+            },
+            {
+                id: 9,
+                tournament: 'ATP Masters 1000',
+                player1: { name: 'Alexander Zverev', country: '', rank: 6 },
+                player2: { name: 'Andrey Rublev', country: '', rank: 5 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 60 * 60 * 1000).toISOString() // En 1 hora
+            },
+            {
+                id: 10,
+                tournament: 'WTA 500',
+                player1: { name: 'Ons Jabeur', country: '', rank: 6 },
+                player2: { name: 'Petra Kvitova', country: '', rank: 8 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 90 * 60 * 1000).toISOString() // En 1.5 horas
+            },
+            {
+                id: 11,
+                tournament: 'ATP 250',
+                player1: { name: 'Casper Ruud', country: '', rank: 7 },
+                player2: { name: 'Holger Rune', country: '', rank: 8 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString() // En 2 horas
+            },
+            {
+                id: 12,
+                tournament: 'WTA Finals',
+                player1: { name: 'Marketa Vondrousova', country: '', rank: 7 },
+                player2: { name: 'Barbora Krejcikova', country: '', rank: 9 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 3 * 60 * 60 * 1000).toISOString() // En 3 horas
+            },
+            {
+                id: 13,
+                tournament: 'ATP 500',
+                player1: { name: 'Taylor Fritz', country: '', rank: 9 },
+                player2: { name: 'Tommy Paul', country: '', rank: 10 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 4 * 60 * 60 * 1000).toISOString() // En 4 horas
+            },
+            {
+                id: 14,
+                tournament: 'WTA 1000',
+                player1: { name: 'Caroline Garcia', country: '', rank: 10 },
+                player2: { name: 'Beatriz Haddad Maia', country: '', rank: 11 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 5 * 60 * 60 * 1000).toISOString() // En 5 horas
+            },
+            {
+                id: 15,
+                tournament: 'ATP Masters 1000',
+                player1: { name: 'Hubert Hurkacz', country: '', rank: 11 },
+                player2: { name: 'Lorenzo Musetti', country: '', rank: 12 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 6 * 60 * 60 * 1000).toISOString() // En 6 horas
+            },
+            {
+                id: 16,
+                tournament: 'WTA 500',
+                player1: { name: 'Donna Vekic', country: '', rank: 12 },
+                player2: { name: 'Liudmila Samsonova', country: '', rank: 13 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 7 * 60 * 60 * 1000).toISOString() // En 7 horas
+            },
+            {
+                id: 17,
+                tournament: 'ATP 250',
+                player1: { name: 'Sebastian Korda', country: '', rank: 13 },
+                player2: { name: 'Ben Shelton', country: '', rank: 14 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 8 * 60 * 60 * 1000).toISOString() // En 8 horas
+            },
+            {
+                id: 18,
+                tournament: 'WTA Finals',
+                player1: { name: 'Jelena Ostapenko', country: '', rank: 14 },
+                player2: { name: 'Anastasia Pavlyuchenkova', country: '', rank: 15 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString() // En 9 horas
+            },
+            {
+                id: 19,
+                tournament: 'ATP Masters 1000',
+                player1: { name: 'Grigor Dimitrov', country: '', rank: 15 },
+                player2: { name: 'Karen Khachanov', country: '', rank: 16 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 10 * 60 * 60 * 1000).toISOString() // En 10 horas
+            },
+            {
+                id: 20,
+                tournament: 'WTA 1000',
+                player1: { name: 'Elina Svitolina', country: '', rank: 16 },
+                player2: { name: 'Victoria Azarenka', country: '', rank: 17 },
+                status: 'scheduled',
+                startTime: new Date(Date.now() + 11 * 60 * 60 * 1000).toISOString() // En 11 horas
             }
         ]
+        
+        // Pool de partidos disponibles (se regeneran cuando se apuesta)
+        let availableMatchesPool = [...mockTennisMatches.filter(m => m.status === 'scheduled')]
+        
+        // Funcin para generar un nuevo partido aleatorio
+        function generateNewMatch() {
+            // Separar jugadores por género (ATP = hombres, WTA = mujeres)
+            const atpPlayers = [
+                { name: 'Felix Auger-Aliassime', country: '', rank: 17 },
+                { name: 'Cameron Norrie', country: '', rank: 18 },
+                { name: 'Ugo Humbert', country: '', rank: 19 },
+                { name: 'Tallon Griekspoor', country: '', rank: 20 },
+                { name: 'Sebastian Baez', country: '', rank: 21 },
+                { name: 'Francisco Cerundolo', country: '', rank: 22 },
+                { name: 'Lorenzo Sonego', country: '', rank: 23 },
+                { name: 'Alejandro Davidovich', country: '', rank: 24 }
+            ]
+            
+            const wtaPlayers = [
+                { name: 'Daria Kasatkina', country: '', rank: 18 },
+                { name: 'Madison Keys', country: '', rank: 19 },
+                { name: 'Emma Navarro', country: '', rank: 20 },
+                { name: 'Marta Kostyuk', country: '', rank: 21 },
+                { name: 'Qinwen Zheng', country: '', rank: 22 },
+                { name: 'Anastasia Potapova', country: '', rank: 23 },
+                { name: 'Dayana Yastremska', country: '', rank: 24 },
+                { name: 'Anna Kalinskaya', country: '', rank: 25 }
+            ]
+            
+            // Decidir si generar partido ATP (hombres) o WTA (mujeres)
+            const isATP = Math.random() < 0.5
+            const players = isATP ? atpPlayers : wtaPlayers
+            const tournaments = isATP 
+                ? ['ATP 500', 'ATP Masters 1000', 'ATP 250', 'Grand Slam']
+                : ['WTA 1000', 'WTA 500', 'WTA Finals', 'Grand Slam']
+            
+            // Seleccionar dos jugadores del mismo género
+            const player1 = players[Math.floor(Math.random() * players.length)]
+            let player2 = players[Math.floor(Math.random() * players.length)]
+            while (player2.name === player1.name) {
+                player2 = players[Math.floor(Math.random() * players.length)]
+            }
+            
+            const tournament = tournaments[Math.floor(Math.random() * tournaments.length)]
+            const nextId = Math.max(...mockTennisMatches.map(m => m.id || 0), 0) + 1
+            const hoursFromNow = Math.floor(Math.random() * 12) + 1 // Entre 1 y 12 horas
+            
+            return {
+                id: nextId,
+                tournament: tournament,
+                player1: player1,
+                player2: player2,
+                status: 'scheduled',
+                startTime: new Date(Date.now() + hoursFromNow * 60 * 60 * 1000).toISOString()
+            }
+        }
 
         const mockRankings = {
             atp: [
-                { rank: 1, player: 'Novak Djokovic', country: '🇷🇸', points: 9795 },
-                { rank: 2, player: 'Carlos Alcaraz', country: '🇪🇸', points: 8855 },
-                { rank: 3, player: 'Daniil Medvedev', country: '🇷🇺', points: 7600 }
+                { rank: 1, player: 'Novak Djokovic', country: '', points: 9795 },
+                { rank: 2, player: 'Carlos Alcaraz', country: '', points: 8855 },
+                { rank: 3, player: 'Daniil Medvedev', country: '', points: 7600 }
             ],
             wta: [
-                { rank: 1, player: 'Aryna Sabalenka', country: '🇧🇾', points: 8935 },
-                { rank: 2, player: 'Iga Świątek', country: '🇵🇱', points: 8655 },
-                { rank: 3, player: 'Coco Gauff', country: '🇺🇸', points: 6595 }
-            ],
-            pga: [
-                { rank: 1, player: 'Scottie Scheffler', country: '🇺🇸', points: 350.5 },
-                { rank: 2, player: 'Rory McIlroy', country: '🇮🇪', points: 320.2 },
-                { rank: 3, player: 'Jon Rahm', country: '🇪🇸', points: 298.8 }
+                { rank: 1, player: 'Aryna Sabalenka', country: '', points: 8935 },
+                { rank: 2, player: 'Iga witek', country: '', points: 8655 },
+                { rank: 3, player: 'Coco Gauff', country: '', points: 6595 }
             ]
         }
 
-        // Función para formatear números
+        // Funcin para formatear nmeros
         function formatNumber(num) {
             return new Intl.NumberFormat('es-ES').format(num)
         }
 
-        // Función para cargar datos del dashboard
+        // Funcin para cargar datos del dashboard
         function loadUserDashboardData() {
             // Cargar partidos en vivo
             loadLiveMatches()
@@ -1128,19 +1542,28 @@
             // Cargar rankings
             loadRankings()
             
-            // Cargar próximos partidos
+            // Cargar prximos partidos
             loadUpcomingMatches()
             
-            // Cargar torneos de golf
-            loadGolfTournaments()
+            // Cargar mis apuestas
+            loadMyBets()
             
-            // Recargar datos cada 10 segundos para ver actualizaciones
+            // Cargar leaderboard
+            loadLeaderboard()
+            
+            // Actualizar puntos en el perfil peridicamente
+            setInterval(() => {
+                updateProfileModal()
+            }, 5000) // Cada 5 segundos
+            
+            // Recargar datos cada 30 segundos para ver actualizaciones (reducido para evitar rate limiting)
             setInterval(() => {
                 loadLiveMatches()
                 loadRankings()
                 loadUpcomingMatches()
-                loadGolfTournaments()
-            }, 10000)
+                loadMyBets()
+                loadLeaderboard()
+            }, 30000) // 30 segundos en lugar de 10
         }
 
         // Cargar partidos en vivo
@@ -1189,7 +1612,7 @@
                                     </div>
                                 ` : ''}
                                 <div class="text-center">
-                                    <small class="text-muted">⏱️ ${match.time || 'En curso'}</small>
+                                    <small class="text-muted"> ${match.time || 'En curso'}</small>
                                 </div>
                                 <button onclick="window.location.href='/index.html#/live-results'" class="btn btn-sm btn-primary w-100 mt-2">
                                     Ver Detalles
@@ -1200,8 +1623,72 @@
                 `).join('')
             } catch (error) {
                 console.error('Error loading live matches:', error)
-                container.innerHTML = '<div class="col-12"><div class="alert alert-warning">Error al cargar partidos. Intenta más tarde.</div></div>'
+                container.innerHTML = '<div class="col-12"><div class="alert alert-warning">Error al cargar partidos. Intenta ms tarde.</div></div>'
             }
+        }
+
+        // Funcin para renderizar rankings con paginacin
+        function renderRankingsWithPagination(containerId, data, colorClass, buttonClass) {
+            const container = document.getElementById(containerId)
+            if (!container || !data || data.length === 0) return
+            
+            // Estado de paginacin (almacenado en el contenedor)
+            if (!container.dataset.currentLimit) {
+                container.dataset.currentLimit = '10'
+                container.dataset.allData = JSON.stringify(data)
+            }
+            
+            const allData = JSON.parse(container.dataset.allData || JSON.stringify(data))
+            const currentLimit = parseInt(container.dataset.currentLimit || '10')
+            const nextLimit = Math.min(currentLimit + 10, allData.length)
+            const hasMore = currentLimit < allData.length
+            
+            // Mostrar solo hasta el límite actual
+            const displayData = allData.slice(0, currentLimit)
+            
+            container.innerHTML = displayData.map(player => `
+                <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                    <div>
+                        <span class="badge ${player.rank === 1 ? 'bg-warning' : player.rank === 2 ? 'bg-secondary' : player.rank === 3 ? 'bg-danger' : 'bg-light text-dark'} me-2">#${player.rank}</span>
+                        <span class="me-2">${player.country}</span>
+                        <strong>${player.player}</strong>
+                    </div>
+                    <span class="${colorClass} fw-bold">${formatNumber(player.points)}</span>
+                </div>
+            `).join('') + `
+                ${hasMore ? `
+                    <button onclick="loadMoreRankings('${containerId}', ${nextLimit})" class="btn btn-sm ${buttonClass} w-100 mt-2">
+                        Ver Ms (${currentLimit + 1}-${nextLimit} de ${allData.length})
+                    </button>
+                ` : allData.length > 0 ? `
+                    <div class="text-center mt-2 text-muted small">
+                        Mostrando todos los ${allData.length} jugador${allData.length > 1 ? 'es' : ''}
+                    </div>
+                ` : `
+                    <div class="text-center mt-2 text-warning small">
+                        No hay datos disponibles
+                    </div>
+                `}
+            `
+        }
+        
+        // Funcin para cargar ms rankings
+        window.loadMoreRankings = function(containerId, newLimit) {
+            const container = document.getElementById(containerId)
+            if (!container) return
+            
+            container.dataset.currentLimit = newLimit.toString()
+            const allData = JSON.parse(container.dataset.allData || '[]')
+            
+            // Determinar colores segn el tipo
+            let colorClass = 'text-primary'
+            let buttonClass = 'btn-outline-primary'
+            if (containerId.includes('wta')) {
+                colorClass = 'text-danger'
+                buttonClass = 'btn-outline-danger'
+            }
+            
+            renderRankingsWithPagination(containerId, allData, colorClass, buttonClass)
         }
 
         // Cargar rankings
@@ -1211,88 +1698,92 @@
                 const response = await fetchAPI('/rankings')
                 const rankings = response.data || mockRankings
                 
-                // ATP Rankings
-                const atpContainer = document.getElementById('atpRankingsPreview')
-                if (atpContainer) {
-                    const atpData = rankings.atp || []
-                    atpContainer.innerHTML = atpData.map(player => `
-                        <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
-                            <div>
-                                <span class="badge ${player.rank === 1 ? 'bg-warning' : player.rank === 2 ? 'bg-secondary' : player.rank === 3 ? 'bg-danger' : 'bg-light text-dark'} me-2">#${player.rank}</span>
-                                <span class="me-2">${player.country}</span>
-                                <strong>${player.player}</strong>
-                            </div>
-                            <span class="text-primary fw-bold">${formatNumber(player.points)}</span>
-                        </div>
-                    `).join('') + `
-                        <button onclick="window.location.href='/index.html#/statistics'" class="btn btn-sm btn-outline-primary w-100 mt-2">
-                            Ver Todos
-                        </button>
-                    `
+                // ATP Rankings - Mostrar top 10 inicialmente
+                const atpData = rankings.atp || []
+                if (atpData.length > 0) {
+                    renderRankingsWithPagination('atpRankingsPreview', atpData, 'text-primary', 'btn-outline-primary')
                 }
 
-                // WTA Rankings
-                const wtaContainer = document.getElementById('wtaRankingsPreview')
-                if (wtaContainer) {
-                    const wtaData = rankings.wta || []
-                    wtaContainer.innerHTML = wtaData.map(player => `
-                        <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
-                            <div>
-                                <span class="badge ${player.rank === 1 ? 'bg-warning' : player.rank === 2 ? 'bg-secondary' : player.rank === 3 ? 'bg-danger' : 'bg-light text-dark'} me-2">#${player.rank}</span>
-                                <span class="me-2">${player.country}</span>
-                                <strong>${player.player}</strong>
-                            </div>
-                            <span class="text-danger fw-bold">${formatNumber(player.points)}</span>
-                        </div>
-                    `).join('') + `
-                        <button onclick="window.location.href='/index.html#/statistics'" class="btn btn-sm btn-outline-danger w-100 mt-2">
-                            Ver Todos
-                        </button>
-                    `
-                }
-
-                // PGA Rankings
-                const pgaContainer = document.getElementById('pgaRankingsPreview')
-                if (pgaContainer) {
-                    const pgaData = rankings.pga || []
-                    pgaContainer.innerHTML = pgaData.map(player => `
-                        <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
-                            <div>
-                                <span class="badge ${player.rank === 1 ? 'bg-warning' : player.rank === 2 ? 'bg-secondary' : player.rank === 3 ? 'bg-danger' : 'bg-light text-dark'} me-2">#${player.rank}</span>
-                                <span class="me-2">${player.country}</span>
-                                <strong>${player.player}</strong>
-                            </div>
-                            <span class="text-success fw-bold">${player.points}</span>
-                        </div>
-                    `).join('') + `
-                        <button onclick="window.location.href='/index.html#/statistics'" class="btn btn-sm btn-outline-success w-100 mt-2">
-                            Ver Todos
-                        </button>
-                    `
+                // WTA Rankings - Mostrar top 10 inicialmente
+                const wtaData = rankings.wta || []
+                if (wtaData.length > 0) {
+                    renderRankingsWithPagination('wtaRankingsPreview', wtaData, 'text-danger', 'btn-outline-danger')
                 }
             } catch (error) {
                 console.error('Error loading rankings:', error)
             }
         }
 
-        // Cargar próximos partidos
+        // Cargar prximos partidos
         async function loadUpcomingMatches() {
             const container = document.getElementById('upcomingMatchesContainer')
             if (!container) return
 
             try {
+                // Obtener IDs de partidos que ya tienen apuestas (para ocultarlos)
+                const bets = JSON.parse(localStorage.getItem('acePutBets') || '[]')
+                const betMatchIds = new Set()
+                
+                bets.forEach(b => {
+                    // Puede ser matchId directo, o dentro de betData
+                    const matchId = b.matchId || b.match?.id || b.match?._id || b.data?.matchId
+                    if (matchId) {
+                        betMatchIds.add(String(matchId))
+                        betMatchIds.add(Number(matchId))
+                        betMatchIds.add(matchId)
+                    }
+                })
+                
+                if (betMatchIds.size > 0) {
+                    console.log(` Partidos con apuestas (ocultos):`, Array.from(betMatchIds))
+                }
+                
                 // Intentar obtener datos de la API
                 const response = await fetchAPI('/matches?status=scheduled')
-                const upcomingMatches = response.data || []
+                let upcomingMatches = response.data || []
+                
+                // Si no hay datos de la API, usar datos mock
+                if (upcomingMatches.length === 0) {
+                    upcomingMatches = mockTennisMatches.filter(m => m.status === 'scheduled')
+                }
+                
+                // Filtrar partidos que ya tienen apuestas
+                const initialCount = upcomingMatches.length
+                upcomingMatches = upcomingMatches.filter(m => {
+                    const matchId = m.id || m._id
+                    const matchIdStr = String(matchId)
+                    const matchIdNum = Number(matchId)
+                    
+                    const isBet = betMatchIds.has(matchId) || 
+                                  betMatchIds.has(matchIdStr) || 
+                                  betMatchIds.has(matchIdNum)
+                    
+                    return !isBet
+                })
+                
+                if (initialCount > upcomingMatches.length) {
+                    console.log(` ${initialCount - upcomingMatches.length} partido(s) oculto(s) por tener apuestas`)
+                }
+                
+                // Si hay menos de 3 partidos disponibles, generar nuevos
+                while (upcomingMatches.length < 3) {
+                    const newMatch = generateNewMatch()
+                    mockTennisMatches.push(newMatch)
+                    upcomingMatches.push(newMatch)
+                    console.log(` Nuevo partido generado: ${newMatch.player1.name} vs ${newMatch.player2.name} (ID: ${newMatch.id})`)
+                }
+                
+                // Limitar a mximo 6 partidos visibles
+                upcomingMatches = upcomingMatches.slice(0, 6)
                 
                 if (upcomingMatches.length === 0) {
-                    container.innerHTML = '<div class="col-12"><div class="alert alert-info">No hay partidos programados próximamente</div></div>'
+                    container.innerHTML = '<div class="col-12"><div class="alert alert-info">No hay partidos programados prximamente</div></div>'
                     return
                 }
 
-                container.innerHTML = upcomingMatches.map(match => {
+                container.innerHTML = upcomingMatches.map((match, index) => {
                     // Calcular tiempo hasta el inicio si hay startTime
-                    let timeDisplay = 'Próximamente'
+                    let timeDisplay = 'Prximamente'
                     if (match.startTime) {
                         const startTime = new Date(match.startTime)
                         const now = new Date()
@@ -1304,12 +1795,15 @@
                         }
                     }
                     
+                    // Asegurar que el ID sea vlido
+                    const matchId = match.id || match._id || (index + 1)
+                    
                     return `
                         <div class="col-md-6 col-lg-4">
                             <div class="card border-0 shadow-sm h-100">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="badge bg-info">📅 Programado</span>
+                                        <span class="badge bg-info"> Programado</span>
                                         <small class="text-muted">${match.tournament}</small>
                                     </div>
                                     <div class="mb-3">
@@ -1330,7 +1824,7 @@
                                     <div class="text-center mb-2">
                                         <small class="text-muted">${timeDisplay}</small>
                                     </div>
-                                    <button onclick="window.location.href='/index.html#/betting'" class="btn btn-sm btn-success w-100 mt-2">
+                                    <button class="btn btn-sm btn-success w-100 mt-2 bet-button" data-match-id="${matchId}" data-match-obj='${JSON.stringify(match)}'>
                                         <i class="bi bi-cash-coin"></i> Apostar
                                     </button>
                                 </div>
@@ -1338,187 +1832,1605 @@
                         </div>
                     `
                 }).join('')
+                
+                // Agregar event listeners a los botones después de renderizar
+                container.querySelectorAll('.bet-button').forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault()
+                        const matchId = this.getAttribute('data-match-id')
+                        const matchObjStr = this.getAttribute('data-match-obj')
+                        
+                        console.log(' Click en botn de apuesta. ID:', matchId)
+                        
+                        // Intentar obtener el objeto completo del partido desde el atributo
+                        let matchObj = null
+                        if (matchObjStr) {
+                            try {
+                                matchObj = JSON.parse(matchObjStr)
+                                console.log(' Objeto del partido obtenido del atributo:', matchObj)
+                            } catch (error) {
+                                console.log(' Error parseando objeto del partido:', error)
+                            }
+                        }
+                        
+                        // Si tenemos el objeto completo, usarlo directamente
+                        if (matchObj) {
+                            // Llamar a openBettingModal con el objeto completo
+                            openBettingModalWithMatch(matchObj)
+                        } else {
+                            // Si no, buscar por ID
+                            openBettingModal(matchId)
+                        }
+                    })
+                })
             } catch (error) {
                 console.error('Error loading upcoming matches:', error)
-                container.innerHTML = '<div class="col-12"><div class="alert alert-warning">Error al cargar partidos. Intenta más tarde.</div></div>'
+                container.innerHTML = '<div class="col-12"><div class="alert alert-warning">Error al cargar partidos. Intenta ms tarde.</div></div>'
             }
         }
 
-        // Cargar torneos de golf
-        async function loadGolfTournaments() {
-            const container = document.getElementById('golfTournamentsContainer')
-            if (!container) return
-
+        // Funcin para abrir el modal de apuesta con objeto completo (ms confiable)
+        window.openBettingModalWithMatch = function(match) {
+            console.log(' openBettingModalWithMatch llamado con objeto:', match)
+            
+            if (!match) {
+                console.error(' No se proporcion un objeto de partido')
+                alert('Error: No se pudo cargar la informacin del partido')
+                return
+            }
+            
             try {
-                // Intentar obtener datos de la API
-                const response = await fetchAPI('/tournaments')
-                const tournaments = response.data || []
+                const userPoints = parseInt(localStorage.getItem('acePutPoints') || '1000')
+                const modalBody = document.getElementById('bettingModalBody')
                 
-                container.innerHTML = tournaments.map(tournament => `
-                <div class="col-md-6 col-lg-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <span class="badge ${tournament.status === 'live' ? 'bg-danger' : 'bg-info'}">
-                                    ${tournament.status === 'live' ? '<span class="spinner-grow spinner-grow-sm"></span> EN VIVO' : '📅 Programado'}
-                                </span>
-                                <small class="text-muted">Ronda ${tournament.round}/${tournament.totalRounds}</small>
-                            </div>
-                            <h5 class="fw-bold mb-2">${tournament.name}</h5>
-                            <p class="text-muted mb-3">
-                                <i class="bi bi-geo-alt"></i> ${tournament.location}
-                            </p>
-                            ${tournament.leaderboard && tournament.leaderboard.length > 0 ? `
-                                <div class="mb-3">
-                                    <strong class="small">Top Posiciones:</strong>
-                                    ${tournament.leaderboard.slice(0, 3).map(player => `
-                                        <div class="d-flex justify-content-between align-items-center mt-1">
-                                            <span>
-                                                <span class="badge ${player.position === 1 ? 'bg-warning' : 'bg-secondary'} me-2">#${player.position}</span>
-                                                ${player.country} ${player.player}
-                                            </span>
-                                            <span class="text-success fw-bold">${player.score > 0 ? '+' : ''}${player.score}</span>
+                if (!modalBody) {
+                    console.error(' Modal body no encontrado')
+                    alert('Error: No se pudo encontrar el modal. Por favor, recarga la pgina.')
+                    return
+                }
+                
+                console.log(' Modal body encontrado, preparando contenido...')
+                
+                // Calcular tiempo hasta el inicio
+                let timeDisplay = 'Prximamente'
+                if (match.startTime) {
+                    const startTime = new Date(match.startTime)
+                    const now = new Date()
+                    const diff = startTime - now
+                    if (diff > 0) {
+                        const hours = Math.floor(diff / (1000 * 60 * 60))
+                        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+                        timeDisplay = `En ${hours}h ${minutes}m`
+                    }
+                }
+                
+                console.log(' Generando HTML del modal...')
+                
+                modalBody.innerHTML = `
+                    <div class="mb-4">
+                        <h6 class="text-muted mb-2">${match.tournament}</h6>
+                        <p class="text-muted small mb-3">${timeDisplay}</p>
+                        <div class="card border">
+                            <div class="card-body">
+                                <div class="row align-items-center mb-3">
+                                    <div class="col-5 text-end">
+                                        <div class="d-flex align-items-center justify-content-end">
+                                            <span class="me-2">${match.player1.country}</span>
+                                            <strong>${match.player1.name}</strong>
+                                            <span class="badge bg-secondary ms-2">#${match.player1.rank}</span>
                                         </div>
-                                    `).join('')}
+                                    </div>
+                                    <div class="col-2 text-center">
+                                        <span class="badge bg-light text-dark">VS</span>
+                                    </div>
+                                    <div class="col-5 text-start">
+                                        <div class="d-flex align-items-center">
+                                            <span class="me-2">${match.player2.country}</span>
+                                            <strong>${match.player2.name}</strong>
+                                            <span class="badge bg-secondary ms-2">#${match.player2.rank}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            ` : ''}
-                            <button onclick="window.location.href='/index.html#/live-results'" class="btn btn-sm btn-success w-100">
-                                Ver Detalles
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Selecciona tu apuesta:</label>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-outline-primary bet-option-btn" data-selection="1" onclick="selectBetOption(1, '${match.player1.name.replace(/'/g, "\\'")}')">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="me-2">${match.player1.country}</span>
+                                        <strong>${match.player1.name}</strong>
+                                    </div>
+                                    <span class="badge bg-primary">Ganancia: 2x</span>
+                                </div>
+                            </button>
+                            <button class="btn btn-outline-danger bet-option-btn" data-selection="2" onclick="selectBetOption(2, '${match.player2.name.replace(/'/g, "\\'")}')">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="me-2">${match.player2.country}</span>
+                                        <strong>${match.player2.name}</strong>
+                                    </div>
+                                    <span class="badge bg-danger">Ganancia: 2x</span>
+                                </div>
                             </button>
                         </div>
                     </div>
-                </div>
-            `).join('')
+
+                    <div class="mb-3" id="betAmountSection" style="display: none;">
+                        <label class="form-label fw-bold">Cantidad de puntos:</label>
+                        <input type="number" class="form-control" id="betAmountInput" min="10" max="${userPoints}" value="50" onchange="updateBetSummary()">
+                        <div class="d-flex gap-2 mt-2">
+                            <button class="btn btn-sm btn-outline-secondary" onclick="setBetAmount(50)">50</button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="setBetAmount(100)">100</button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="setBetAmount(200)">200</button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="setBetAmount(${userPoints})">Todo (${userPoints})</button>
+                        </div>
+                        <div class="mt-2 p-2 bg-light rounded" id="betSummary">
+                            <small class="text-muted">Si ganas: <strong>+0 pts</strong> (recuperas 0 + ganas 0)</small><br>
+                            <small class="text-muted">Si pierdes: <strong>-0 pts</strong></small>
+                        </div>
+                    </div>
+
+                    <div id="bettingError" class="alert alert-danger d-none"></div>
+                    
+                    <div class="modal-footer mt-3">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" onclick="confirmBet()" id="confirmBetBtn" disabled>
+                            <i class="bi bi-check-circle"></i> Confirmar Apuesta
+                        </button>
+                    </div>
+                `
+
+                console.log(' HTML generado, mostrando modal...')
+                
+                // Mostrar modal
+                const bettingModalElement = document.getElementById('bettingModal')
+                if (!bettingModalElement) {
+                    console.error(' Modal de apuesta no encontrado en el DOM')
+                    alert('Error: No se pudo abrir el modal de apuesta. Por favor, recarga la pgina.')
+                    return
+                }
+                
+                console.log(' Modal encontrado, inicializando Bootstrap...')
+                
+                // Verificar que Bootstrap esté disponible
+                if (typeof bootstrap === 'undefined') {
+                    console.error(' Bootstrap no est disponible')
+                    alert('Error: Bootstrap no est cargado. Por favor, recarga la pgina.')
+                    return
+                }
+                
+                const bettingModal = new bootstrap.Modal(bettingModalElement)
+                bettingModal.show()
+                
+                console.log(' Modal mostrado exitosamente')
+
+                // Resetear seleccin
+                window.selectedBetOption = null
+                window.selectedBetMatch = match
             } catch (error) {
-                console.error('Error loading golf tournaments:', error)
-                container.innerHTML = '<div class="col-12"><div class="alert alert-warning">Error al cargar torneos. Intenta más tarde.</div></div>'
+                console.error(' Error en openBettingModalWithMatch:', error)
+                console.error('Stack trace:', error.stack)
+                alert('Error al cargar el partido: ' + (error.message || 'Error desconocido'))
             }
         }
 
-        // Función para manejar el login
-        function handleLogin(emailOrUsername, password) {
-            // Simular validación (en producción esto sería con el backend)
-            const users = JSON.parse(localStorage.getItem('acePutUsers') || '[]')
-            const user = users.find(u => 
-                (u.email === emailOrUsername || u.username === emailOrUsername) && 
-                u.password === password
-            )
+        // Funcin para abrir el modal de apuesta (versin con ID - fallback)
+        window.openBettingModal = async function(matchId) {
+            console.log(' openBettingModal llamado con ID:', matchId, 'Tipo:', typeof matchId)
+            
+            try {
+                // Si matchId es null, undefined, 'null', o 0, intentar obtener del botn
+                if (!matchId || matchId === 'null' || matchId === 0 || matchId === '0') {
+                    console.log(' ID invlido, intentando obtener del evento...')
+                    // Intentar obtener del evento si est disponible
+                    const event = window.event
+                    if (event && event.target) {
+                        const btn = event.target.closest('button')
+                        if (btn) {
+                            const dataId = btn.getAttribute('data-match-id')
+                            if (dataId) {
+                                matchId = dataId
+                                console.log(' ID obtenido del atributo data-match-id:', matchId)
+                            }
+                        }
+                    }
+                }
+                
+                // Convertir matchId a nmero si es string
+                let matchIdNum = typeof matchId === 'string' ? parseInt(matchId) : matchId
+                
+                // Si an es NaN o invlido, mostrar error
+                if (isNaN(matchIdNum) || matchIdNum === 0 || matchIdNum === null) {
+                    console.error(' ID de partido invlido:', matchId, 'Convertido a:', matchIdNum)
+                    alert('Error: No se pudo identificar el partido. Por favor, recarga la pgina e intenta de nuevo.')
+                    return
+                }
+                
+                console.log(' ID vlido:', matchIdNum)
+                
+                let match = null
+                
+                // Intentar obtener de la API
+                try {
+                    const response = await fetchAPI(`/matches/${matchIdNum}`)
+                    if (response && response.data) {
+                        match = response.data
+                    }
+                } catch (error) {
+                    console.log('Error obteniendo de API, usando mock data:', error.message)
+                }
+                
+                // Si no se obtuvo de la API, buscar en mock data
+                if (!match) {
+                    console.log(' Buscando en mock data...')
+                    console.log('   ID buscado:', matchIdNum, 'Tipo:', typeof matchIdNum)
+                    console.log('   Partidos disponibles:', mockTennisMatches.map(m => ({ 
+                        id: m.id, 
+                        _id: m._id, 
+                        tournament: m.tournament,
+                        status: m.status
+                    })))
+                    
+                    // Buscar por ID exacto
+                    match = mockTennisMatches.find(m => {
+                        const mId = m.id || m._id
+                        return mId === matchIdNum || mId === matchId || String(mId) === String(matchIdNum) || Number(mId) === Number(matchIdNum)
+                    })
+                    
+                    // Si no se encuentra, buscar por índice (si el ID es numérico y est en rango)
+                    if (!match && !isNaN(matchIdNum) && matchIdNum > 0 && matchIdNum <= mockTennisMatches.length) {
+                        console.log('   Intentando buscar por índice...')
+                        match = mockTennisMatches[matchIdNum - 1]
+                    }
+                    
+                    if (match) {
+                        console.log(' Partido encontrado en mock:', match)
+                    } else {
+                        console.log(' Partido NO encontrado después de buscar')
+                    }
+                }
+                
+                if (!match) {
+                    console.error(' Partido no encontrado. ID buscado:', matchIdNum, 'Tipo:', typeof matchIdNum)
+                    console.error(' Partidos disponibles:', mockTennisMatches.map(m => ({ id: m.id, _id: m._id, tournament: m.tournament })))
+                    alert('Partido no encontrado. Por favor, intenta con otro partido.')
+                    return
+                }
+                
+                console.log(' Partido encontrado:', match)
 
-            if (user) {
-                // Guardar sesión
+                const userPoints = parseInt(localStorage.getItem('acePutPoints') || '1000')
+                const modalBody = document.getElementById('bettingModalBody')
+                
+                if (!modalBody) {
+                    console.error(' Modal body no encontrado')
+                    alert('Error: No se pudo encontrar el modal. Por favor, recarga la pgina.')
+                    return
+                }
+                
+                console.log(' Modal body encontrado, preparando contenido...')
+                
+                // Calcular tiempo hasta el inicio
+                let timeDisplay = 'Prximamente'
+                if (match.startTime) {
+                    const startTime = new Date(match.startTime)
+                    const now = new Date()
+                    const diff = startTime - now
+                    if (diff > 0) {
+                        const hours = Math.floor(diff / (1000 * 60 * 60))
+                        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+                        timeDisplay = `En ${hours}h ${minutes}m`
+                    }
+                }
+                
+                console.log(' Generando HTML del modal...')
+
+                modalBody.innerHTML = `
+                    <div class="mb-4">
+                        <h6 class="text-muted mb-2">${match.tournament}</h6>
+                        <p class="text-muted small mb-3">${timeDisplay}</p>
+                        <div class="card border">
+                            <div class="card-body">
+                                <div class="row align-items-center mb-3">
+                                    <div class="col-5 text-end">
+                                        <div class="d-flex align-items-center justify-content-end">
+                                            <span class="me-2">${match.player1.country}</span>
+                                            <strong>${match.player1.name}</strong>
+                                            <span class="badge bg-secondary ms-2">#${match.player1.rank}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 text-center">
+                                        <span class="badge bg-light text-dark">VS</span>
+                                    </div>
+                                    <div class="col-5 text-start">
+                                        <div class="d-flex align-items-center">
+                                            <span class="me-2">${match.player2.country}</span>
+                                            <strong>${match.player2.name}</strong>
+                                            <span class="badge bg-secondary ms-2">#${match.player2.rank}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Selecciona tu apuesta:</label>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-outline-primary bet-option-btn" data-selection="1" onclick="selectBetOption(1, '${match.player1.name}')">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="me-2">${match.player1.country}</span>
+                                        <strong>${match.player1.name}</strong>
+                                    </div>
+                                    <span class="badge bg-primary">Ganancia: 2x</span>
+                                </div>
+                            </button>
+                            <button class="btn btn-outline-danger bet-option-btn" data-selection="2" onclick="selectBetOption(2, '${match.player2.name}')">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="me-2">${match.player2.country}</span>
+                                        <strong>${match.player2.name}</strong>
+                                    </div>
+                                    <span class="badge bg-danger">Ganancia: 2x</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mb-3" id="betAmountSection" style="display: none;">
+                        <label class="form-label fw-bold">Cantidad de puntos:</label>
+                        <input type="number" class="form-control" id="betAmountInput" min="10" max="${userPoints}" value="50" onchange="updateBetSummary()">
+                        <div class="d-flex gap-2 mt-2">
+                            <button class="btn btn-sm btn-outline-secondary" onclick="setBetAmount(50)">50</button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="setBetAmount(100)">100</button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="setBetAmount(200)">200</button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="setBetAmount(${userPoints})">Todo (${userPoints})</button>
+                        </div>
+                        <div class="mt-2 p-2 bg-light rounded" id="betSummary">
+                            <small class="text-muted">Si ganas: <strong>+0 pts</strong> (recuperas 0 + ganas 0)</small><br>
+                            <small class="text-muted">Si pierdes: <strong>-0 pts</strong></small>
+                        </div>
+                    </div>
+
+                    <div id="bettingError" class="alert alert-danger d-none"></div>
+                    
+                    <div class="modal-footer mt-3">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" onclick="confirmBet()" id="confirmBetBtn" disabled>
+                            <i class="bi bi-check-circle"></i> Confirmar Apuesta
+                        </button>
+                    </div>
+                `
+
+                console.log(' HTML generado, mostrando modal...')
+                
+                // Mostrar modal
+                const bettingModalElement = document.getElementById('bettingModal')
+                if (!bettingModalElement) {
+                    console.error(' Modal de apuesta no encontrado en el DOM')
+                    alert('Error: No se pudo abrir el modal de apuesta. Por favor, recarga la pgina.')
+                    return
+                }
+                
+                console.log(' Modal encontrado, inicializando Bootstrap...')
+                
+                // Verificar que Bootstrap esté disponible
+                if (typeof bootstrap === 'undefined') {
+                    console.error(' Bootstrap no est disponible')
+                    alert('Error: Bootstrap no est cargado. Por favor, recarga la pgina.')
+                    return
+                }
+                
+                const bettingModal = new bootstrap.Modal(bettingModalElement)
+                bettingModal.show()
+                
+                console.log(' Modal mostrado exitosamente')
+
+                // Resetear seleccin
+                window.selectedBetOption = null
+                window.selectedBetMatch = match
+            } catch (error) {
+                console.error(' Error loading match:', error)
+                console.error('Stack trace:', error.stack)
+                alert('Error al cargar el partido: ' + (error.message || 'Error desconocido'))
+            }
+        }
+
+        // Funcin para seleccionar opcin de apuesta
+        window.selectBetOption = function(selection, playerName) {
+            window.selectedBetOption = selection
+            window.selectedBetPlayer = playerName
+            
+            // Actualizar UI
+            document.querySelectorAll('.bet-option-btn').forEach(btn => {
+                btn.classList.remove('active', 'btn-primary', 'btn-danger')
+                btn.classList.add('btn-outline-primary', 'btn-outline-danger')
+            })
+            
+            const selectedBtn = document.querySelector(`[data-selection="${selection}"]`)
+            if (selectedBtn) {
+                selectedBtn.classList.remove('btn-outline-primary', 'btn-outline-danger')
+                selectedBtn.classList.add('active', selection === 1 ? 'btn-primary' : 'btn-danger')
+            }
+            
+            // Mostrar seccin de cantidad
+            document.getElementById('betAmountSection').style.display = 'block'
+            const confirmBtn = document.getElementById('confirmBetBtn')
+            if (confirmBtn) confirmBtn.disabled = false
+            updateBetSummary()
+        }
+
+        // Funcin para establecer cantidad de apuesta
+        window.setBetAmount = function(amount) {
+            const input = document.getElementById('betAmountInput')
+            const userPoints = parseInt(localStorage.getItem('acePutPoints') || '1000')
+            input.value = Math.min(amount, userPoints)
+            updateBetSummary()
+        }
+
+        // Funcin para actualizar resumen de apuesta
+        window.updateBetSummary = function() {
+            const amount = parseInt(document.getElementById('betAmountInput').value || '0')
+            const summary = document.getElementById('betSummary')
+            if (summary) {
+                summary.innerHTML = `
+                    <small class="text-muted">Si ganas: <strong>+${amount} pts</strong> (recuperas ${amount} + ganas ${amount})</small><br>
+                    <small class="text-muted">Si pierdes: <strong>-${amount} pts</strong></small>
+                `
+            }
+        }
+
+        // Funcin para confirmar apuesta
+        window.confirmBet = async function() {
+            if (!window.selectedBetOption || !window.selectedBetMatch) {
+                document.getElementById('bettingError').textContent = 'Selecciona un jugador para apostar'
+                document.getElementById('bettingError').classList.remove('d-none')
+                return
+            }
+
+            const amount = parseInt(document.getElementById('betAmountInput').value || '0')
+            const userPoints = parseInt(localStorage.getItem('acePutPoints') || '1000')
+
+            if (amount < 10) {
+                document.getElementById('bettingError').textContent = 'La apuesta mínima es 10 puntos'
+                document.getElementById('bettingError').classList.remove('d-none')
+                return
+            }
+
+            if (amount > userPoints) {
+                document.getElementById('bettingError').textContent = 'No tienes suficientes puntos'
+                document.getElementById('bettingError').classList.remove('d-none')
+                return
+            }
+
+            try {
+                const token = localStorage.getItem('token')
+                const userStr = localStorage.getItem('user')
+                let userId = null
+
+                if (userStr) {
+                    try {
+                        const user = JSON.parse(userStr)
+                        userId = user.id || user._id
+                    } catch {}
+                }
+
+                if (!userId) {
+                    const acePutUser = localStorage.getItem('acePutUser')
+                    if (acePutUser) {
+                        try {
+                            const user = JSON.parse(acePutUser)
+                            userId = user.id
+                        } catch {
+                            userId = acePutUser
+                        }
+                    }
+                }
+
+                // Crear apuesta
+                const betData = {
+                    type: 'tennis',
+                    matchId: window.selectedBetMatch.id,
+                    selection: window.selectedBetOption,
+                    selectionName: window.selectedBetPlayer,
+                    amount: amount
+                }
+
+                // Guardar apuesta en backend PRIMERO (esto actualizar los puntos en MongoDB)
+                let savedBetId = null
+                let backendUserPoints = null
+                
+                if (token) {
+                    try {
+                        const betResponse = await fetch(`${API_BASE_URL}/bets`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
+                            },
+                            body: JSON.stringify(betData)
+                        })
+                        
+                        if (betResponse.ok) {
+                            const betDataResponse = await betResponse.json()
+                            console.log(' Apuesta guardada en backend:', betDataResponse)
+                            
+                            // Usar el ID que devuelve MongoDB
+                            if (betDataResponse.data && betDataResponse.data._id) {
+                                savedBetId = betDataResponse.data._id.toString()
+                            } else if (betDataResponse.data && betDataResponse.data.id) {
+                                savedBetId = betDataResponse.data.id.toString()
+                            }
+                            
+                            // SIEMPRE usar los puntos del backend (son la fuente de verdad)
+                            if (betDataResponse.userPoints !== undefined) {
+                                backendUserPoints = betDataResponse.userPoints
+                                localStorage.setItem('acePutPoints', String(backendUserPoints))
+                                console.log(' Puntos sincronizados con backend desde creacin de apuesta:', backendUserPoints)
+                                
+                                // Actualizar leaderboard inmediatamente
+                                loadLeaderboard()
+                            } else {
+                                // Fallback: obtener puntos actualizados del usuario
+                                const userStr = localStorage.getItem('user')
+                                if (userStr) {
+                                    const user = JSON.parse(userStr)
+                                    const userResponse = await fetch(`${API_BASE_URL}/auth/me`, {
+                                        headers: {
+                                            'Authorization': `Bearer ${token}`
+                                        }
+                                    })
+                                    
+                                    if (userResponse.ok) {
+                                        const userData = await userResponse.json()
+                                        if (userData.success && userData.data && userData.data.points !== undefined) {
+                                            backendUserPoints = userData.data.points
+                                            localStorage.setItem('acePutPoints', String(backendUserPoints))
+                                            console.log(' Puntos sincronizados con backend:', backendUserPoints)
+                                            loadLeaderboard()
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            // Actualizar perfil con puntos del backend
+                            updateProfileModal()
+                        } else {
+                            const errorText = await betResponse.text()
+                            console.error(' Error guardando apuesta en backend:', betResponse.status, errorText)
+                            alert('Error al crear la apuesta. Por favor intenta de nuevo.')
+                            return
+                        }
+                    } catch (error) {
+                        console.error(' Error guardando apuesta en backend:', error)
+                        alert('Error al crear la apuesta. Por favor intenta de nuevo.')
+                        return
+                    }
+                } else {
+                    // Si no hay token, no se puede crear apuesta
+                    alert('Debes iniciar sesin para crear apuestas.')
+                    return
+                }
+                
+                // Si la apuesta se guard en el backend, NO guardarla en localStorage
+                // Solo guardar en localStorage si NO hay backend (fallback)
+                if (!savedBetId) {
+                    // Solo guardar en localStorage si no se pudo guardar en backend
+                    const bets = JSON.parse(localStorage.getItem('acePutBets') || '[]')
+                    const now = new Date()
+                    const newBet = {
+                        id: Date.now(),
+                        ...betData,
+                        matchId: window.selectedBetMatch.id || window.selectedBetMatch._id,
+                        status: 'pending',
+                        createdAt: now.toISOString(),
+                        matchStartTime: now.toISOString()
+                    }
+                    bets.push(newBet)
+                    localStorage.setItem('acePutBets', JSON.stringify(bets))
+                } else {
+                    // Si se guard en backend, limpiar localStorage de apuestas duplicadas
+                    // y recargar desde el backend
+                    console.log(' Apuesta guardada en backend, recargando desde backend...')
+                }
+                
+                // Recargar partidos inmediatamente para ocultar el partido apostado
+                loadUpcomingMatches()
+                
+                // Programar verificacin del resultado después de 10 segundos (usar ID del backend)
+                const betIdToUse = savedBetId || Date.now()
+                scheduleMatchResult(betIdToUse, window.selectedBetMatch.id, window.selectedBetOption, amount)
+
+                // Cerrar modal y mostrar éxito
+                const bettingModal = bootstrap.Modal.getInstance(document.getElementById('bettingModal'))
+                bettingModal.hide()
+
+                showSuccessMessage(`Apuesta realizada! Apostaste ${amount} puntos por ${window.selectedBetPlayer}`)
+
+                // Recargar mis apuestas para mostrar la nueva apuesta (desde backend)
+                setTimeout(() => {
+                    loadMyBets()
+                    loadUpcomingMatches()
+                }, 500)
+            } catch (error) {
+                document.getElementById('bettingError').textContent = 'Error al realizar la apuesta: ' + error.message
+                document.getElementById('bettingError').classList.remove('d-none')
+            }
+        }
+
+        // Funcin para programar el resultado de un partido después de 10 segundos
+        function scheduleMatchResult(betId, matchId, selectedOption, betAmount) {
+            console.log(`  Programando resolucin de apuesta ${betId} en 10 segundos...`)
+            
+            // Esperar 10 segundos (10,000 ms)
+            setTimeout(async () => {
+                console.log(` Resolviendo apuesta ${betId}...`)
+                
+                // Determinar ganador aleatoriamente (50% de probabilidad)
+                const winner = Math.random() < 0.5 ? 1 : 2
+                const userWon = selectedOption === winner
+                
+                // Obtener apuestas del localStorage
+                const bets = JSON.parse(localStorage.getItem('acePutBets') || '[]')
+                // Buscar por ID o _id (puede ser string o nmero)
+                const betIndex = bets.findIndex(b => {
+                    const bId = b.id || b._id
+                    return String(bId) === String(betId) || bId === betId
+                })
+                
+                if (betIndex === -1) {
+                    console.log(`  Apuesta ${betId} no encontrada en localStorage para actualizar`)
+                    // Continuar con actualizacin en backend aunque no esté en localStorage
+                } else {
+                    // Si la apuesta ya fue resuelta, no hacer nada
+                    if (bets[betIndex].status !== 'pending') {
+                        console.log(`  Apuesta ${betId} ya fue resuelta (status: ${bets[betIndex].status})`)
+                        return
+                    }
+                    
+                    // Actualizar estado de la apuesta en localStorage
+                    bets[betIndex].status = userWon ? 'won' : 'lost'
+                    bets[betIndex].resolvedAt = new Date().toISOString()
+                    bets[betIndex].winner = winner
+                    localStorage.setItem('acePutBets', JSON.stringify(bets))
+                    console.log(` Apuesta ${betId} actualizada en localStorage: ${bets[betIndex].status}`)
+                }
+                
+                // NO actualizar puntos localmente - el backend es la fuente de verdad
+                // Solo mostrar mensaje
+                if (userWon) {
+                    showSuccessMessage(` Ganaste! Recibiste ${betAmount * 2} puntos (${betAmount} de apuesta + ${betAmount} de ganancia)`)
+                } else {
+                    showSuccessMessage(` Perdiste. Se descontaron ${betAmount} puntos de tu apuesta.`)
+                }
+                
+                // Actualizar en backend (esto actualizar los puntos en MongoDB)
+                const token = localStorage.getItem('token')
+                if (token) {
+                    try {
+                        console.log(` Actualizando apuesta ${betId} en backend...`)
+                        // Actualizar apuesta en backend (esto también actualizar los puntos del usuario)
+                        const betResponse = await fetch(`${API_BASE_URL}/bets/${betId}`, {
+                            method: 'PATCH',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
+                            },
+                            body: JSON.stringify({ status: userWon ? 'won' : 'lost' })
+                        })
+                        
+                        if (betResponse.ok) {
+                            const betData = await betResponse.json()
+                            console.log(' Apuesta actualizada en backend:', betData)
+                            
+                            // SIEMPRE usar los puntos del backend (son la fuente de verdad)
+                            if (betData.userPoints !== undefined) {
+                                localStorage.setItem('acePutPoints', String(betData.userPoints))
+                                updateProfileModal()
+                                console.log(' Puntos sincronizados con backend desde resolucin de apuesta:', betData.userPoints)
+                                
+                                // Recargar leaderboard para reflejar el cambio
+                                loadLeaderboard()
+                            } else {
+                                // Fallback: obtener puntos actualizados del usuario desde el backend
+                                const userStr = localStorage.getItem('user')
+                                if (userStr) {
+                                    const user = JSON.parse(userStr)
+                                    const userResponse = await fetch(`${API_BASE_URL}/auth/me`, {
+                                        headers: {
+                                            'Authorization': `Bearer ${token}`
+                                        }
+                                    })
+                                    
+                                    if (userResponse.ok) {
+                                        const userData = await userResponse.json()
+                                        if (userData.success && userData.data && userData.data.points !== undefined) {
+                                            localStorage.setItem('acePutPoints', String(userData.data.points))
+                                            updateProfileModal()
+                                            console.log(' Puntos sincronizados con backend:', userData.data.points)
+                                            
+                                            // Recargar leaderboard para reflejar el cambio
+                                            loadLeaderboard()
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            const errorText = await betResponse.text()
+                            console.error(' Error actualizando apuesta en backend:', betResponse.status, errorText)
+                        }
+                    } catch (error) {
+                        console.error(' Error actualizando en backend:', error)
+                    }
+                }
+                
+                console.log(` Partido ${matchId} resuelto: Ganador = Player ${winner}, Usuario ${userWon ? 'gan' : 'perdi'}`)
+            }, 10 * 1000) // 10 segundos
+        }
+        
+        // Cargar mis apuestas
+        async function loadMyBets() {
+            const container = document.getElementById('myBetsContainer')
+            if (!container) return
+
+            try {
+                // Obtener apuestas del localStorage
+                const bets = JSON.parse(localStorage.getItem('acePutBets') || '[]')
+                
+                // Intentar obtener del backend si hay token
+                const token = localStorage.getItem('token')
+                let backendBets = []
+                
+                if (token) {
+                    try {
+                        const userStr = localStorage.getItem('user')
+                        if (userStr) {
+                            const user = JSON.parse(userStr)
+                            const response = await fetch(`${API_BASE_URL}/bets?userId=${user.id || user._id}`, {
+                                headers: {
+                                    'Authorization': `Bearer ${token}`
+                                }
+                            })
+                            if (response.ok) {
+                                const data = await response.json()
+                                if (data.success && data.data) {
+                                    backendBets = data.data
+                                }
+                            }
+                        }
+                    } catch (error) {
+                        console.log('Error obteniendo apuestas del backend:', error)
+                    }
+                }
+                
+                // Combinar apuestas (priorizar backend, luego localStorage)
+                // Mejorar deduplicacin: comparar tanto id como _id
+                const allBets = [...backendBets]
+                
+                // Agregar apuestas de localStorage solo si no estn en backend
+                bets.forEach(localBet => {
+                    const isDuplicate = backendBets.some(backendBet => {
+                        // Comparar por id (puede ser string o nmero)
+                        const backendId = String(backendBet.id || backendBet._id || '')
+                        const localId = String(localBet.id || localBet._id || '')
+                        
+                        // También comparar por _id si existe
+                        const backendMongoId = String(backendBet._id || '')
+                        const localMongoId = String(localBet._id || '')
+                        
+                        return backendId === localId || 
+                               backendMongoId === localMongoId ||
+                               (backendMongoId && backendMongoId === localId) ||
+                               (localMongoId && localMongoId === backendId)
+                    })
+                    
+                    if (!isDuplicate) {
+                        allBets.push(localBet)
+                    }
+                })
+                
+                console.log(` Apuestas combinadas: ${backendBets.length} del backend, ${bets.length} de localStorage, ${allBets.length} totales (sin duplicados)`)
+                
+                // Ordenar por fecha (ms recientes primero)
+                allBets.sort((a, b) => {
+                    const dateA = new Date(a.createdAt || a.resolvedAt || 0)
+                    const dateB = new Date(b.createdAt || b.resolvedAt || 0)
+                    return dateB - dateA
+                })
+                
+                // Contar por estado
+                const pending = allBets.filter(b => b.status === 'pending').length
+                const won = allBets.filter(b => b.status === 'won').length
+                const lost = allBets.filter(b => b.status === 'lost').length
+                
+                document.getElementById('betsPendingCount').textContent = pending
+                document.getElementById('betsWonCount').textContent = won
+                document.getElementById('betsLostCount').textContent = lost
+                
+                if (allBets.length === 0) {
+                    container.innerHTML = `
+                        <div class="alert alert-info text-center">
+                            <i class="bi bi-info-circle"></i> No has realizado ninguna apuesta an.
+                            <br><small>Ve a la seccin "Apostar" para comenzar.</small>
+                        </div>
+                    `
+                    return
+                }
+                
+                container.innerHTML = allBets.map(bet => {
+                    const statusBadge = bet.status === 'won' 
+                        ? '<span class="badge bg-success">Ganada</span>'
+                        : bet.status === 'lost'
+                        ? '<span class="badge bg-danger">Perdida</span>'
+                        : '<span class="badge bg-warning">Pendiente</span>'
+                    
+                    const date = new Date(bet.createdAt || Date.now())
+                    const dateStr = date.toLocaleDateString('es-ES', { 
+                        day: '2-digit', 
+                        month: '2-digit', 
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    })
+                    
+                    return `
+                        <div class="card border-0 shadow-sm mb-3">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="mb-1">${bet.selectionName || 'Jugador seleccionado'}</h5>
+                                        <small class="text-muted">${dateStr}</small>
+                                    </div>
+                                    ${statusBadge}
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-4">
+                                        <small class="text-muted">Tipo</small>
+                                        <div><strong>${bet.type === 'tennis' ? ' Tenis' : ' Golf'}</strong></div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <small class="text-muted">Cantidad Apostada</small>
+                                        <div><strong class="text-primary">${bet.amount} pts</strong></div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <small class="text-muted">${bet.status === 'won' ? 'Ganancia' : bet.status === 'lost' ? 'Pérdida' : 'Posible Ganancia'}</small>
+                                        <div>
+                                            <strong class="${bet.status === 'won' ? 'text-success' : bet.status === 'lost' ? 'text-danger' : 'text-info'}">
+                                                ${bet.status === 'won' ? `+${bet.amount * 2} pts` : bet.status === 'lost' ? `-${bet.amount} pts` : `+${bet.amount * 2} pts`}
+                                            </strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                }).join('')
+            } catch (error) {
+                console.error('Error loading my bets:', error)
+                container.innerHTML = '<div class="alert alert-warning">Error al cargar tus apuestas. Intenta ms tarde.</div>'
+            }
+        }
+
+        // Cargar leaderboard (se actualiza automticamente cada 10 segundos)
+        async function loadLeaderboard() {
+            console.log(' Actualizando leaderboard...')
+            const tbody = document.getElementById('leaderboardTableBody')
+            if (!tbody) {
+                console.log('  Tabla del leaderboard no encontrada en el DOM')
+                return
+            }
+
+            try {
+                console.log(' Cargando leaderboard...')
+                
+                // Intentar obtener del backend (desde MongoDB)
+                let leaderboard = []
+                let useMockData = false
+                
+                try {
+                    console.log(' Haciendo peticin a:', `${API_BASE_URL}/auth/leaderboard`)
+                    const response = await fetch(`${API_BASE_URL}/auth/leaderboard`)
+                    console.log(' Respuesta recibida. Status:', response.status, response.statusText)
+                    
+                    if (response.ok) {
+                        const data = await response.json()
+                        console.log(' Datos recibidos:', data)
+                        
+                        if (data.success && data.data && Array.isArray(data.data)) {
+                            leaderboard = data.data
+                            console.log(` Leaderboard obtenido: ${leaderboard.length} usuarios`)
+                            if (leaderboard.length > 0) {
+                                console.log(`   Top 3: ${leaderboard.slice(0, 3).map(u => `${u.username} (${u.points} pts)`).join(', ')}`)
+                            } else {
+                                console.log('  Leaderboard vacío desde el backend')
+                                useMockData = true
+                            }
+                        } else {
+                            console.log('  Formato de datos invlido:', data)
+                            useMockData = true
+                        }
+                    } else {
+                        const errorText = await response.text()
+                        console.log('  Error en respuesta del backend:', response.status, errorText)
+                        useMockData = true
+                    }
+                } catch (error) {
+                    console.log('  Error obteniendo leaderboard del backend:', error.message)
+                    console.log('   Stack:', error.stack)
+                    useMockData = true
+                }
+                
+                // Si no hay datos del backend o est vacío, usar mock data
+                if (useMockData || leaderboard.length === 0) {
+                    console.log(' Generando datos mock para el leaderboard...')
+                    const user = getCurrentUser()
+                    const userPoints = parseInt(localStorage.getItem('acePutPoints') || '1000')
+                    
+                    // Obtener todos los usuarios del localStorage si existen
+                    const allUsers = []
+                    
+                    // Agregar usuario actual
+                    if (user) {
+                        allUsers.push({
+                            rank: 1,
+                            username: user.username,
+                            email: user.email || '',
+                            points: userPoints,
+                            role: 'user'
+                        })
+                    }
+                    
+                    // Agregar usuarios de ejemplo
+                    allUsers.push(
+                        { rank: 2, username: 'admin', email: 'admin@aceputt.com', points: 1000, role: 'admin' },
+                        { rank: 3, username: 'demo', email: 'demo@aceputt.com', points: 1000, role: 'user' },
+                        { rank: 4, username: 'player1', email: 'player1@example.com', points: 2500, role: 'user' },
+                        { rank: 5, username: 'player2', email: 'player2@example.com', points: 1800, role: 'user' },
+                        { rank: 6, username: 'player3', email: 'player3@example.com', points: 1200, role: 'user' }
+                    )
+                    
+                    // Ordenar por puntos
+                    allUsers.sort((a, b) => (b.points || 0) - (a.points || 0))
+                    leaderboard = allUsers.map((user, index) => ({
+                        ...user,
+                        rank: index + 1
+                    }))
+                    
+                    console.log(` Usando ${leaderboard.length} usuarios mock como fallback`)
+                }
+                
+                // Asegurar que esté ordenado por puntos (descendente)
+                leaderboard.sort((a, b) => (b.points || 0) - (a.points || 0))
+                
+                // Reasignar ranks después de ordenar
+                leaderboard = leaderboard.map((user, index) => ({
+                    ...user,
+                    rank: index + 1
+                }))
+                
+                console.log(` Total de usuarios en leaderboard: ${leaderboard.length}`)
+                
+                if (leaderboard.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-muted">No hay usuarios en el leaderboard</td></tr>'
+                    return
+                }
+                
+                // Obtener usuario actual para destacarlo
+                const currentUser = getCurrentUser()
+                let currentUsername = null
+                
+                if (currentUser) {
+                    currentUsername = currentUser.username
+                } else {
+                    const acePutUser = localStorage.getItem('acePutUser')
+                    if (acePutUser) {
+                        try {
+                            const parsed = JSON.parse(acePutUser)
+                            currentUsername = parsed.username || acePutUser
+                        } catch {
+                            currentUsername = acePutUser
+                        }
+                    }
+                }
+                
+                console.log(' Usuario actual identificado:', currentUsername)
+                console.log(' Renderizando leaderboard con', leaderboard.length, 'usuarios')
+                
+                tbody.innerHTML = leaderboard.map(user => {
+                    const isCurrentUser = user.username === currentUsername || 
+                                        user.email === currentUser?.email ||
+                                        (currentUser && user.username === currentUser.username)
+                    const rowClass = isCurrentUser ? 'table-warning fw-bold' : ''
+                    const rankIcon = user.rank === 1 ? '' : user.rank === 2 ? '' : user.rank === 3 ? '' : ''
+                    
+                    return `
+                        <tr class="${rowClass}">
+                            <td class="text-center">
+                                <span class="badge ${user.rank <= 3 ? 'bg-warning text-dark' : 'bg-secondary'}">
+                                    ${rankIcon} ${user.rank}
+                                </span>
+                            </td>
+                            <td>
+                                ${isCurrentUser ? '<i class="bi bi-person-check-fill text-primary"></i> ' : ''}
+                                <strong>${user.username || 'Usuario'}</strong>
+                                ${user.role === 'admin' ? '<span class="badge bg-danger ms-2">Admin</span>' : ''}
+                            </td>
+                            <td class="text-end">
+                                <strong class="text-primary">${(user.points || 0).toLocaleString()} pts</strong>
+                            </td>
+                            <td class="text-center">
+                                ${isCurrentUser ? '<span class="badge bg-primary">T</span>' : ''}
+                            </td>
+                        </tr>
+                    `
+                }).join('')
+                
+                console.log(' Leaderboard actualizado y renderizado exitosamente')
+                console.log(`   Total usuarios: ${leaderboard.length}`)
+                if (leaderboard.length > 0) {
+                    console.log(`   Top 3: ${leaderboard.slice(0, 3).map(u => `${u.username} (${u.points} pts)`).join(', ')}`)
+                }
+            } catch (error) {
+                console.error(' Error loading leaderboard:', error)
+                console.error('   Stack:', error.stack)
+                if (tbody) {
+                    tbody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-danger">Error al cargar el leaderboard: ${error.message}</td></tr>`
+                }
+            }
+        }
+
+        // Verificar apuestas pendientes al cargar la pgina
+        async function checkPendingBets() {
+            console.log(' Verificando apuestas pendientes...')
+            const bets = JSON.parse(localStorage.getItem('acePutBets') || '[]')
+            const now = new Date()
+            let updated = false
+            
+            for (const bet of bets) {
+                if (bet.status === 'pending') {
+                    // Si tiene matchStartTime, usar ese tiempo
+                    // Si no, usar createdAt como fallback
+                    const startTime = bet.matchStartTime || bet.createdAt
+                    if (!startTime) {
+                        console.log(`  Apuesta ${bet.id} no tiene tiempo de inicio, usando ahora`)
+                        bet.matchStartTime = now.toISOString()
+                        continue
+                    }
+                    
+                    const matchStart = new Date(startTime)
+                    const timeSinceStart = now - matchStart
+                    
+                    console.log(`  Apuesta ${bet.id}: ${Math.floor(timeSinceStart / 1000)}s desde inicio`)
+                    
+                    // Si han pasado ms de 10 segundos desde el inicio del partido
+                    if (timeSinceStart >= 10 * 1000) {
+                        console.log(` Resolviendo apuesta ${bet.id} (${Math.floor(timeSinceStart / 1000)}s pasados)`)
+                        
+                        // Resolver la apuesta si an est pendiente
+                        const winner = Math.random() < 0.5 ? 1 : 2
+                        const userWon = bet.selection === winner
+                        
+                        bet.status = userWon ? 'won' : 'lost'
+                        bet.resolvedAt = now.toISOString()
+                        bet.winner = winner
+                        updated = true
+                        
+                        // NO actualizar puntos localmente - el backend es la fuente de verdad
+                        // Actualizar en backend (esto actualizar los puntos en MongoDB)
+                        const token = localStorage.getItem('token')
+                        if (token) {
+                            try {
+                                // Usar el ID correcto (puede ser _id o id)
+                                const betIdToUpdate = bet._id || bet.id
+                                console.log(` Actualizando apuesta ${betIdToUpdate} en backend (status: ${userWon ? 'won' : 'lost'})...`)
+                                
+                                const betResponse = await fetch(`${API_BASE_URL}/bets/${betIdToUpdate}`, {
+                                    method: 'PATCH',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Authorization': `Bearer ${token}`
+                                    },
+                                    body: JSON.stringify({ status: userWon ? 'won' : 'lost' })
+                                })
+                                
+                                if (betResponse.ok) {
+                                    const betData = await betResponse.json()
+                                    console.log(' Apuesta actualizada en backend:', betData)
+                                    
+                                    // SIEMPRE usar los puntos del backend (son la fuente de verdad)
+                                    if (betData.userPoints !== undefined) {
+                                        localStorage.setItem('acePutPoints', String(betData.userPoints))
+                                        updateProfileModal()
+                                        console.log(' Puntos sincronizados con backend desde checkPendingBets:', betData.userPoints)
+                                        loadLeaderboard()
+                                    } else {
+                                        // Fallback: obtener puntos actualizados del usuario desde el backend
+                                        const userStr = localStorage.getItem('user')
+                                        if (userStr) {
+                                            const user = JSON.parse(userStr)
+                                            const userResponse = await fetch(`${API_BASE_URL}/auth/me`, {
+                                                headers: {
+                                                    'Authorization': `Bearer ${token}`
+                                                }
+                                            })
+                                            
+                                            if (userResponse.ok) {
+                                                const userData = await userResponse.json()
+                                                if (userData.success && userData.data && userData.data.points !== undefined) {
+                                                    localStorage.setItem('acePutPoints', String(userData.data.points))
+                                                    updateProfileModal()
+                                                    console.log(' Puntos sincronizados con backend:', userData.data.points)
+                                                    loadLeaderboard()
+                                                }
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    const errorText = await betResponse.text()
+                                    console.error(' Error actualizando apuesta en backend:', betResponse.status, errorText)
+                                }
+                            } catch (error) {
+                                console.error(' Error actualizando apuesta en backend:', error)
+                            }
+                        }
+                        
+                        // Recargar leaderboard después de actualizar puntos
+                        loadLeaderboard()
+                    }
+                }
+            }
+            
+            if (updated) {
+                localStorage.setItem('acePutBets', JSON.stringify(bets))
+                loadMyBets()
+                loadLeaderboard()
+                updateProfileModal()
+                console.log(' Apuestas pendientes verificadas y actualizadas')
+            } else {
+                console.log('  No hay apuestas pendientes para resolver')
+            }
+        }
+
+
+        // Funcin para manejar el login
+        async function handleLogin(emailOrUsername, password) {
+            try {
+                console.log(' Intentando login con:', emailOrUsername)
+                
+                // Intentar login en el backend (MongoDB)
+                const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: emailOrUsername, password })
+                })
+
+                console.log(' Respuesta del servidor:', response.status, response.statusText)
+                const data = await response.json()
+                console.log(' Datos recibidos:', data)
+
+                if (response.ok && data.success && data.data) {
+                    // Login exitoso
+                    const user = data.data.user
+                    const token = data.data.token
+
+                    if (!user || !token) {
+                        console.error(' Datos incompletos en respuesta:', data)
+                        showErrorMessage('Error: Datos incompletos en la respuesta del servidor')
+                        return false
+                    }
+
+                    // Asegurar que el usuario tenga todos los campos necesarios
+                    const userData = {
+                        id: user.id || user._id,
+                        _id: user._id || user.id,
+                        username: user.username,
+                        email: user.email,
+                        role: user.role || 'user',
+                        points: user.points || 1000
+                    }
+
+                    console.log(' Login exitoso. Usuario:', userData.username, 'Puntos:', userData.points)
+                    console.log(' Datos del usuario preparados:', userData)
+
+                    // Guardar token y datos del usuario
+                    localStorage.setItem('token', token)
+                    localStorage.setItem('user', JSON.stringify(userData))
+                    localStorage.setItem('acePutUser', userData.username)
+                    localStorage.setItem('acePutPoints', String(userData.points))
+                    
+                    console.log(' Datos guardados en localStorage')
+                    console.log('   Token:', token ? 'Presente (' + token.substring(0, 20) + '...)' : 'Ausente')
+                    console.log('   User:', user.username)
+                    console.log('   Points:', user.points)
+                    console.log('   User object:', JSON.stringify(user))
+                    
+                    // Cerrar modal primero
+                    const loginModalElement = document.getElementById('loginModal')
+                    if (loginModalElement) {
+                        const loginModal = bootstrap.Modal.getInstance(loginModalElement)
+                        if (loginModal) {
+                            loginModal.hide()
+                        } else {
+                            loginModalElement.classList.remove('show')
+                            document.body.classList.remove('modal-open')
+                            const backdrop = document.querySelector('.modal-backdrop')
+                            if (backdrop) backdrop.remove()
+                        }
+                    }
+                    
+                    // Esperar un momento para que el modal se cierre
+                    setTimeout(() => {
+                        // Verificar que se guard correctamente
+                        const verifyUser = getCurrentUser()
+                        if (!verifyUser || !verifyUser.username) {
+                            console.error(' ERROR: Usuario no se guard correctamente')
+                            console.error('   localStorage user:', localStorage.getItem('user'))
+                            console.error('   localStorage acePutUser:', localStorage.getItem('acePutUser'))
+                            showErrorMessage('Error al guardar sesin. Por favor intenta de nuevo.')
+                            return
+                        }
+                        
+                        console.log(' Usuario verificado:', verifyUser.username)
+                        
+                        // Actualizar UI
+                        updateUIForLogin()
+                        showUserContent()
+                        
+                        // Forzar actualizacin de UI después de un breve delay
+                        setTimeout(() => {
+                            const loginHero = document.getElementById('loginHero')
+                            const mainContent = document.getElementById('mainContent')
+                            const mainNavbar = document.getElementById('mainNavbar')
+                            
+                            // Forzar ocultar loginHero
+                            if (loginHero) {
+                                loginHero.style.display = 'none'
+                                loginHero.style.visibility = 'hidden'
+                            }
+                            
+                            // Forzar mostrar mainContent
+                            if (mainContent) {
+                                mainContent.style.display = 'block'
+                                mainContent.style.visibility = 'visible'
+                            }
+                            
+                            // Forzar mostrar mainNavbar
+                            if (mainNavbar) {
+                                mainNavbar.style.display = 'flex'
+                                mainNavbar.style.visibility = 'visible'
+                            }
+                            
+                            // Mostrar mensaje de éxito
+                            showSuccessMessage('Bienvenido de nuevo, ' + userData.username + '!')
+                            
+                            console.log(' UI actualizada forzadamente')
+                        }, 300)
+                    }, 200)
+                    
+                    return true
+                } else {
+                    // Error del backend
+                    console.error(' Error en login:', data)
+                    const errorMsg = data.message || data.error || 'Credenciales incorrectas'
+                    console.error('   Mensaje de error:', errorMsg)
+                    showErrorMessage(errorMsg)
+                    return false
+                }
+            } catch (error) {
+                // Si el backend no est disponible, usar fallback a localStorage
+                console.warn('Backend no disponible, usando localStorage como fallback:', error)
+                
+                const users = JSON.parse(localStorage.getItem('acePutUsers') || '[]')
+                const user = users.find(u => 
+                    (u.email === emailOrUsername || u.username === emailOrUsername) && 
+                    u.password === password
+                )
+
+                if (user) {
+                    // Guardar sesin
+                    const sessionUser = {
+                        id: user.id,
+                        username: user.username,
+                        email: user.email,
+                        loginTime: new Date().toISOString()
+                    }
+                    localStorage.setItem('acePutUser', JSON.stringify(sessionUser))
+                    
+                    // Cerrar modal
+                    const loginModalElement = document.getElementById('loginModal')
+                    if (loginModalElement) {
+                        const loginModal = bootstrap.Modal.getInstance(loginModalElement)
+                        if (loginModal) {
+                            loginModal.hide()
+                        } else {
+                            loginModalElement.classList.remove('show')
+                            document.body.classList.remove('modal-open')
+                            const backdrop = document.querySelector('.modal-backdrop')
+                            if (backdrop) backdrop.remove()
+                        }
+                    }
+                    
+                    // Actualizar UI
+                    updateUIForLogin()
+                    showUserContent()
+                    
+                    // Mostrar mensaje de éxito
+                    showSuccessMessage('Bienvenido de nuevo, ' + user.username + '! (modo offline)')
+                    
+                    return true
+                } else {
+                    showErrorMessage('Credenciales incorrectas. Intenta de nuevo o regístrate.')
+                    return false
+                }
+            }
+        }
+
+        // Funcin para manejar el registro
+        async function handleRegister(username, email, password) {
+            console.log(' handleRegister llamado con:', { username, email, password: '***' })
+            try {
+                // Intentar registrar en el backend (MongoDB)
+                console.log(' Enviando peticin a:', `${API_BASE_URL}/auth/register`)
+                const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, email, password })
+                })
+                
+                console.log(' Respuesta recibida. Status:', response.status, response.statusText)
+
+                const data = await response.json()
+
+                if (response.ok && data.success && data.data) {
+                    // Usuario registrado exitosamente en MongoDB
+                    const user = data.data.user
+                    const token = data.data.token
+
+                    if (!user || !token) {
+                        console.error(' Datos incompletos en respuesta de registro:', data)
+                        showErrorMessage('Error: Datos incompletos en la respuesta del servidor')
+                        return false
+                    }
+
+                    // Asegurar que el usuario tenga todos los campos necesarios
+                    const userData = {
+                        id: user.id || user._id,
+                        _id: user._id || user.id,
+                        username: user.username,
+                        email: user.email,
+                        role: user.role || 'user',
+                        points: user.points || 1000
+                    }
+
+                    console.log(' Registro exitoso. Usuario:', userData.username, 'Puntos:', userData.points)
+                    console.log(' Datos del usuario preparados:', userData)
+
+                    // Guardar token y datos del usuario
+                    localStorage.setItem('token', token)
+                    localStorage.setItem('user', JSON.stringify(userData))
+                    localStorage.setItem('acePutUser', userData.username)
+                    localStorage.setItem('acePutPoints', String(userData.points))
+
+                    // Cerrar modal
+                    const registerModalElement = document.getElementById('registerModal')
+                    if (registerModalElement) {
+                        const registerModal = bootstrap.Modal.getInstance(registerModalElement)
+                        if (registerModal) {
+                            registerModal.hide()
+                        } else {
+                            registerModalElement.classList.remove('show')
+                            document.body.classList.remove('modal-open')
+                            const backdrop = document.querySelector('.modal-backdrop')
+                            if (backdrop) backdrop.remove()
+                        }
+                    }
+                    
+                    // Esperar un momento para que el modal se cierre
+                    setTimeout(() => {
+                        // Verificar que se guard correctamente
+                        const verifyUser = getCurrentUser()
+                        if (!verifyUser || !verifyUser.username) {
+                            console.error(' ERROR: Usuario no se guard correctamente')
+                            console.error('   localStorage user:', localStorage.getItem('user'))
+                            console.error('   localStorage acePutUser:', localStorage.getItem('acePutUser'))
+                            showErrorMessage('Error al guardar sesin. Por favor intenta de nuevo.')
+                            return
+                        }
+                        
+                        console.log(' Usuario verificado:', verifyUser.username)
+                        
+                        // Actualizar UI
+                        updateUIForLogin()
+                        showUserContent()
+                        
+                        // Forzar actualizacin de UI después de un breve delay
+                        setTimeout(() => {
+                            const loginHero = document.getElementById('loginHero')
+                            const mainContent = document.getElementById('mainContent')
+                            const mainNavbar = document.getElementById('mainNavbar')
+                            
+                            // Forzar ocultar loginHero
+                            if (loginHero) {
+                                loginHero.style.display = 'none'
+                                loginHero.style.visibility = 'hidden'
+                            }
+                            
+                            // Forzar mostrar mainContent
+                            if (mainContent) {
+                                mainContent.style.display = 'block'
+                                mainContent.style.visibility = 'visible'
+                            }
+                            
+                            // Forzar mostrar mainNavbar
+                            if (mainNavbar) {
+                                mainNavbar.style.display = 'flex'
+                                mainNavbar.style.visibility = 'visible'
+                            }
+                            
+                            // Ocultar CTA section
+                            const ctaSection = document.getElementById('ctaSection')
+                            if (ctaSection) {
+                                ctaSection.style.display = 'none'
+                            }
+                            
+                            // Mostrar mensaje de éxito
+                            showSuccessMessage('Cuenta creada exitosamente! Bienvenido, ' + userData.username)
+                            
+                            console.log(' UI actualizada forzadamente')
+                        }, 300)
+                    }, 200)
+                    
+                    // Ocultar CTA section y mostrar contenido de usuario
+                    const ctaSection = document.getElementById('ctaSection')
+                    if (ctaSection) {
+                        ctaSection.style.display = 'none'
+                    }
+                    
+                    return true
+                } else {
+                    // Error del backend
+                    const errorMessage = data.message || data.error || 'Error al registrar usuario'
+                    console.error(' Error del backend:', errorMessage)
+                    const errorDiv = document.getElementById('registerError')
+                    if (errorDiv) {
+                        errorDiv.textContent = errorMessage
+                        errorDiv.classList.remove('d-none')
+                    }
+                    return false
+                }
+            } catch (error) {
+                // Si el backend no est disponible, usar fallback a localStorage
+                console.warn('Backend no disponible, usando localStorage como fallback:', error)
+                
+                // Verificar si el usuario ya existe en localStorage
+                const users = JSON.parse(localStorage.getItem('acePutUsers') || '[]')
+                const existingUser = users.find(u => u.email === email || u.username === username)
+                
+                if (existingUser) {
+                    showErrorMessage('El usuario o email ya est registrado.')
+                    return false
+                }
+
+                // Crear nuevo usuario en localStorage
+                const newUser = {
+                    id: Date.now(),
+                    username: username,
+                    email: email,
+                    password: password,
+                    createdAt: new Date().toISOString(),
+                    points: 1000
+                }
+
+                users.push(newUser)
+                localStorage.setItem('acePutUsers', JSON.stringify(users))
+
+                // Iniciar sesin automticamente
                 const sessionUser = {
-                    id: user.id,
-                    username: user.username,
-                    email: user.email,
+                    id: newUser.id,
+                    username: newUser.username,
+                    email: newUser.email,
                     loginTime: new Date().toISOString()
                 }
                 localStorage.setItem('acePutUser', JSON.stringify(sessionUser))
-                
+                localStorage.setItem('acePutPoints', '1000')
+
                 // Cerrar modal
-                const loginModalElement = document.getElementById('loginModal')
-                if (loginModalElement) {
-                    const loginModal = bootstrap.Modal.getInstance(loginModalElement)
-                    if (loginModal) {
-                        loginModal.hide()
+                const registerModalElement = document.getElementById('registerModal')
+                if (registerModalElement) {
+                    const registerModal = bootstrap.Modal.getInstance(registerModalElement)
+                    if (registerModal) {
+                        registerModal.hide()
                     } else {
-                        // Si Bootstrap no está cargado, ocultar manualmente
-                        loginModalElement.classList.remove('show')
+                        registerModalElement.classList.remove('show')
                         document.body.classList.remove('modal-open')
                         const backdrop = document.querySelector('.modal-backdrop')
                         if (backdrop) backdrop.remove()
                     }
                 }
-                
+
                 // Actualizar UI
                 updateUIForLogin()
                 showUserContent()
-                
+
                 // Mostrar mensaje de éxito
-                showSuccessMessage('¡Bienvenido de nuevo, ' + user.username + '!')
+                showSuccessMessage('Cuenta creada exitosamente! (modo offline)')
+                
+                const ctaSection = document.getElementById('ctaSection')
+                if (ctaSection) {
+                    ctaSection.style.display = 'none'
+                }
                 
                 return true
-            } else {
-                showErrorMessage('Credenciales incorrectas. Intenta de nuevo o regístrate.')
-                return false
             }
         }
 
-        // Función para manejar el registro
-        function handleRegister(username, email, password) {
-            // Verificar si el usuario ya existe
-            const users = JSON.parse(localStorage.getItem('acePutUsers') || '[]')
-            const existingUser = users.find(u => u.email === email || u.username === username)
-            
-            if (existingUser) {
-                showErrorMessage('El usuario o email ya está registrado.')
-                return false
-            }
-
-            // Crear nuevo usuario
-            const newUser = {
-                id: Date.now(),
-                username: username,
-                email: email,
-                password: password, // En producción esto debería estar hasheado
-                createdAt: new Date().toISOString(),
-                points: 1000 // Puntos iniciales
-            }
-
-            // Guardar usuario
-            users.push(newUser)
-            localStorage.setItem('acePutUsers', JSON.stringify(users))
-
-            // Iniciar sesión automáticamente
-            const sessionUser = {
-                id: newUser.id,
-                username: newUser.username,
-                email: newUser.email,
-                loginTime: new Date().toISOString()
-            }
-            localStorage.setItem('acePutUser', JSON.stringify(sessionUser))
-            localStorage.setItem('acePutPoints', '1000')
-
-            // Cerrar modal
-            const registerModalElement = document.getElementById('registerModal')
-            if (registerModalElement) {
-                const registerModal = bootstrap.Modal.getInstance(registerModalElement)
-                if (registerModal) {
-                    registerModal.hide()
-                } else {
-                    // Si Bootstrap no está cargado, ocultar manualmente
-                    registerModalElement.classList.remove('show')
+        // Funcin para manejar logout
+        function handleLogout() {
+            if (confirm('¿Ests seguro de que deseas cerrar sesin?')) {
+                console.log(' Iniciando proceso de cierre de sesin...')
+                
+                // Limpiar todos los datos de sesin
+                localStorage.removeItem('acePutUser')
+                localStorage.removeItem('user')
+                localStorage.removeItem('token')
+                localStorage.removeItem('acePutPoints')
+                localStorage.removeItem('acePutBets')
+                
+                console.log(' Todos los datos de sesin eliminados del localStorage')
+                console.log('   - acePutUser: eliminado')
+                console.log('   - user: eliminado')
+                console.log('   - token: eliminado')
+                console.log('   - acePutPoints: eliminado')
+                console.log('   - acePutBets: eliminado')
+                
+                // Cerrar el modal de perfil si est abierto
+                const profileModalElement = document.getElementById('profileModal')
+                if (profileModalElement) {
+                    const profileModal = bootstrap.Modal.getInstance(profileModalElement)
+                    if (profileModal) {
+                        profileModal.hide()
+                    }
+                    // También remover clases manualmente si es necesario
+                    profileModalElement.classList.remove('show')
                     document.body.classList.remove('modal-open')
                     const backdrop = document.querySelector('.modal-backdrop')
                     if (backdrop) backdrop.remove()
                 }
-            }
-
-            // Actualizar UI
-            updateUIForLogin()
-            showUserContent()
-
-            // Mostrar mensaje de éxito
-            showSuccessMessage('¡Cuenta creada exitosamente! Bienvenido, ' + username)
-            
-            // Ocultar CTA section y mostrar contenido de usuario
-            const ctaSection = document.getElementById('ctaSection')
-            if (ctaSection) {
-                ctaSection.style.display = 'none'
-            }
-            
-            return true
-        }
-
-        // Función para manejar logout
-        function handleLogout() {
-            if (confirm('¿Deseas cerrar sesión?')) {
-                localStorage.removeItem('acePutUser')
+                
+                // Verificar que realmente se limpiaron los datos
+                const verifyUser = getCurrentUser()
+                if (verifyUser && verifyUser.username) {
+                    console.error(' ERROR: Usuario todavía presente después de limpiar localStorage')
+                    console.error('   Usuario encontrado:', verifyUser)
+                    // Forzar limpieza adicional
+                    localStorage.clear()
+                } else {
+                    console.log(' Verificacin: No hay usuario en localStorage')
+                }
+                
+                // Actualizar UI para mostrar estado de no logueado (antes de recargar)
                 updateUIForLogin()
-                location.reload()
+                
+                // Recargar la pgina después de un pequeño delay para asegurar que el modal se cierre
+                setTimeout(() => {
+                    console.log(' Recargando pgina...')
+                    window.location.href = window.location.pathname // Recargar sin parmetros
+                }, 500)
+            } else {
+                console.log(' Cierre de sesin cancelado por el usuario')
             }
         }
 
-        // Función para mostrar mensaje de error
+        // Funcin para mostrar mensaje de error
         function showErrorMessage(message) {
             const errorDiv = document.getElementById('loginError') || document.getElementById('registerError')
             if (errorDiv) {
@@ -1530,7 +3442,7 @@
             }
         }
 
-        // Función para mostrar mensaje de éxito
+        // Funcin para mostrar mensaje de éxito
         function showSuccessMessage(message) {
             // Crear alert temporal
             const alertDiv = document.createElement('div')
@@ -1548,59 +3460,179 @@
         }
 
         // ============================================
-        // INICIALIZACIÓN COMPLETA AL CARGAR LA PÁGINA
+        // INICIALIZACIN COMPLETA AL CARGAR LA PÁGINA
         // ============================================
         document.addEventListener('DOMContentLoaded', function() {
             // Inicializar modo oscuro
             initializeDarkMode();
             
-            // Inicializar saludo dinámico
+            // Inicializar saludo dinmico
             startGreetingUpdate();
             
             // Formulario de login
             const loginForm = document.getElementById('loginForm')
             if (loginForm) {
-                loginForm.addEventListener('submit', function(e) {
+                loginForm.addEventListener('submit', async function(e) {
                     e.preventDefault()
+                    e.stopPropagation()
+                    
                     const email = document.getElementById('loginEmail').value.trim()
                     const password = document.getElementById('loginPassword').value
                     
+                    console.log(' Formulario de login enviado')
+                    console.log('   Email/Username:', email)
+                    console.log('   Password:', password ? '***' : 'vacío')
+                    
                     if (email && password) {
-                        handleLogin(email, password)
+                        // Deshabilitar el botn mientras se procesa
+                        const submitBtn = loginForm.querySelector('button[type="submit"]')
+                        if (submitBtn) {
+                            submitBtn.disabled = true
+                            submitBtn.textContent = 'Iniciando sesin...'
+                        }
+                        
+                        try {
+                            const success = await handleLogin(email, password)
+                            console.log(' Resultado del login:', success)
+                            
+                            if (!success) {
+                                // Rehabilitar el botn si fall
+                                if (submitBtn) {
+                                    submitBtn.disabled = false
+                                    submitBtn.textContent = 'Iniciar Sesin'
+                                }
+                            }
+                        } catch (error) {
+                            console.error(' Error en handleLogin:', error)
+                            showErrorMessage('Error al iniciar sesin. Por favor intenta de nuevo.')
+                            const submitBtn = loginForm.querySelector('button[type="submit"]')
+                            if (submitBtn) {
+                                submitBtn.disabled = false
+                                submitBtn.textContent = 'Iniciar Sesin'
+                            }
+                        }
                     } else {
                         showErrorMessage('Por favor completa todos los campos')
                     }
+                    
+                    return false
                 })
             }
 
             // Formulario de registro
             const registerForm = document.getElementById('registerForm')
             if (registerForm) {
-                registerForm.addEventListener('submit', function(e) {
+                console.log(' Formulario de registro encontrado, agregando event listener')
+                registerForm.addEventListener('submit', async function(e) {
                     e.preventDefault()
-                    const username = document.getElementById('registerName').value.trim()
-                    const email = document.getElementById('registerEmail').value.trim()
-                    const password = document.getElementById('registerPassword').value
+                    e.stopPropagation()
                     
-                    if (username && email && password) {
-                        if (password.length < 6) {
-                            showErrorMessage('La contraseña debe tener al menos 6 caracteres')
-                            return
+                    console.log(' Formulario de registro enviado (event listener activado)')
+                    
+                    const username = document.getElementById('registerName')?.value.trim()
+                    const email = document.getElementById('registerEmail')?.value.trim()
+                    const password = document.getElementById('registerPassword')?.value
+                    
+                    console.log(' Datos del formulario:')
+                    console.log('   Username:', username)
+                    console.log('   Email:', email)
+                    console.log('   Password:', password ? '***' : 'vacío')
+                    
+                    if (!username || !email || !password) {
+                        console.error(' Campos incompletos')
+                        const errorDiv = document.getElementById('registerError')
+                        if (errorDiv) {
+                            errorDiv.textContent = 'Por favor completa todos los campos'
+                            errorDiv.classList.remove('d-none')
                         }
-                        handleRegister(username, email, password)
-                    } else {
-                        showErrorMessage('Por favor completa todos los campos')
+                        return false
                     }
+                    
+                    if (password.length < 6) {
+                        const errorDiv = document.getElementById('registerError')
+                        if (errorDiv) {
+                            errorDiv.textContent = 'La contraseña debe tener al menos 6 caracteres'
+                            errorDiv.classList.remove('d-none')
+                        }
+                        return false
+                    }
+                    
+                    // Limpiar mensajes de error previos
+                    const errorDiv = document.getElementById('registerError')
+                    const successDiv = document.getElementById('registerSuccess')
+                    if (errorDiv) {
+                        errorDiv.classList.add('d-none')
+                        errorDiv.textContent = ''
+                    }
+                    if (successDiv) {
+                        successDiv.classList.add('d-none')
+                        successDiv.textContent = ''
+                    }
+                    
+                    // Deshabilitar el botn mientras se procesa
+                    const submitBtn = registerForm.querySelector('button[type="submit"]')
+                    const originalBtnText = submitBtn ? submitBtn.textContent : 'Registrarse'
+                    if (submitBtn) {
+                        submitBtn.disabled = true
+                        submitBtn.textContent = 'Registrando...'
+                    }
+                    
+                    try {
+                        console.log(' Llamando a handleRegister...')
+                        const success = await handleRegister(username, email, password)
+                        console.log(' Resultado del registro:', success)
+                        
+                        if (!success) {
+                            // Rehabilitar el botn si fall
+                            if (submitBtn) {
+                                submitBtn.disabled = false
+                                submitBtn.textContent = originalBtnText
+                            }
+                        } else {
+                            // Si fue exitoso, el botn se mantiene deshabilitado porque se cierra el modal
+                            console.log(' Registro exitoso, modal se cerrar automticamente')
+                        }
+                    } catch (error) {
+                        console.error(' Error en handleRegister:', error)
+                        const errorDiv = document.getElementById('registerError')
+                        if (errorDiv) {
+                            errorDiv.textContent = 'Error al registrar. Por favor intenta de nuevo: ' + (error.message || 'Error desconocido')
+                            errorDiv.classList.remove('d-none')
+                        }
+                        if (submitBtn) {
+                            submitBtn.disabled = false
+                            submitBtn.textContent = originalBtnText
+                        }
+                    }
+                    
+                    return false
                 })
             }
 
-            // Actualizar UI al cargar (verificar si ya hay sesión)
-            setTimeout(() => {
+            // Actualizar UI al cargar (verificar si ya hay sesin)
+            setTimeout(async () => {
                 updateUIForLogin()
                 showUserContent()
+                
+                // Resetear apuestas en localStorage al cargar (opcional - comentar si no quieres resetear)
+                // localStorage.setItem('acePutBets', '[]')
+                
+                await checkPendingBets() // Verificar apuestas pendientes (esto puede actualizar puntos)
+                loadLeaderboard() // Recargar leaderboard después de verificar apuestas
+                
+                // Verificar apuestas pendientes cada 5 segundos
+                setInterval(async () => {
+                    await checkPendingBets()
+                }, 5000)
+                
+                // Actualizar leaderboard cada 10 segundos para reflejar cambios en puntos
+                setInterval(async () => {
+                    await loadLeaderboard()
+                }, 10000)
             }, 100)
         })
     </script>
 </body>
 </html>
+
 
